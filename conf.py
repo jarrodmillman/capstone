@@ -57,7 +57,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'RCSDS'
+project = u'Capstone'
 copyright = u'2009-2015, K. Jarrod Millman'
 author = u'K. Jarrod Millman'
 
@@ -126,9 +126,9 @@ html_theme = 'alabaster'
 # documentation.
 #html_theme_options = {}
 html_theme_options = {
-    'description': 'Fall 2015',
+    'description': 'Spring 2016',
     'github_button': False,
-    'extra_nav_links': {"Course home": 'http://www.jarrodmillman.com/stat159-fall2015/'},
+    'extra_nav_links': {"Course home": 'http://www.jarrodmillman.com/stat222-spring2016/'},
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -246,7 +246,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'rcsds.tex', u'Reproducible and Collaborative Statistical Data Science',
+  (master_doc, 'capstone.tex', u'Statistics MA Capstone Project',
    u'K. Jarrod Millman', 'manual'),
 ]
 
@@ -277,7 +277,7 @@ latex_use_parts = True
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'rcsds', u'Reproducible and Collaborative Statistical Data Science',
+    (master_doc, 'capstone', u'Statistics MA Capstone Project',
      [author], 1)
 ]
 
@@ -291,7 +291,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'rcsds', u'Reproducible and Collaborative Statistical Data Science',
+  (master_doc, 'capstone', u'Statistics MA Capstone Project',
    author, 'K. Jarrod Millman', 'One line description of project.',
    'Miscellaneous'),
 ]
