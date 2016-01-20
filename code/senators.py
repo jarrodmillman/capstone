@@ -1,6 +1,10 @@
 from __future__ import division, print_function
 
 import json
+from operator import itemgetter
+import re
+
+import numpy as np
 
 with open("senators-list.json") as f:
     senators = json.load(f)
@@ -31,11 +35,3 @@ M = np.zeros([len(tweets), len(vocab)])
 for n, tweet in enumerate(tweets):
     for m, term in enumerate(vocab):
         M[n, m] = tweet.count(term)
-
-# pca using scikit-learn
-from sklearn import decomposition
-pca = decomposition.PCA(n_components=2)
-pca.fit(M)
-pc = pca.transform(M)
-plt.scatter(pc[:, 0], pc[:, 1])
-plt.show()

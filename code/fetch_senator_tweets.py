@@ -2,8 +2,12 @@ import json
 
 import twitter
 
-# you will need to set the following variables with your
-# personal information
+# You will need to set the following variables with your
+# personal information.  To do this you will need to create
+# a personal account on Twitter (if you don't already have
+# one).  Once you've created an account, create a new
+# application here:
+#     
 CONSUMER_KEY       = ""
 CONSUMER_SECRET    = ""
 OAUTH_TOKEN        = ""

@@ -1,8 +1,8 @@
 .. _text-mining:
 
-******************
-Day 1: Text Mining
-******************
+*********************************
+Day 1: Text Mining (Getting data)
+*********************************
 
 .. contents::
       :depth: 3
@@ -11,12 +11,6 @@ The process of deriving "meaningful" or "useful" information from text is
 called text mining.  This includes information retrieval, lexical analysis
 (e.g., identifying the individual units of meaning in a text), statistical
 summaries, pattern analysis, and visualization techniques.
-
-This is a very brief introduction to the field and will focus on a few specific
-topics.  Specifically, I will discuss information retrieval from websites, a
-variety of data serialization methods, representing text as a bag of words in a
-term-document matrix, and dimension reduction using principle component
-analysis.
 
 Websites
 ========
@@ -404,8 +398,8 @@ In this exercise you will explore Tweets from members of the U.S. Senate.
 To get the data you can use ``wget`` (if you only have ``curl`` you can
 use ``curl -LO`` instead of ``wget`` in the commands below)::
 
-  $ wget http://jarrodmillman.com/rcsds/data/senators-list.json
-  $ wget http://jarrodmillman.com/rcsds/data/timelines.json
+  $ wget http://jarrodmillman.com/capstone/data/senators-list.json
+  $ wget http://jarrodmillman.com/capstone/data/timelines.json
 
 The first file ``senators-list.json`` is a list of US Senate Twitter accounts
 [2]_ retrieved using the REST API [3]_.  The second file ``timelines.json``
@@ -414,7 +408,7 @@ most recent tweets (at the time I ran ran the query).
 
 Here is the script I used to download the data::
 
-  $ wget http://jarrodmillman.com/rcsds/code/fetch_senator_tweets.py
+  $ wget http://jarrodmillman.com/capstone/code/fetch_senator_tweets.py
 
 Your task is to do the following things and answer the following questions:
 
@@ -431,7 +425,7 @@ Your task is to do the following things and answer the following questions:
    it ``vocab``.
 
 Once you've constructed ``tweets`` and ``vocab``, you will be able to run
-the following code to construct term-document matrix::
+the following code to construct a document-term matrix::
 
     import numpy as np
     M = np.zeros([len(tweets), len(vocab)])
@@ -439,37 +433,6 @@ the following code to construct term-document matrix::
         for m, term in enumerate(vocab):
             M[n, m] = tweet.count(term)
 
-In your homework assignment you will also create a term-document matrix, but
-for the homework you aren't allowed to use NumPy.  Once you form a
-term-document matrix, there are many things you can do.  Since the word
-vectors (i.e., columns of the term-document matrix) live in a high dimensional
-space, it is difficult to use our spatial intuitions to understand how things
-cluster.  If, however, we are able to project the data into a much lower
-dimensional space without losing much information, then perhaps our intuitions
-will be helpful.
-
-We will talk about this in more detail later, but Principle Components Analysis
-(PCA) is one way to reduce the dimensionality of the problem.  If you want to try
-the following, you will need to install SciKit Learn::
-
-    $ pip install sklearn
-
-After you've installed ``sklearn``, you should be able to project the data
-onto the first two principle axes as follows::
- 
-    # pca using scikit-learn
-    from sklearn import decomposition
-    pca = decomposition.PCA(n_components=2)
-    pca.fit(M)
-    pc = pca.transform(M)
-    plt.scatter(pc[:, 0], pc[:, 1])
-    plt.show()
-
-If you've done everything right, you should have produced something like this:
-
-.. figure:: ../figs/pca.png
-
-   Term-document matrix projected on first and second principal axes.
 
 Links
 =====
