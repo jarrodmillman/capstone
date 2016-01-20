@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>wget &mdash; Capstone 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Command Line Utilities" href="../append/appendix1.html" />
+    <link rel="next" title="which" href="which.html" />
+    <link rel="prev" title="wc" href="wc.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wget">
+<span id="id1"></span><h1>wget<a class="headerlink" href="#wget" title="Permalink to this headline">¶</a></h1>
+<p><strong>Name</strong></p>
+<p>wget&nbsp;&#8211;&nbsp;GNU Wget Manual</p>
+<p><strong>Synopsis</strong></p>
+<p><strong>wget</strong> [option...] [URL...]</p>
+<p><strong>Description</strong></p>
+<p>GNU Wget is a free utility for non-interactive download of files
+from the Web. It supports HTTP, HTTPS, and FTP protocols, as well
+as retrieval through HTTP proxies.</p>
+<p>Frequently used download options</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-n<var>c</var></span>, <span class="option">--no-clobber</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>If a file is downloaded more than once in the same directory,
+Wget&#8217;s behavior depends on a few options, including -nc. In certain
+cases, the local file will be clobbered, or overwritten, upon
+repeated download. In other cases it will be preserved.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-c</span>, <span class="option">--continue</span></kbd></td>
+<td>Continue getting a partially-downloaded file. This is useful when
+you want to finish up a download started by a previous instance of
+Wget, or by another program.</td></tr>
+</tbody>
+</table>
+<p>Frequently used directory options</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-n<var>d</var></span>, <span class="option">--no-directories</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Do not create a hierarchy of directories when retrieving
+recursively.</td></tr>
+</tbody>
+</table>
+<p>Frequently used HTTP options</p>
+<p>Frequently used FTP options</p>
+<dl class="docutils">
+<dt>-g on/off, &#8211;glob=on/off</dt>
+<dd>Turn FTP globbing on or off. Globbing means you may use the
+shell-like special characters (wildcards), like *, ?, [ and ] to
+retrieve more than one file from the same directory at once.</dd>
+</dl>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-p<var>assive-ftp</var></span></kbd></td>
+<td>Use the passive FTP retrieval scheme, in which the client initiates
+the data connection.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r<var>etr-symlinks</var></span></kbd></td>
+<td>When &#8211;retr-symlinks is specified, however, symbolic links are
+traversed and the pointed-to files are retrieved.</td></tr>
+</tbody>
+</table>
+<p>Frequently used recursive retrieval options</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-r</span>, <span class="option">--recursive</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Turn on recursive retrieving.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-l <var>DEPTH</var></span>, <span class="option">--level=<var>DEPTH</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify recursion maximum depth level DEPTH.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-k</span>, <span class="option">--convert-links</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>After the download is complete, convert the links in the document
+to make them suitable for local viewing.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Capstone</a></h1>
+
+
+
+<p class="blurb">Spring 2016</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../append/index.html">Appendices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../append/software.html">Software installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/bash.html">Using the bash shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/git-intro.html">Introduction to Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/git-advanced.html">Collaborative workflow with Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/python.html">Introduction to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/file-transfer.html">File Transfer</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../append/appendix1.html">Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/appendix2.html">File System Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/appendix3.html">Shell Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/over_dimensions.html">Array reduction operations</a></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://www.jarrodmillman.com/stat222-spring2016/">Course home</a></li>
+    
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+      &copy;2015, K. Jarrod Millman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+        <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+    </div>
+
+  </body>
+</html>

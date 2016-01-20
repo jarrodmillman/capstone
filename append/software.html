@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Software installation &mdash; Capstone 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Appendices" href="index.html" />
+    <link rel="next" title="Using the bash shell" href="bash.html" />
+    <link rel="prev" title="Appendices" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="software-installation">
+<h1><a class="toc-backref" href="#id9">Software installation</a><a class="headerlink" href="#software-installation" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#software-installation" id="id9">Software installation</a><ul>
+<li><a class="reference internal" href="#text-editor" id="id10">Text editor</a><ul>
+<li><a class="reference internal" href="#windows" id="id11">Windows</a></li>
+<li><a class="reference internal" href="#osx" id="id12">OSX</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#git-setup" id="id13">Git setup</a><ul>
+<li><a class="reference internal" href="#id1" id="id14">Windows</a></li>
+<li><a class="reference internal" href="#id2" id="id15">OSX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="text-editor">
+<h2><a class="toc-backref" href="#id10">Text editor</a><a class="headerlink" href="#text-editor" title="Permalink to this headline">¶</a></h2>
+<p>You will need an editor for text to edit code and other things.</p>
+<p>Your text editor will be your constant companion and you should chose
+carefully.</p>
+<p>Your teachers use the <code class="docutils literal"><span class="pre">vim</span></code> text editor; this is very powerful but has
+a steep learning curve. The editors we recommend below are easier to use
+without practice, but less powerful.</p>
+<div class="section" id="windows">
+<h3><a class="toc-backref" href="#id11">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>We suggest <a class="reference external" href="http://notepad-plus-plus.org">Notepad++</a>.</p>
+<p>Go to the &#8220;Download&#8221; page; download and run the <code class="docutils literal"><span class="pre">.exe</span></code> installer.</p>
+<p>In BASH</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ export PATH=/c/Program\ Files/Notepad++:$PATH
+$ alias edit=&#39;notepad++&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="osx">
+<h3><a class="toc-backref" href="#id12">OSX</a><a class="headerlink" href="#osx" title="Permalink to this headline">¶</a></h3>
+<p>We suggest
+<a class="reference external" href="http://www.barebones.com/products/textwrangler">TextWrangler</a>.
+Download the <code class="docutils literal"><span class="pre">.dmg</span></code> installer. Run the file to get the disk icon on
+the desktop like this:</p>
+<div class="figure" id="id3">
+<img alt="TextWrangler DMG" src="../_images/tw_dmg.png" />
+<p class="caption"><span class="caption-text">TextWrangler DMG</span></p>
+</div>
+<p>Double click the disk icon to get something like this:</p>
+<div class="figure" id="id4">
+<img alt="TextWrangler install" src="../_images/tw_install.png" />
+<p class="caption"><span class="caption-text">TextWrangler install</span></p>
+</div>
+<p>Drag the TextWrangler icon to the Applications folder icon to install.</p>
+<p>Open TextWrangler by going to your Applications folder and
+double-clicking the TextWrangler icon.</p>
+<p>Go to the TextWrangler menu and make sure you have installed the command
+line tools:</p>
+<div class="figure" id="id5">
+<img alt="TextWrangler command line" src="../_images/tw_command_line.png" />
+<p class="caption"><span class="caption-text">TextWrangler command line</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="git-setup">
+<h2><a class="toc-backref" href="#id13">Git setup</a><a class="headerlink" href="#git-setup" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://git-scm.com">git</a> is the standard version control software
+that allows us to keep a record of changes and to share changes with
+other people.</p>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id14">Windows</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Follow the instructions
+<a class="reference external" href="http://git-scm.com/book/en/Getting-Started-Installing-Git#Installing-on-Windows">here</a>.</p>
+<p>If you installed Notepad++ you will need to tell git to use Notepad++ as
+your editor when git needs text descriptions.</p>
+<p>First open windows explorer to check where Notepad++ got installed. The
+program may be in <code class="docutils literal"><span class="pre">C:/Program</span> <span class="pre">Files/Notepad++/notepad++.exe</span></code> or in
+<code class="docutils literal"><span class="pre">C:/Program</span> <span class="pre">Files</span> <span class="pre">(x86)/Notepad++/notepad++.exe</span></code>. Check which.</p>
+<p>Then double click the git bash icon:</p>
+<div class="figure" id="id6">
+<img alt="git bash icon" src="../_images/git_bash_icon.png" />
+<p class="caption"><span class="caption-text">git bash icon</span></p>
+</div>
+<p>From this web page, select and copy the command that matches where your
+Notepad++ was installed:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git config --global core.editor &quot;&#39;C:/Program Files/Notepad++/notepad++.exe&#39; -multiInst -notabbar -nosession -noPlugin&quot;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git config --global core.editor &quot;&#39;C:/Program Files (x86)/Notepad++/notepad++.exe&#39; -multiInst -notabbar -nosession -noPlugin&quot;
+</pre></div>
+</div>
+<p>Select the top left corner of the git bash window to get the window
+menu, then find the &#8216;Edit&#8217; menu &#8216;Paste&#8217; option to paste the command into
+git bash:</p>
+<div class="figure" id="id7">
+<img alt="git bash paste" src="../_images/git_bash_paste.png" />
+<p class="caption"><span class="caption-text">git bash paste</span></p>
+</div>
+<p>When you&#8217;ve pasted, press return:</p>
+<div class="figure" id="id8">
+<img alt="git bash configged" src="../_images/git_bash_configged.png" />
+<p class="caption"><span class="caption-text">git bash configged</span></p>
+</div>
+<p>(These instructions are from
+<a class="reference external" href="http://stackoverflow.com/questions/1634161/how-do-i-use-notepad-or-other-with-msysgit/2486342#2486342">stackoverflow</a>)</p>
+<p>You can check that your editor is properly configured by typing:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git config --global -e
+</pre></div>
+</div>
+<p>in the git bash window. It should fire up Notepad++ with a text file
+with some settings for git. Don&#8217;t change anything, close the file.</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id15">OSX</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Download and run the installer for <a class="reference external" href="http://code.google.com/p/git-osx-installer">git on
+OSX</a>.</p>
+<p>If you installed TextWrangler you need to tell git to use it as your
+text editor.</p>
+<ul>
+<li><p class="first">make sure you installed the TextWrangler command line tools (see
+above).</p>
+</li>
+<li><p class="first">Open <code class="docutils literal"><span class="pre">Terminal</span></code> (Command key and space, type &#8216;Terminal&#8217; to find the
+Terminal app)</p>
+</li>
+<li><p class="first">At the Terminal command line, type:</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;edit</span> <span class="pre">-w&quot;</span></code></p>
+</li>
+</ul>
+<p>(These instructions are from
+<a class="reference external" href="http://stackoverflow.com/questions/13257519/how-to-change-the-default-editor-for-git">stackoverflow</a>)</p>
+<p>You can check your editor is properly configure by typing:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git config --global -e
+</pre></div>
+</div>
+<p>in the Terminal window. It should fire up TextWranger with a text file
+with some settings for git. Don&#8217;t change anything, close the file.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Capstone</a></h1>
+
+
+
+<p class="blurb">Spring 2016</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendices</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Software installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bash.html">Using the bash shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-intro.html">Introduction to Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-advanced.html">Collaborative workflow with Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Introduction to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-transfer.html">File Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix1.html">Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix2.html">File System Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix3.html">Shell Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="over_dimensions.html">Array reduction operations</a></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://www.jarrodmillman.com/stat222-spring2016/">Course home</a></li>
+    
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+      &copy;2015, K. Jarrod Millman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+        <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+    </div>
+
+  </body>
+</html>

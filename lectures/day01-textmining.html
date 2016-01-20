@@ -1,0 +1,592 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Day 1: Text Mining (Getting data) &mdash; Capstone 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Lectures" href="index.html" />
+    <link rel="next" title="Appendices" href="../append/index.html" />
+    <link rel="prev" title="Lectures" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="day-1-text-mining-getting-data">
+<span id="text-mining"></span><h1><a class="toc-backref" href="#id10">Day 1: Text Mining (Getting data)</a><a class="headerlink" href="#day-1-text-mining-getting-data" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#day-1-text-mining-getting-data" id="id10">Day 1: Text Mining (Getting data)</a><ul>
+<li><a class="reference internal" href="#websites" id="id11">Websites</a><ul>
+<li><a class="reference internal" href="#webscraping" id="id12">Webscraping</a></li>
+<li><a class="reference internal" href="#webservices" id="id13">Webservices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#data-serialization" id="id14">Data serialization</a><ul>
+<li><a class="reference internal" href="#python-object" id="id15">Python object</a></li>
+<li><a class="reference internal" href="#reading-and-writing-json" id="id16">Reading and writing JSON</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#word-vectors" id="id17">Word Vectors</a><ul>
+<li><a class="reference internal" href="#bag-of-words-model" id="id18">Bag of words model</a></li>
+<li><a class="reference internal" href="#term-document-matrix" id="id19">Term-document matrix</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-us-senate-tweets" id="id20">Exercise: US Senate tweets</a></li>
+<li><a class="reference internal" href="#links" id="id21">Links</a><ul>
+<li><a class="reference internal" href="#id5" id="id22">Webservices</a></li>
+<li><a class="reference internal" href="#serialization" id="id23">Serialization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>The process of deriving &#8220;meaningful&#8221; or &#8220;useful&#8221; information from text is
+called text mining.  This includes information retrieval, lexical analysis
+(e.g., identifying the individual units of meaning in a text), statistical
+summaries, pattern analysis, and visualization techniques.</p>
+<div class="section" id="websites">
+<h2><a class="toc-backref" href="#id11">Websites</a><a class="headerlink" href="#websites" title="Permalink to this headline">¶</a></h2>
+<p>Many data sources are available on the Internet. You’ve probably used a web
+browser interface to search through some of this data and even download it to
+your computer. As you may have noticed, this manual process is labor intensive,
+error prone, and hard to document.</p>
+<p>The two most common ways to automate information retrieval from websites are
+webscraping and working with webservices.</p>
+<div class="section" id="webscraping">
+<h3><a class="toc-backref" href="#id12">Webscraping</a><a class="headerlink" href="#webscraping" title="Permalink to this headline">¶</a></h3>
+<p>Webscraping is process of getting &#8220;unstructured&#8221; data on the World Wide Web
+into a structured format that allows you to store and analyze it.  There are a
+number of methods for doing this.  The easiest to understand and most labor
+intensive method is to manually copy-and-paste the information.  A bit more
+automated technique is to use text grepping.</p>
+<p>Another technique is to use an HTML parser.  For instance, Thomas Kluyver’s
+webscraping example IPython <a class="reference external" href="https://github.com/dlab-berkeley/python-fundamentals/blob/master/cheat-sheets/Web-Scraping.ipynb">notebook</a>
+is a good place to start.</p>
+<p>To get an interactive version of it, you can do the following from your
+BASH prompt:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone https://github.com/dlab-berkeley/python-fundamentals.git
+$ cd python-fundamentals/cheat-sheets/
+$ ipython notebook Web-Scraping.ipynb
+</pre></div>
+</div>
+</div>
+<div class="section" id="webservices">
+<h3><a class="toc-backref" href="#id13">Webservices</a><a class="headerlink" href="#webservices" title="Permalink to this headline">¶</a></h3>
+<p>To provide programmatic and automatic interaction with their data stores, many
+websites serve this information through a documented application programmer
+interface (API). These webservice APIs provide a mechanism to create new
+functionality on top of existing webcontent.</p>
+<p>While there are several ways to implement webservices, <a class="reference external" href="http://en.wikipedia.org/wiki/Representational_state_transfer">Representational
+State Transfer
+(REST)</a>
+has gained widespread popularity. REST is more of a style than a
+standard. A system designed in the REST style is called RESTful. RESTful
+systems typically use HTTP requests to query and post data using the
+standard HTTP verbs (GET, POST, PUT, DELETE, etc.). Often some form of
+authentication is necessary to communicate with a webservice. It is
+common to use <a class="reference external" href="http://en.wikipedia.org/wiki/OAuth">OAuth</a> for this
+purpose.</p>
+</div>
+</div>
+<div class="section" id="data-serialization">
+<h2><a class="toc-backref" href="#id14">Data serialization</a><a class="headerlink" href="#data-serialization" title="Permalink to this headline">¶</a></h2>
+<p>When you use a web browser to view a webpage, your browser handles the
+HTTP communication for you. You specify what you wish to view in the
+form of a
+<a class="reference external" href="http://en.wikipedia.org/wiki/Uniform_resource_identifier">URI</a> such
+as <a class="reference external" href="http://example.org/absolute/URI/with/absolute/path/to/resource.txt">http://example.org/absolute/URI/with/absolute/path/to/resource.txt</a>.
+At this point your browser communicates with the webserver and requests
+the resource. The resource is typically provided to your web browser as
+an <a class="reference external" href="http://en.wikipedia.org/wiki/HTML">HTML</a> document, which browsers
+are specifically designed to render.</p>
+<p>Similarly, you will use HTTP to communicate with webservices such as Twitter.
+However rather than passively consuming webpages, you will be interested in
+retrieving data in a form that is amenable to further processing.</p>
+<p>Data serialization refers to the process of encoding data structures and
+objects in a format that can be used to store this information on disk or
+transmit it over the web. For example, in R you can use the Rdata format to
+save R objects to disk and reload them later. For webservices, JSON and XML are
+standard formats. To better understand this, let’s briefly look at data
+serialization more generally.</p>
+<div class="section" id="python-object">
+<h3><a class="toc-backref" href="#id15">Python object</a><a class="headerlink" href="#python-object" title="Permalink to this headline">¶</a></h3>
+<p>First let’s create a Python object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;parents&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;mom&quot;</span><span class="p">,</span>
+                <span class="s">&quot;number&quot;</span><span class="p">:</span> <span class="s">&quot;555-123-4567&quot;</span><span class="p">},</span>
+               <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;dad&quot;</span><span class="p">,</span>
+                <span class="s">&quot;number&quot;</span><span class="p">:</span> <span class="s">&quot;555-123-4567&quot;</span><span class="p">}],</span>
+    <span class="s">&quot;colleagues&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;advisor&quot;</span><span class="p">,</span>
+                   <span class="s">&quot;number&quot;</span><span class="p">:</span> <span class="s">&quot;555-123-4567&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And let’s print the results:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mydict</span>
+<span class="go">{&#39;colleagues&#39;: {&#39;name&#39;: &#39;advisor&#39;, &#39;number&#39;: &#39;555-123-4567&#39;}, &#39;parents&#39;: [{&#39;name&#39;: &#39;mom&#39;, &#39;number&#39;: &#39;555-123-4567&#39;}, {&#39;name&#39;: &#39;dad&#39;, &#39;number&#39;: &#39;555-123-4567&#39;}]}</span>
+</pre></div>
+</div>
+<p>That is not nicely formatted, so let&#8217;s us the pretty printing module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">mydict</span><span class="p">)</span>
+<span class="go">{&#39;colleagues&#39;: {&#39;name&#39;: &#39;advisor&#39;, &#39;number&#39;: &#39;555-123-4567&#39;},</span>
+<span class="go"> &#39;parents&#39;: [{&#39;name&#39;: &#39;mom&#39;, &#39;number&#39;: &#39;555-123-4567&#39;},</span>
+<span class="go">             {&#39;name&#39;: &#39;dad&#39;, &#39;number&#39;: &#39;555-123-4567&#39;}]}</span>
+</pre></div>
+</div>
+<div class="section" id="xml">
+<h4>XML<a class="headerlink" href="#xml" title="Permalink to this headline">¶</a></h4>
+<p>How does this object look if we convert it to XML? <a class="footnote-reference" href="#id6" id="id1">[1]</a></p>
+<p>First you will need to install <cite>dict2xml</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install dict2xml
+</pre></div>
+</div>
+<p>Now you can do the following in Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dict2xml</span> <span class="kn">import</span> <span class="n">dict2xml</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">dict2xml</span><span class="p">(</span><span class="n">mydict</span><span class="p">))</span>
+<span class="go">&lt;colleagues&gt;</span>
+<span class="go">  &lt;name&gt;advisor&lt;/name&gt;</span>
+<span class="go">  &lt;number&gt;555-123-4567&lt;/number&gt;</span>
+<span class="go">&lt;/colleagues&gt;</span>
+<span class="go">&lt;parents&gt;</span>
+<span class="go">  &lt;name&gt;mom&lt;/name&gt;</span>
+<span class="go">  &lt;number&gt;555-123-4567&lt;/number&gt;</span>
+<span class="go">&lt;/parents&gt;</span>
+<span class="go">&lt;parents&gt;</span>
+<span class="go">  &lt;name&gt;dad&lt;/name&gt;</span>
+<span class="go">  &lt;number&gt;555-123-4567&lt;/number&gt;</span>
+<span class="go">&lt;/parents&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="json">
+<h4>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h4>
+<p>What if we convert it to JSON?</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">mydict</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<span class="go">{</span>
+<span class="go">    &quot;colleagues&quot;: {</span>
+<span class="go">        &quot;name&quot;: &quot;advisor&quot;,</span>
+<span class="go">        &quot;number&quot;: &quot;555-123-4567&quot;</span>
+<span class="go">    },</span>
+<span class="go">    &quot;parents&quot;: [</span>
+<span class="go">        {</span>
+<span class="go">            &quot;name&quot;: &quot;mom&quot;,</span>
+<span class="go">            &quot;number&quot;: &quot;555-123-4567&quot;</span>
+<span class="go">        },</span>
+<span class="go">        {</span>
+<span class="go">            &quot;name&quot;: &quot;dad&quot;,</span>
+<span class="go">            &quot;number&quot;: &quot;555-123-4567&quot;</span>
+<span class="go">        }</span>
+<span class="go">    ]</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="yaml">
+<h4>YAML<a class="headerlink" href="#yaml" title="Permalink to this headline">¶</a></h4>
+<p>What if we convert it to YAML?</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">yaml</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mydict</span><span class="p">))</span>
+<span class="go">colleagues: {name: advisor, number: 555-123-4567}</span>
+<span class="go">parents:</span>
+<span class="go">- {name: mom, number: 555-123-4567}</span>
+<span class="go">- {name: dad, number: 555-123-4567}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="questions">
+<h4>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h4>
+<p>Looking over the output of the above formats you should notice several things.</p>
+<ul class="simple">
+<li>Which of the formats uses the largest number of characters?</li>
+<li>Which uses the fewest?</li>
+<li>Which looks most like Python?</li>
+</ul>
+</div>
+</div>
+<div class="section" id="reading-and-writing-json">
+<h3><a class="toc-backref" href="#id16">Reading and writing JSON</a><a class="headerlink" href="#reading-and-writing-json" title="Permalink to this headline">¶</a></h3>
+<p>To save <cite>mydict</cite> as a JSON file, you could do the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;data.json&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mydict</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>I prefer to use a context manager which handles closing the file handle for me:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;data.json&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mydict</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To load the JSON file, you could do the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;data.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mydict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Or using a context manager:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;data.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">mydict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Your JSON file will have nested and non-homogeneous structure, which is not
+possible to directly store using CSV. So you will need to first decide what
+data you want to save as CSV and then transform the JSON data into the
+necessary form. Here is an example of how you might transform <code class="docutils literal"><span class="pre">mydict</span></code> above
+into a list of equal length tuples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mydict</span><span class="p">[</span><span class="s">&quot;colleagues&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mydict</span><span class="p">[</span><span class="s">&quot;colleagues&quot;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[(</span><span class="n">e</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="s">&quot;number&quot;</span><span class="p">],</span> <span class="n">k</span><span class="p">)</span>
+<span class="gp">... </span>              <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mydict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="gp">... </span>                  <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Before I can use list comprehension to form the list of tuples I ensure that
+the nested structure that I iterate over has equal depth in each substructure.
+Then I save the list of tuples as a CSV file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">csv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;data.csv&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">csv_out</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">csv_out</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;number&quot;</span><span class="p">,</span> <span class="s">&quot;relation&quot;</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">csv_out</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="word-vectors">
+<h2><a class="toc-backref" href="#id17">Word Vectors</a><a class="headerlink" href="#word-vectors" title="Permalink to this headline">¶</a></h2>
+<p>In many statistical applications, data are represented as vectors in
+some space. For instance, in genomic applications measurements for gene
+expression levels may be recorded for several subjects. Each of these
+subjects is then represented as a vector in gene space where each
+dimension represents the expression level of a specific gene.</p>
+<p>In other applications, the data is not directly presented as a vector
+space model; yet may be usefully represented as such. In this tutorial,
+you will see one common way to represent text documents
+as vectors. Once we&#8217;ve represented text documents as vectors we will
+want to ask which documents are similar to each other. We could use the
+dot product or cosine of the angle between two document vectors as our
+measure of similarity; however, in the second homework you will use
+another distance measure that has proved fruitful for measuring
+similarity in text documents.</p>
+<div class="section" id="bag-of-words-model">
+<h3><a class="toc-backref" href="#id18">Bag of words model</a><a class="headerlink" href="#bag-of-words-model" title="Permalink to this headline">¶</a></h3>
+<p>Natural languages encode part of the meaning of a text in the specific
+order of the words as the following two sentences illustrate:</p>
+<div class="highlight-python"><div class="highlight"><pre>John ate the tomato.
+The tomato ate John.
+</pre></div>
+</div>
+<p>For some tasks, however, it suffices to consider only the number of
+occurrences of each word in a document&#8212;disregarding grammar and word
+order. Such a simplified representation of a document is called a <em>bag
+of words</em> model.</p>
+<p>To get a sense of why this simple model might be useful consider the
+task of distinguishing documents pertaining to cars from documents about
+flowers. In documents related to cars you might expect to see many
+occurrences of words like power, drive, wheel, etc. Similarly, in the
+documents about flowers you might expect to see many occurrences of
+words like petal, bud, seed, etc.</p>
+<p>To see how we could use this insight in practice, consider the following
+three simple text documents (i.e., consider each sentence a separate
+document):</p>
+<div class="highlight-python"><div class="highlight"><pre>R is a popular programming language for statistical computing.
+The Python programming language is also popular for statistical programming.
+Spanish is a popular foreign language taught in US schools.
+</pre></div>
+</div>
+<p>Based on these three documents, we can create the following list of
+words used in our collection of documents (let&#8217;s call this our
+vocabulary):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span>
+ <span class="s">&#39;also&#39;</span><span class="p">,</span>
+ <span class="s">&#39;computing&#39;</span><span class="p">,</span>
+ <span class="s">&#39;for&#39;</span><span class="p">,</span>
+ <span class="s">&#39;foreign&#39;</span><span class="p">,</span>
+ <span class="s">&#39;in&#39;</span><span class="p">,</span>
+ <span class="s">&#39;is&#39;</span><span class="p">,</span>
+ <span class="s">&#39;language&#39;</span><span class="p">,</span>
+ <span class="s">&#39;popular&#39;</span><span class="p">,</span>
+ <span class="s">&#39;programming&#39;</span><span class="p">,</span>
+ <span class="s">&#39;python&#39;</span><span class="p">,</span>
+ <span class="s">&#39;r&#39;</span><span class="p">,</span>
+ <span class="s">&#39;schools&#39;</span><span class="p">,</span>
+ <span class="s">&#39;spanish&#39;</span><span class="p">,</span>
+ <span class="s">&#39;statistical&#39;</span><span class="p">,</span>
+ <span class="s">&#39;taught&#39;</span><span class="p">,</span>
+ <span class="s">&#39;the&#39;</span><span class="p">,</span>
+ <span class="s">&#39;us&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For each word in the above list of 18 words, we can count how many times
+it occurs in the first text document to create the word vector</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>where each element of the word vector is the number of times the
+corresponding word from our list of vocabulary words appears in the
+first document. For example, the first <code class="docutils literal"><span class="pre">1</span></code> in the above word vector
+represents the fact that the word <code class="docutils literal"><span class="pre">a</span></code> appears exactly once in the
+sentence
+<code class="docutils literal"><span class="pre">R</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">popular</span> <span class="pre">programming</span> <span class="pre">language</span> <span class="pre">for</span> <span class="pre">statistical</span> <span class="pre">computing.</span></code>
+Similarly, the first <code class="docutils literal"><span class="pre">0</span></code> represents the fact that the word <code class="docutils literal"><span class="pre">also</span></code>
+does not occur in the sentence.</p>
+<p>Following the same procedure for the second and third sentences in our
+collection of documents, yields the following two word vectors:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="term-document-matrix">
+<h3><a class="toc-backref" href="#id19">Term-document matrix</a><a class="headerlink" href="#term-document-matrix" title="Permalink to this headline">¶</a></h3>
+<p>Putting the list of vocabulary words used in our collection of documents
+as well as the word vector for each document under the bag of words
+model, we can form the following term document matrix:</p>
+<div class="highlight-python"><div class="highlight"><pre>              Document 1     Document 2    Document 3
+a                  1              1             0
+also               0              0             1
+computing          1              0             0
+for                1              0             1
+foreign            0              1             0
+in                 0              1             0
+is                 1              1             1
+language           1              1             1
+popular            1              1             1
+programming        1              0             2
+python             0              0             0
+r                  0              0             0
+schools            0              1             0
+spanish            0              0             0
+statistical        1              0             1
+taught             0              1             0
+the                0              0             0
+us                 0              0             0
+</pre></div>
+</div>
+<p>where each row of the matrix corresponds to the given term from our
+vocabulary and each column represents one document from our collection.</p>
+<p>One purpose of representing the collection of documents as a matrix of
+word vector columns is that we can measure the &#8220;distance&#8221; between any
+two column vectors in our term document matrix to get a sense of how
+similar the corresponding documents are.</p>
+<p>The dot-product between word vectors is a simple approach to measuring
+the similarity of the corresponding documents. We will see better
+alternatives to this measure later, but for now let&#8217;s just consider this
+simple &#8220;distance&#8221; measure. Recall that the dot-product
+<span class="math">\(\mathbf{a} \cdot \mathbf{b}\)</span> between two vectors
+<span class="math">\(\mathbf{a}\)</span> and <span class="math">\(\mathbf{b}\)</span> is the sum of products of the
+corresponding elements
+<span class="math">\(\mathbf{a} \cdot \mathbf{b} = \sum{a_i b_i}\)</span>. Taking the
+dot-product of all pairs of word vectors yields the following similarity
+matrix:</p>
+<div class="highlight-python"><div class="highlight"><pre>              Document 1     Document 2    Document 3
+Document 1        9              4             7
+Document 2        4             10             3
+Document 3        7              3            12
+</pre></div>
+</div>
+<p>As you would expect, each document is most similar with itself. However,
+does it make sense to think document 3 is more similar to itself than
+document 2 is similar to itself? Probably not. The reason that document
+3 has a higher entry in the similarity matrix based on raw word
+occurrence counts and the dot-product is that we aren&#8217;t controlling for
+the length of the document. However, notice that documents 1 and 3 are
+more similar (by this measure) than either documents 1 and 2 or
+documents 2 and 3. Since the first and third documents are both related
+to statistical programming languages, you would hope that our approach
+results in a similarity measure that results in them being closer to
+each other than either is to the document about natural language.
+Fortunately, even with this simple approach the results aren&#8217;t too far
+off from what you might expect.</p>
+</div>
+</div>
+<div class="section" id="exercise-us-senate-tweets">
+<h2><a class="toc-backref" href="#id20">Exercise: US Senate tweets</a><a class="headerlink" href="#exercise-us-senate-tweets" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise you will explore Tweets from members of the U.S. Senate.
+To get the data you can use <code class="docutils literal"><span class="pre">wget</span></code> (if you only have <code class="docutils literal"><span class="pre">curl</span></code> you can
+use <code class="docutils literal"><span class="pre">curl</span> <span class="pre">-LO</span></code> instead of <code class="docutils literal"><span class="pre">wget</span></code> in the commands below):</p>
+<div class="highlight-python"><div class="highlight"><pre>$ wget http://jarrodmillman.com/capstone/data/senators-list.json
+$ wget http://jarrodmillman.com/capstone/data/timelines.json
+</pre></div>
+</div>
+<p>The first file <code class="docutils literal"><span class="pre">senators-list.json</span></code> is a list of US Senate Twitter accounts
+<a class="footnote-reference" href="#id7" id="id2">[2]</a> retrieved using the REST API <a class="footnote-reference" href="#id8" id="id3">[3]</a>.  The second file <code class="docutils literal"><span class="pre">timelines.json</span></code>
+contains each Senator&#8217;s user profile <a class="footnote-reference" href="#id9" id="id4">[4]</a>, including their
+most recent tweets (at the time I ran ran the query).</p>
+<p>Here is the script I used to download the data:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ wget http://jarrodmillman.com/capstone/code/fetch_senator_tweets.py
+</pre></div>
+</div>
+<p>Your task is to do the following things and answer the following questions:</p>
+<ol class="arabic simple">
+<li>Load <code class="docutils literal"><span class="pre">senators-list.json</span></code> as <code class="docutils literal"><span class="pre">senators</span></code>.</li>
+<li>Load <code class="docutils literal"><span class="pre">timelines.json</span></code> as <code class="docutils literal"><span class="pre">timelines</span></code>.</li>
+<li>What type of datastructure is <code class="docutils literal"><span class="pre">timelines</span></code>?</li>
+<li>How many timelines are there?  What does each timeline correspond to?</li>
+<li>Make a list of each senator&#8217;s screen name using the variable <code class="docutils literal"><span class="pre">senators</span></code>.</li>
+<li>Make a list of the number of followers each senator has.</li>
+<li>What is the screen name of the senator with the largest number of followers.</li>
+<li>Make a list called <code class="docutils literal"><span class="pre">tweets</span></code> such that each element of the list contains
+all of one senator&#8217;s tweets concatenated as one string.</li>
+<li>Create a sorted list of all the unique words used in any senators tweets and call
+it <code class="docutils literal"><span class="pre">vocab</span></code>.</li>
+</ol>
+<p>Once you&#8217;ve constructed <code class="docutils literal"><span class="pre">tweets</span></code> and <code class="docutils literal"><span class="pre">vocab</span></code>, you will be able to run
+the following code to construct a document-term matrix:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocab</span><span class="p">)])</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tweets</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">term</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocab</span><span class="p">):</span>
+        <span class="n">M</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="links">
+<h2><a class="toc-backref" href="#id21">Links</a><a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id22">Webservices</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://dev.twitter.com/overview/documentation">https://dev.twitter.com/overview/documentation</a></li>
+<li><a class="reference external" href="https://developers.facebook.com/docs/graph-api">https://developers.facebook.com/docs/graph-api</a></li>
+<li><a class="reference external" href="https://developers.google.com/youtube/getting_started">https://developers.google.com/youtube/getting_started</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/w/api.php">http://en.wikipedia.org/w/api.php</a></li>
+<li><a class="reference external" href="http://www.mediawiki.org/wiki/API:Main_page">http://www.mediawiki.org/wiki/API:Main_page</a></li>
+<li><a class="reference external" href="https://developer.github.com/v3/">https://developer.github.com/v3/</a></li>
+</ul>
+</div>
+<div class="section" id="serialization">
+<h3><a class="toc-backref" href="#id23">Serialization</a><a class="headerlink" href="#serialization" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Serialization">http://en.wikipedia.org/wiki/Serialization</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Comparison_of_data_serialization_formats">http://en.wikipedia.org/wiki/Comparison_of_data_serialization_formats</a></li>
+<li><a class="reference external" href="http://www.json.org/xml.html">http://www.json.org/xml.html</a></li>
+<li><a class="reference external" href="http://yaml.org/">http://yaml.org/</a></li>
+<li><a class="reference external" href="http://www.drdobbs.com/web-development/after-xml-json-then-what/240151851">http://www.drdobbs.com/web-development/after-xml-json-then-what/240151851</a></li>
+<li><a class="reference external" href="http://www.cowtowncoder.com/blog/archives/2012/04/entry_473.html">http://www.cowtowncoder.com/blog/archives/2012/04/entry_473.html</a></li>
+</ul>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This functionality is not part of the standard library. And should
+not be used in practice.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://twitter.com/gov/lists/us-senate/members">https://twitter.com/gov/lists/us-senate/members</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="https://dev.twitter.com/rest/reference/get/lists/members">https://dev.twitter.com/rest/reference/get/lists/members</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="https://dev.twitter.com/rest/reference/get/statuses/user_timeline">https://dev.twitter.com/rest/reference/get/statuses/user_timeline</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Capstone</a></h1>
+
+
+
+<p class="blurb">Spring 2016</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Lectures</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Day 1: Text Mining (Getting data)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../append/index.html">Appendices</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://www.jarrodmillman.com/stat222-spring2016/">Course home</a></li>
+    
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+      &copy;2015, K. Jarrod Millman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+        <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,1012 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction to Python &mdash; Capstone 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Appendices" href="index.html" />
+    <link rel="next" title="File Transfer" href="file-transfer.html" />
+    <link rel="prev" title="Collaborative workflow with Git" href="git-advanced.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction-to-python">
+<h1><a class="toc-backref" href="#id6">Introduction to Python</a><a class="headerlink" href="#introduction-to-python" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduction-to-python" id="id6">Introduction to Python</a><ul>
+<li><a class="reference internal" href="#introduction" id="id7">Introduction</a><ul>
+<li><a class="reference internal" href="#objects" id="id8">Objects</a></li>
+<li><a class="reference internal" href="#variables" id="id9">Variables</a></li>
+<li><a class="reference internal" href="#modules-files-packages-import" id="id10">Modules, files, packages, import</a></li>
+<li><a class="reference internal" href="#style" id="id11">Style</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#data-structures" id="id12">Data Structures</a><ul>
+<li><a class="reference internal" href="#numbers" id="id13">Numbers</a></li>
+<li><a class="reference internal" href="#strings" id="id14">Strings</a></li>
+<li><a class="reference internal" href="#tuples" id="id15">Tuples</a></li>
+<li><a class="reference internal" href="#list" id="id16">List</a></li>
+<li><a class="reference internal" href="#dictionaries" id="id17">Dictionaries</a></li>
+<li><a class="reference internal" href="#sets" id="id18">Sets</a></li>
+<li><a class="reference internal" href="#and-more" id="id19">And more</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#built-in-functions" id="id20">Built-in functions</a><ul>
+<li><a class="reference internal" href="#zip" id="id21">zip</a></li>
+<li><a class="reference internal" href="#enumerate" id="id22">enumerate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#control-flow" id="id23">Control flow</a><ul>
+<li><a class="reference internal" href="#if-then-else" id="id24">If-then-else</a></li>
+<li><a class="reference internal" href="#for-loops-and-list-comprehension" id="id25">For-loops (and list comprehension)</a></li>
+<li><a class="reference internal" href="#functions" id="id26">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#classes" id="id27">Classes</a></li>
+<li><a class="reference internal" href="#data-formats" id="id28">Data formats</a><ul>
+<li><a class="reference internal" href="#csv" id="id29">CSV</a></li>
+<li><a class="reference internal" href="#json" id="id30">JSON</a></li>
+<li><a class="reference internal" href="#html" id="id31">HTML</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#standard-library" id="id32">Standard library</a><ul>
+<li><a class="reference internal" href="#os" id="id33">os</a></li>
+<li><a class="reference internal" href="#re" id="id34">re</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This tutorial assumes that you are familiar with at least one high-level
+language like R or Matlab.  If you don&#8217;t have this background, you may
+want to read the first 3 sections of the <a class="reference external" href="https://docs.python.org/2/tutorial/index.html">Python tutorial</a>&#8212;<a class="reference external" href="https://docs.python.org/2/tutorial/appetite.html">Whetting Your
+Appetite</a>,
+<a class="reference external" href="https://docs.python.org/2/tutorial/interpreter.html">Using the Python Interpreter</a>,
+and <a class="reference external" href="https://docs.python.org/2/tutorial/introduction.html">An Informal Introduction to Python</a>&#8212;first.</p>
+<p>It also assumes you have Python (and IPython) installed on your computer.  If
+you have Python installed&#8212;but not IPython, you can install it by typing:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install ipython
+</pre></div>
+</div>
+<p class="last">For additional help with installation, please see the <a class="reference external" href="http://ipython.org/install.html">IPython installation
+page</a>.</p>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id7">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Useful written references and tutorials:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/index.html">https://docs.python.org/2/index.html</a></li>
+<li><a class="reference external" href="https://docs.python.org/2/library/index.html">https://docs.python.org/2/library/index.html</a></li>
+<li><a class="reference external" href="https://scipy-lectures.github.io/">https://scipy-lectures.github.io/</a></li>
+<li><a class="reference external" href="https://docs.python.org/3/howto/pyporting.html">https://docs.python.org/3/howto/pyporting.html</a></li>
+</ul>
+<p>Some introductory video lectures:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://software-carpentry.org/v4/python/">http://software-carpentry.org/v4/python/</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=a_Z_6brm9ZQ">https://www.youtube.com/watch?v=a_Z_6brm9ZQ</a></li>
+</ul>
+<p>While working through this tutorial, you should type the example code snippets
+at an interactive Python terminal. I recommend using either the IPython shell
+or the IPython notebook. To start an IPython shell, type the following at a
+BASH prompt:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ ipython
+</pre></div>
+</div>
+<p>To start an IPython notebook, type</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ ipython notebook
+</pre></div>
+</div>
+<div class="section" id="objects">
+<h3><a class="toc-backref" href="#id8">Objects</a><a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h3>
+<p>Everything is an object in Python. Roughly, this means that it can be tagged
+with a variable and passed as an argument to a function. Often it means that
+everything has <em>attributes</em> and <em>methods</em>.</p>
+<p>Certain objects in Python are mutable (e.g., lists, dictionaries), while other
+objects are immutable (e.g., tuples, strings, sets). Many objects can be
+composite (e.g., a list of dictionaries or a dictionary of lists, tuples, and
+strings).</p>
+</div>
+<div class="section" id="variables">
+<h3><a class="toc-backref" href="#id9">Variables</a><a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<p>Variables are not their values in Python (think &#8220;I am not my name, I am the
+person named XXX&#8221;). You can think of variables as tags on objects. In
+particular, variables can be bound to an object of one type and then reassigned
+to an object of another type without error.</p>
+</div>
+<div class="section" id="modules-files-packages-import">
+<h3><a class="toc-backref" href="#id10">Modules, files, packages, import</a><a class="headerlink" href="#modules-files-packages-import" title="Permalink to this headline">¶</a></h3>
+<p>While you will often explore things from an interactive Python prompt, you will
+save your code in files for reuse as well as to document what you’ve done. You
+can use Python code saved in a plain text file from a Python prompt or other
+files by importing it. Typically, this is done at the top of a file (if you are
+working at a prompt, you just need to import it before you want to use the
+functionality).</p>
+<p>Here are some examples of importing:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="style">
+<h3><a class="toc-backref" href="#id11">Style</a><a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h3>
+<p>Adopting standard coding conventions is good practice.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a></li>
+<li><a class="reference external" href="https://docs.python.org/2/tutorial/controlflow.html#intermezzo-coding-style">https://docs.python.org/2/tutorial/controlflow.html#intermezzo-coding-style</a></li>
+<li><a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt</a></li>
+<li><a class="reference external" href="http://matplotlib.org/devel/coding_guide.html">http://matplotlib.org/devel/coding_guide.html</a></li>
+</ul>
+<p>The first link above is the official &#8220;Style Guide for Python Code&#8221;, usually
+referred to as PEP8 (PEP is an acronym for Python Enhancement Proposal). There
+are a couple of potentially helpful tools for helping you conform to the
+standard. The <a class="reference external" href="https://pypi.python.org/pypi/pep8">pep8</a> package that
+provides a commandline tool to check your code against some of the PEP8
+standard conventions. Similarly, <a class="reference external" href="https://pypi.python.org/pypi/autopep8">autopep8</a> provides a tool to automatically
+format your code so that it conforms to the PEP8 standards. I have used both a
+little and they seem to work fairly well.</p>
+<p>The last two links discuss the NumPy docstring <a class="footnote-reference" href="#id3" id="id1">[1]</a> standard. Let’s briefly see
+how you might benefit from NumPy docstrings in practice.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [1]: import numpy as np
+
+In [2]: np.ndim?
+Type:        function
+String form: &lt;function ndim at 0x7fcabd864938&gt;
+File:        /usr/lib64/python2.7/site-packages/numpy/core/fromnumeric.py
+Definition:  np.ndim(a)
+Docstring:
+Return the number of dimensions of an array.
+
+Parameters
+----------
+a : array_like
+    Input array.  If it is not already an ndarray, a conversion is
+    attempted.
+
+Returns
+-------
+number_of_dimensions : int
+    The number of dimensions in `a`.  Scalars are zero-dimensional.
+
+See Also
+--------
+ndarray.ndim : equivalent method
+shape : dimensions of array
+ndarray.shape : dimensions of array
+
+Examples
+--------
+&gt;&gt;&gt; np.ndim([[1,2,3],[4,5,6]])
+2
+&gt;&gt;&gt; np.ndim(np.array([[1,2,3],[4,5,6]]))
+2
+&gt;&gt;&gt; np.ndim(1)
+0
+</pre></div>
+</div>
+<p><strong>Exercises</strong></p>
+<ul class="simple">
+<li>What happens if you type <code class="docutils literal"><span class="pre">np.ndim??</span></code> (i.e., use two question
+marks)?</li>
+<li>Type <code class="docutils literal"><span class="pre">np.tril?</span></code> at an IPython prompt. What does <code class="docutils literal"><span class="pre">np.tril</span></code> do?</li>
+<li>Type <code class="docutils literal"><span class="pre">np.ndarray?</span></code> at an IPython prompt. Briefly skim the
+docstring. <code class="docutils literal"><span class="pre">ndarray</span></code> is the basic datastructure provided by NumPy.
+We will examine it in much more detail in the next chapter.</li>
+<li>Type <code class="docutils literal"><span class="pre">np.</span></code> followed by the <code class="docutils literal"><span class="pre">&lt;Tab&gt;</span></code> key at an IPython prompt.
+Choose two or three of the completions and use <code class="docutils literal"><span class="pre">?</span></code> to view their
+docstrings. In particular, pay attention to the examples provided
+near the end of the docstring and see whether you can figure out how
+you might use this functionality. Use on them as well.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Python 2 vs. 3
+Python 3 is a new version of Python, which is incompatible with Python
+2. We will use Python 2, but Python 3 is the future.
+Due to the large installed codebase of Python 2, the transition will
+take years.</p>
+<p>If you are writing new Python code at this point, require Python 2.7 as
+the minimum support version. You should also import the following
+functionality from the <code class="docutils literal"><span class="pre">__future__</span></code> module.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span><span class="n">absolute_import</span><span class="p">,</span>
+                        <span class="n">division</span><span class="p">,</span>
+                        <span class="n">print_function</span><span class="p">,</span>
+                        <span class="n">unicode_literals</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">While we will be using Python 2 in this tutorial, in the near future
+you may consider using the <code class="docutils literal"><span class="pre">future</span></code> package. <a class="footnote-reference" href="#id4" id="id2">[2]</a> The idea is that by
+using this package and adding a few imports to the top of your Python
+modules you can write &#8220;predominantly standard, idiomatic Python 3 code
+that then runs similarly on Python 2.6/2.7 and Python 3.3+.&#8221;</p>
+</div>
+</div>
+</div>
+<div class="section" id="data-structures">
+<h2><a class="toc-backref" href="#id12">Data Structures</a><a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html">https://docs.python.org/2/library/stdtypes.html</a></li>
+<li><a class="reference external" href="https://docs.python.org/2/tutorial/datastructures.html">https://docs.python.org/2/tutorial/datastructures.html</a></li>
+<li><a class="reference external" href="https://docs.python.org/2/reference/datamodel.html">https://docs.python.org/2/reference/datamodel.html</a></li>
+</ul>
+<div class="section" id="numbers">
+<h3><a class="toc-backref" href="#id13">Numbers</a><a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h3>
+<p>Python has integers, floats, and complex numbers with the usual operations
+(beware: division).</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [1]: 2/3
+Out[1]: 0
+
+In [2]: from __future__ import division
+
+In [3]: 2/3
+Out[3]: 0.6666666666666666
+
+In [4]: x = 1.1
+
+In [5]: x.
+x.as_integer_ratio  x.hex               x.real
+x.conjugate         x.imag
+x.fromhex           x.is_integer
+
+In [5]: x * 2
+Out[5]: 2.2
+
+In [6]: x**2
+Out[6]: 1.2100000000000002
+
+In [7]: 100000**10
+Out[7]: 100000000000000000000000000000000000000000000000000L
+
+In [8]: 100000**100
+Out[8]: 10000000000000000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000L
+
+In [9]: cos(0)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+&lt;ipython-input-6-edaadd132e03&gt; in &lt;module&gt;()
+----&gt; 1 cos(1)
+
+NameError: name &#39;cos&#39; is not defined
+
+In [10]: import math
+
+In [11]: math.cos(0)
+Out[11]: 1.0
+
+In [12]: math.cos(math.pi)
+Out[12]: -1.0
+
+In [13]: (type(1), type(1.1), type(1+2j))
+Out[13]: (int, float, complex)
+</pre></div>
+</div>
+<p>The above line is an example of a composite object called a tuple, which we
+will discuss more below. At an IPython prompt, use <code class="docutils literal"><span class="pre">type?</span></code> to see what
+<code class="docutils literal"><span class="pre">type</span></code> does.</p>
+<p>The <code class="docutils literal"><span class="pre">math</span></code> package in the standard library includes many additional
+numerical operations.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [14]: math.
+math.acos       math.degrees    math.fsum       math.pi
+math.acosh      math.e          math.gamma      math.pow
+math.asin       math.erf        math.hypot      math.radians
+math.asinh      math.erfc       math.isinf      math.sin
+math.atan       math.exp        math.isnan      math.sinh
+math.atan2      math.expm1      math.ldexp      math.sqrt
+math.atanh      math.fabs       math.lgamma     math.tan
+math.ceil       math.factorial  math.log        math.tanh
+math.copysign   math.floor      math.log10      math.trunc
+math.cos        math.fmod       math.log1p
+math.cosh       math.frexp      math.modf
+</pre></div>
+</div>
+<p><strong>Exercises</strong></p>
+<p>Using the section on &#8220;Built-in Types&#8221; from the official &#8220;The Python
+Standard Library&#8221; reference (follow the first link at the top of
+this section), figure out how to compute:</p>
+<ol class="arabic simple">
+<li><span class="math">\(3 \le 4\)</span>,</li>
+<li><span class="math">\(3 \mod 4\)</span>,</li>
+<li><span class="math">\(|-4|\)</span>,</li>
+<li><span class="math">\(\left(  \left \lceil \frac{3}{4} \right \rceil \times4\right)^3 \mod{2}\)</span>, and</li>
+<li><span class="math">\(\sqrt{-1}\)</span>.</li>
+</ol>
+<p><strong>Questions</strong></p>
+<ol class="arabic simple">
+<li>How do you get the list of completions for <code class="docutils literal"><span class="pre">x.</span></code>?</li>
+<li>What is the difference in the old and new behavior of division?</li>
+<li>Read the &#8220;Truth Value Testing&#8221; and &#8220;Boolean Operations&#8221; subsections
+at the top of the &#8220;Built-in Types&#8221; section of the Library reference.
+How does this compare to how R handles things?</li>
+</ol>
+</div>
+<div class="section" id="strings">
+<h3><a class="toc-backref" href="#id14">Strings</a><a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
+<p>Strings are immutable sequences of (zero or more) characters.</p>
+<p><strong>Sequences</strong></p>
+<p>Unlike numbers, Python strings are container objects. Specifically, it
+is a sequence. Python has several sequence types including strings,
+tuples, and lists. Sequence types share some common functionality, which
+we can demonstrate with strings.</p>
+<ul>
+<li><p class="first"><strong>Indexing</strong> To see how indexing works in Python let’s use the string
+containing the digits 0 through 9.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [1]: import string
+
+In [2]: string.digits
+Out[2]: &#39;0123456789&#39;
+
+In [3]: string.digits[1]
+Out[3]: &#39;1&#39;
+
+In [4]: string.digits[-1]
+Out[4]: &#39;9&#39;
+</pre></div>
+</div>
+<p>Note that indexing starts at 0 (unlike R and Fortran, but like C).
+Also negative integers index starting from the end of the sequence.
+You can find the length of a sequence using the <code class="docutils literal"><span class="pre">len()</span></code> function.</p>
+</li>
+<li><p class="first"><strong>Slicing</strong> Slicing allows you to select a subset of a string (or any
+sequence) by specifying start and stop indices as well as a step,
+which you specify using the <code class="docutils literal"><span class="pre">start:stop:step</span></code> notation inside of
+square braces.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [5]: string.digits[1::2]
+Out[5]: &#39;13579&#39;
+
+In [6]: string.digits[9::-1]
+Out[6]: &#39;9876543210&#39;
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Subsequence testing</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [7]: &#39;23&#39; in string.digits
+Out[7]: True
+
+In [16]: &#39;25&#39; not in string.digits
+Out[16]: True
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>String methods</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [1]: string1 = &quot;my string&quot;
+
+In [2]: string1.
+string1.capitalize  string1.islower     string1.rpartition
+string1.center      string1.isspace     string1.rsplit
+string1.count       string1.istitle     string1.rstrip
+string1.decode      string1.isupper     string1.split
+string1.encode      string1.join        string1.splitlines
+string1.endswith    string1.ljust       string1.startswith
+string1.expandtabs  string1.lower       string1.strip
+string1.find        string1.lstrip      string1.swapcase
+string1.format      string1.partition   string1.title
+string1.index       string1.replace     string1.translate
+string1.isalnum     string1.rfind       string1.upper
+string1.isalpha     string1.rindex      string1.zfill
+string1.isdigit     string1.rjust
+
+In [2]: string1.upper()
+Out[2]: &#39;MY STRING&#39;
+
+In [3]: string1.upper?
+Type:        builtin_function_or_method
+String form: &lt;built-in method upper of str object at 0x7fa136f8ced0&gt;
+Docstring:
+S.upper() -&gt; string
+
+Return a copy of the string S converted to uppercase.
+
+In [4]: string1 + &quot; is your string.&quot;
+Out[4]: &#39;my string is your string.&#39;
+
+In [5]: &quot;*&quot;*10
+Out[5]: &#39;**********&#39;
+
+In [6]: string1[3:]
+Out[6]: &#39;string&#39;
+
+In [7]: string1[3:4]
+Out[7]: &#39;s&#39;
+
+In [8]: string1[4::2]
+Out[8]: &#39;tig&#39;
+
+In [9]: string1[3:5] = &#39;ts&#39;
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-12-d7a58dc91703&gt; in &lt;module&gt;()
+----&gt; 1 string1[3:5] = &#39;ts&#39;
+
+TypeError: &#39;str&#39; object does not support item assignment
+
+In [10]: string1.__
+string1.__add__           string1.__len__
+string1.__class__         string1.__lt__
+string1.__contains__      string1.__mod__
+string1.__delattr__       string1.__mul__
+string1.__doc__           string1.__ne__
+string1.__eq__            string1.__new__
+string1.__format__        string1.__reduce__
+string1.__ge__            string1.__reduce_ex__
+string1.__getattribute__  string1.__repr__
+string1.__getitem__       string1.__rmod__
+string1.__getnewargs__    string1.__rmul__
+string1.__getslice__      string1.__setattr__
+string1.__gt__            string1.__sizeof__
+string1.__hash__          string1.__str__
+string1.__init__          string1.__subclasshook__
+</pre></div>
+</div>
+<p><strong>Exercises</strong></p>
+<p>At an interactive Python prompt, type
+<code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">The</span> <span class="pre">ant</span> <span class="pre">wants</span> <span class="pre">what</span> <span class="pre">all</span> <span class="pre">ants</span> <span class="pre">want.</span></code>. Using string indexing,
+slicing, subsequence testing, and methods, solve the following:</p>
+<ol class="arabic simple">
+<li>Convert the string to all lower case letters (don’t change x).</li>
+<li>Count the number of occurrences of the substring <code class="docutils literal"><span class="pre">ant</span></code>.</li>
+<li>Create a list of the words occurring in <code class="docutils literal"><span class="pre">x</span></code>. Make sure to remove
+punctuation and convert all words to lowercase.</li>
+<li>Using only string methods on <code class="docutils literal"><span class="pre">x</span></code>, create the following string:
+<code class="docutils literal"><span class="pre">The</span> <span class="pre">chicken</span> <span class="pre">wants</span> <span class="pre">what</span> <span class="pre">all</span> <span class="pre">chickens</span> <span class="pre">want.</span></code></li>
+<li>Using indexing and the <code class="docutils literal"><span class="pre">+</span></code> operator, create the following string:
+<code class="docutils literal"><span class="pre">The</span> <span class="pre">tna</span> <span class="pre">wants</span> <span class="pre">what</span> <span class="pre">all</span> <span class="pre">ants</span> <span class="pre">want.</span></code></li>
+<li>Do the same thing except using a string method instead.</li>
+</ol>
+<p><strong>Questions</strong></p>
+<ol class="arabic simple">
+<li>How do the string method’s <code class="docutils literal"><span class="pre">split</span></code> and <code class="docutils literal"><span class="pre">rsplit</span></code> differ? [Hint:
+use <code class="docutils literal"><span class="pre">?</span></code> to view the method’s docstrings.]</li>
+<li>What happens when you multiple a string by a number? How does this
+relate to the string method <code class="docutils literal"><span class="pre">__mul__</span></code>? [Hint: look at the
+docstring.]</li>
+<li>How does the <code class="docutils literal"><span class="pre">len()</span></code> function know how to find the length of a
+sequence?</li>
+<li>How do the <code class="docutils literal"><span class="pre">in</span></code> and <code class="docutils literal"><span class="pre">not</span> <span class="pre">in</span></code> operators work?</li>
+</ol>
+</div>
+<div class="section" id="tuples">
+<h3><a class="toc-backref" href="#id15">Tuples</a><a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h3>
+<p>Tuples are immutable sequences of (zero or more) objects. Functions in
+Python often return tuples.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [1]: x = 1; y = 2
+
+In [2]: xy = (x, y)
+
+In [3]: xy
+Out[3]: (1, 2)
+
+In [4]: xy[1]
+Out[4]: 2
+
+In [5]: xy[1] = 3
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+&lt;ipython-input-7-b22951f8a33e&gt; in &lt;module&gt;()
+----&gt; 1 xy[1] = 3
+
+TypeError: &#39;tuple&#39; object does not support item assignment
+
+In [6]: (x, y)
+Out[6]: (1, 2)
+
+In [7]: x, y
+Out[7]: (1, 2)
+</pre></div>
+</div>
+<p><strong>Exercises</strong></p>
+<ol class="arabic simple">
+<li>Note that <code class="docutils literal"><span class="pre">x,</span> <span class="pre">y</span></code> and <code class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></code> both print the same string. To see
+why that is assign them to variables and check their type.</li>
+<li>Create the following <code class="docutils literal"><span class="pre">x=5</span></code> and <code class="docutils literal"><span class="pre">y=6</span></code>. Now swap their values. (How
+would you do this in R?)</li>
+</ol>
+</div>
+<div class="section" id="list">
+<h3><a class="toc-backref" href="#id16">List</a><a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h3>
+<p>Lists are mutable sequences of (zero or more) objects.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [1]: dice = [1, 2, 3, 4, 5, 6]
+
+In [2]: dice[1::2]
+Out[2]: [2, 4, 6]
+
+In [3]: dice[1::2] = dice[::2]
+
+In [4]: dice
+Out[4]: [1, 1, 3, 3, 5, 5]
+
+In [5]: dice*2
+Out[5]: [1, 1, 3, 3, 5, 5, 1, 1, 3, 3, 5, 5]
+
+In [6]: dice+dice[::-1]
+Out[6]: [1, 1, 3, 3, 5, 5, 5, 5, 3, 3, 1, 1]
+
+In [7]: 1 in dice
+Out[7]: True
+</pre></div>
+</div>
+<p><strong>Exercises</strong></p>
+<ol class="arabic simple">
+<li>Create a list of numbers. Reverse the order of the items in the list
+using slicing. Now reverse the order of the items using a list
+method. How does using the method differ from slicing? Do you think
+you think tuples have a method to reverse the order of its items? Why
+or why not? Check to see if you are correct or not.</li>
+<li>Using a list method sort your numbers. Create a list of strings and
+sort it. Put your list of numbers and strings together in one list
+and sort it. What happened?</li>
+</ol>
+</div>
+<div class="section" id="dictionaries">
+<h3><a class="toc-backref" href="#id17">Dictionaries</a><a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
+<p>Dictionaries are mutable, unordered collections of key-value pairs.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [99]: students = {&quot;Jarrod Millman&quot;: [10, 11, 9],
+   ....:             &quot;Thomas Kluyver&quot;:  [11, 9, 10],
+   ....:             &quot;Stefan van der Walt&quot;: [12, 9, 9]}
+
+In [100]: students
+Out[100]:
+{&#39;Jarrod Millman&#39;: [10, 11, 9],
+ &#39;Stefan van der Walt&#39;: [12, 9, 9],
+ &#39;Thomas Kluyver&#39;: [11, 9, 10]}
+
+In [102]: students.keys()
+Out[102]: [&#39;Thomas Kluyver&#39;, &#39;Stefan van der Walt&#39;, &#39;Jarrod Millman&#39;]
+
+In [103]: students[&quot;Jarrod Millman&quot;]
+Out[103]: [10, 11, 9]
+
+In [104]: students[&quot;Jarrod Millman&quot;][1]
+Out[104]: 11
+</pre></div>
+</div>
+</div>
+<div class="section" id="sets">
+<h3><a class="toc-backref" href="#id18">Sets</a><a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h3>
+<p>Sets are immutable, unordered collections of unique elements.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [1]: x =  {1, 2, 4, 1, 4}
+
+In [2]: x
+Out[2]: {1, 2, 4}
+
+In [3]: x.
+x.add                          x.issubset
+x.clear                        x.issuperset
+x.copy                         x.pop
+x.difference                   x.remove
+x.difference_update            x.symmetric_difference
+x.discard                      x.symmetric_difference_update
+x.intersection                 x.union
+x.intersection_update          x.update
+x.isdisjoint
+</pre></div>
+</div>
+</div>
+<div class="section" id="and-more">
+<h3><a class="toc-backref" href="#id19">And more</a><a class="headerlink" href="#and-more" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-python"><div class="highlight"><pre>In [1]: import collections
+
+In [2]: collections.
+collections.Callable         collections.MutableSequence
+collections.Container        collections.MutableSet
+collections.Counter          collections.OrderedDict
+collections.Hashable         collections.Sequence
+collections.ItemsView        collections.Set
+collections.Iterable         collections.Sized
+collections.Iterator         collections.ValuesView
+collections.KeysView         collections.defaultdict
+collections.Mapping          collections.deque
+collections.MappingView      collections.namedtuple
+collections.MutableMapping
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="built-in-functions">
+<h2><a class="toc-backref" href="#id20">Built-in functions</a><a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/library/functions.html">https://docs.python.org/2/library/functions.html</a></li>
+</ul>
+<p>Python has several built-in functions (you can find a full list using
+the link above). We’ve already used a few (e.g.,
+<code class="docutils literal"><span class="pre">len(),</span> <span class="pre">type(),</span> <span class="pre">print()</span></code>). Here are a few more that we you will find
+useful.</p>
+<div class="section" id="zip">
+<h3><a class="toc-backref" href="#id21">zip</a><a class="headerlink" href="#zip" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-python"><div class="highlight"><pre>In [108]: zip([1, 2], [&quot;a&quot;, &quot;b&quot;])
+Out[108]: [(1, &#39;a&#39;), (2, &#39;b&#39;)]
+</pre></div>
+</div>
+</div>
+<div class="section" id="enumerate">
+<h3><a class="toc-backref" href="#id22">enumerate</a><a class="headerlink" href="#enumerate" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-python"><div class="highlight"><pre>In [109]: enumerate([&quot;a&quot;, &quot;b&quot;])
+Out[109]: &lt;enumerate at 0x7f5e3e018640&gt;
+
+In [110]: list(enumerate([&quot;a&quot;, &quot;b&quot;]))
+Out[110]: [(0, &#39;a&#39;), (1, &#39;b&#39;)]
+</pre></div>
+</div>
+<p><strong>Question</strong></p>
+<ul class="simple">
+<li>What do the built-in functions <code class="docutils literal"><span class="pre">abs()</span></code>, <code class="docutils literal"><span class="pre">all()</span></code>, <code class="docutils literal"><span class="pre">any()</span></code>,
+<code class="docutils literal"><span class="pre">dict()</span></code>, <code class="docutils literal"><span class="pre">dir()</span></code>, <code class="docutils literal"><span class="pre">id()</span></code>, <code class="docutils literal"><span class="pre">list()</span></code>, and <code class="docutils literal"><span class="pre">set()</span></code> do? Make
+sure to use <code class="docutils literal"><span class="pre">?</span></code> from the IPython prompt as well as looking at the
+documentation in the official Python Standard Library reference (use
+the above link).</li>
+</ul>
+</div>
+</div>
+<div class="section" id="control-flow">
+<h2><a class="toc-backref" href="#id23">Control flow</a><a class="headerlink" href="#control-flow" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/tutorial/controlflow.html">https://docs.python.org/2/tutorial/controlflow.html</a></li>
+</ul>
+<div class="section" id="if-then-else">
+<h3><a class="toc-backref" href="#id24">If-then-else</a><a class="headerlink" href="#if-then-else" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/tutorial/controlflow.html#if-statements">https://docs.python.org/2/tutorial/controlflow.html#if-statements</a></li>
+</ul>
+<div class="code python highlight-python"><div class="highlight"><pre>In [44]: x = 2
+
+In [45]: if x &lt; 2:
+   ....:     print(&quot;Yes&quot;)
+   ....: else:
+   ....:     print(&quot;No&quot;)
+   ....:
+No
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-loops-and-list-comprehension">
+<h3><a class="toc-backref" href="#id25">For-loops (and list comprehension)</a><a class="headerlink" href="#for-loops-and-list-comprehension" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/tutorial/controlflow.html#for-statements">https://docs.python.org/2/tutorial/controlflow.html#for-statements</a></li>
+<li><a class="reference external" href="https://docs.python.org/2/whatsnew/2.0.html#list-comprehensions">https://docs.python.org/2/whatsnew/2.0.html#list-comprehensions</a></li>
+</ul>
+<div class="code python highlight-python"><div class="highlight"><pre>In [49]: for x in [1,2,3,4]:
+   ....:     print(x)
+   ....:
+1
+2
+3
+4
+
+In [50]: for x in [1,2,3,4]:
+   ....:      print(x, end=&quot;&quot;)
+   ....:
+1234
+</pre></div>
+</div>
+<p>Building up a list piece-by-piece is a common task, which can easily be
+done in a for-loop. List comprehension provide a compact syntax to
+handle this task.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [64]: x = [1, 2, 3, 4]
+
+In [65]: zip(x, x[::-1])
+Out[65]: [(1, 4), (2, 3), (3, 2), (4, 1)]
+
+In [66]: [y for y in zip(x, x[::-1]) if y[0] &gt; y[1]]
+Out[66]: [(3, 2), (4, 1)]
+</pre></div>
+</div>
+<p><strong>Exercises</strong></p>
+<ul>
+<li><p class="first">Write a for-loop that produces <code class="docutils literal"><span class="pre">[(3,</span> <span class="pre">2),</span> <span class="pre">(4,</span> <span class="pre">1)]</span></code> from <code class="docutils literal"><span class="pre">x</span></code>. How
+does it compare to the list comprehension above?</p>
+</li>
+<li><p class="first">Use <code class="docutils literal"><span class="pre">print?</span></code> to see what the <code class="docutils literal"><span class="pre">end</span></code> argument to the print function
+does. Are there any additional arguments to <code class="docutils literal"><span class="pre">print()</span></code>? If so, try
+using the additional arguments.</p>
+</li>
+<li><p class="first">Find the section on the <code class="docutils literal"><span class="pre">range()</span></code> function in Python tutorial.
+Rewrite the two for-loops above using it rather than explicitly
+constructing the list of numbers.</p>
+</li>
+<li><p class="first">See what <code class="docutils literal"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span> <span class="pre">+</span> <span class="pre">3</span></code> returns. Try to explain what happened and
+why. In R, when you add a scalar to a vector the result is the
+element-wise addition.</p>
+<div class="code r highlight-python"><div class="highlight"><pre>&gt; 3 + c(1,2,3)
+[1] 4 5 6
+</pre></div>
+</div>
+<p>Use list comprehension to perform element-wise addition of a scalar
+to a list of scalars.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h3><a class="toc-backref" href="#id26">Functions</a><a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/tutorial/controlflow.html#defining-functions">https://docs.python.org/2/tutorial/controlflow.html#defining-functions</a></li>
+</ul>
+<div class="code python highlight-python"><div class="highlight"><pre>In [105]: def add(x, y):
+   .....:     return x+y
+   .....:
+
+In [106]: add(2, 3)
+Out[106]: 5
+
+In [105]: def add(x, y=1):
+   .....:     return x+y
+   .....:
+
+In [106]: add(3)
+Out[106]: 4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="classes">
+<h2><a class="toc-backref" href="#id27">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/tutorial/classes.html">https://docs.python.org/2/tutorial/classes.html</a></li>
+</ul>
+<div class="code python highlight-python"><div class="highlight"><pre>In [224]: class Rectangle(object):
+   .....:     def __init__(self, height, width):
+   .....:         self.height = height
+   .....:         self.weight = width
+   .....:     def __repr__(self):
+   .....:         return &quot;{0} by {1}&quot;.format(self.height, self.width)
+   .....:     def area(self):
+   .....:         return self.height*self.width
+   .....:
+
+In [225]: x = Rectangle(10,5)
+
+In [228]: x
+Out[228]: 10 by 5
+
+In [229]: x.area()
+Out[229]: 50
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-formats">
+<h2><a class="toc-backref" href="#id28">Data formats</a><a class="headerlink" href="#data-formats" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="csv">
+<h3><a class="toc-backref" href="#id29">CSV</a><a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/library/csv.html">https://docs.python.org/2/library/csv.html</a></li>
+</ul>
+<p>The Python standard library provides a package for reading and writing
+CSV files. This is a somewhat low-level library, so in practice you will
+often use NumPy, SciPy, or Pandas CSV functionality.</p>
+</div>
+<div class="section" id="json">
+<h3><a class="toc-backref" href="#id30">JSON</a><a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/library/json.html">https://docs.python.org/2/library/json.html</a></li>
+</ul>
+<p>However the JSON package in the standard library is much more useful.</p>
+<div class="code python highlight-python"><div class="highlight"><pre>In [182]: import json
+
+In [183]: x = {&quot;name&quot;: &quot;Jarrod&quot;, &quot;department&quot;: &quot;Biostatistics&quot;}
+
+In [186]: with open(&quot;tmp.json&quot;, &quot;w&quot;) as outfile:
+   .....:     json.dump(x, outfile)
+   .....:
+
+In [187]: cat tmp.json
+{&quot;department&quot;: &quot;Biostatistics&quot;, &quot;name&quot;: &quot;Jarrod&quot;}
+
+In [192]: with open(&quot;tmp.json&quot;) as infile:
+   .....:     y = json.load(infile)
+   .....:
+
+In [193]: y
+Out[193]: {u&#39;department&#39;: u&#39;Biostatistics&#39;, u&#39;name&#39;: u&#39;Jarrod&#39;}
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal"><span class="pre">cat</span></code> is not a Python statement. IPython is clever enough to
+quess that you want it to call out to the underlying operating system.</p>
+<p><strong>Exercise</strong></p>
+<ul class="simple">
+<li>One of the nice things above the JSON format is that it so well
+structured that it easy for a machine to parse, but simple enough
+that it easy for humans to read. By default <code class="docutils literal"><span class="pre">json.dump</span></code> writes
+everything out to disk without line breaks. For readability purposes,
+use <code class="docutils literal"><span class="pre">json.dump?</span></code> to figure out how to pretty-print the text as well
+as sort it alphabetically by key.</li>
+</ul>
+</div>
+<div class="section" id="html">
+<h3><a class="toc-backref" href="#id31">HTML</a><a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
+<p>We will use Thomas Kluyver’s web scraping example notebook for this
+section. You can view a rendered version of it
+<a class="reference external" href="http://nbviewer.ipython.org/github/dlab-berkeley/python-fundamentals/blob/master/cheat-sheets/Web-Scraping.ipynb">here</a>.
+To get an interactive version of it, you can do the following from your
+BASH prompt:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone https://github.com/dlab-berkeley/python-fundamentals.git
+$ cd python-fundamentals/cheat-sheets/
+$ ipython notebook Web-Scraping.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="standard-library">
+<h2><a class="toc-backref" href="#id32">Standard library</a><a class="headerlink" href="#standard-library" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/tutorial/stdlib.html">https://docs.python.org/2/tutorial/stdlib.html</a></li>
+</ul>
+<p>Python provides a wealth of functionality in its huge standard library.
+We’ve already seen several (e.g., math, csv, json). If you need some
+functionality the standard library is one of the first places to look.</p>
+<p>Here are a couple packages that you may find useful.</p>
+<div class="section" id="os">
+<h3><a class="toc-backref" href="#id33">os</a><a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/tutorial/stdlib.html#operating-system-interface">https://docs.python.org/2/tutorial/stdlib.html#operating-system-interface</a></li>
+</ul>
+<div class="code python highlight-python"><div class="highlight"><pre>In [147]: import os
+
+In [148]: os.getcwd()
+Out[148]: &#39;/home/jarrod&#39;
+
+In [149]: pwd
+Out[149]: u&#39;/home/jarrod&#39;
+</pre></div>
+</div>
+<p><strong>Exercise</strong></p>
+<ul class="simple">
+<li>Use <code class="docutils literal"><span class="pre">os?</span></code> and <code class="docutils literal"><span class="pre">dir(os)</span></code> to explore the os package.</li>
+</ul>
+</div>
+<div class="section" id="re">
+<h3><a class="toc-backref" href="#id34">re</a><a class="headerlink" href="#re" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/2/howto/regex.html">https://docs.python.org/2/howto/regex.html</a></li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">re</span></code> package provides support for regular expressions.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">Docstrings are an important part of a Python program:</p>
+<p>A docstring is a string literal that occurs as the first statement in
+a module, function, class, or method definition. Such a docstring
+becomes the __doc__ special attribute of that object. All modules
+should normally have docstrings, and all functions and classes
+exported by a module should also have docstrings. Public methods
+(including the __init__ constructor) should also have docstrings.</p>
+<p>— <a class="reference external" href="https://www.python.org/dev/peps/pep-0257/">https://www.python.org/dev/peps/pep-0257/</a></p>
+<p>Docstrings also allow for the use of doctests.</p>
+<p>The doctest module searches for pieces of text that look like
+interactive Python sessions, and then executes those sessions to
+verify that they work exactly as shown.</p>
+<p class="last">— <a class="reference external" href="http://docs.python.org/2/library/doctest.html">http://docs.python.org/2/library/doctest.html</a></p>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://pypi.python.org/pypi/future">https://pypi.python.org/pypi/future</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td>You will probably need to explore the data interactively from and
+IPython prompt and in tandem write your script</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Capstone</a></h1>
+
+
+
+<p class="blurb">Spring 2016</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="software.html">Software installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bash.html">Using the bash shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-intro.html">Introduction to Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-advanced.html">Collaborative workflow with Git</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Introduction to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-transfer.html">File Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix1.html">Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix2.html">File System Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix3.html">Shell Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="over_dimensions.html">Array reduction operations</a></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://www.jarrodmillman.com/stat222-spring2016/">Course home</a></li>
+    
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+      &copy;2015, K. Jarrod Millman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+        <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>find &mdash; Capstone 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Command Line Utilities" href="../append/appendix1.html" />
+    <link rel="next" title="free" href="free.html" />
+    <link rel="prev" title="file" href="file.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="find">
+<span id="id1"></span><h1>find<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h1>
+<p><strong>Name</strong></p>
+<p><code class="docutils literal"><span class="pre">find&nbsp;-</span> <span class="pre">search</span> <span class="pre">for</span> <span class="pre">files</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">directory</span> <span class="pre">hierarchy</span></code></p>
+<p><strong>Synopsis</strong></p>
+<p><code class="docutils literal"><span class="pre">find</span> <span class="pre">[path...]</span> <span class="pre">[expression]</span></code></p>
+<p><strong>Description</strong></p>
+<p>find searches the directory tree rooted at each given file name by
+evaluating the given expression from left to right, according to
+the rules of precedence (see section OPERATORS), until the outcome
+is known (the left hand side is false for and operations, true for
+or), at which point find moves on to the next file name.</p>
+<p><strong>Expressions</strong></p>
+<p>The expression is made up of options (which affect overall
+operation rather than the processing of a specific file, and always
+return true), tests (which return a true or false value), and
+actions (which have side effects and return a true or false value),
+all separated by operators. -and is assumed where the operator is
+omitted. If the expression contains no actions other than -prune,
+-print is performed on all files for which the expression is true.</p>
+<p><strong>Frequently used options</strong></p>
+<p>It is best to place options at the beginning of the expression.</p>
+<dl class="docutils">
+<dt>-mindepth levels</dt>
+<dd>Do not apply any tests or actions at levels less than levels (a
+non-negative integer).</dd>
+<dt>-maxdepth levels</dt>
+<dd>Descend at most levels (a non-negative integer) levels of
+directories below the command line arguments.</dd>
+</dl>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-f<var>ollow</var></span></kbd></td>
+<td>Dereference symbolic links. Implies -noleaf.</td></tr>
+</tbody>
+</table>
+<p><strong>Frequently used tests</strong></p>
+<p>Numeric arguments can be specified as:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">+n</span></kbd></td>
+<td>for greater than n</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n</span></kbd></td>
+<td>for less than n</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>n</dt>
+<dd>for exactly n</dd>
+<dt>-type c</dt>
+<dd><p class="first">File is of type c:</p>
+<div class="last highlight-python"><div class="highlight"><pre>b      block (buffered) special
+c      character (unbuffered) special
+d      directory
+p      named pipe (FIFO)
+f      regular file
+l      symbolic link
+</pre></div>
+</div>
+</dd>
+<dt>-name pattern</dt>
+<dd>Base of file name (the path with the leading directories removed)
+matches shell pattern pattern.</dd>
+<dt>-atime n</dt>
+<dd>File was last accessed n*24 hours ago.</dd>
+<dt>-amin n</dt>
+<dd>File was last accessed n minutes ago.</dd>
+<dt>-anewer file</dt>
+<dd>File was last accessed more recently than file was modified.</dd>
+<dt>-ctime n</dt>
+<dd>File&#8217;s status was last changed n*24 hours ago.</dd>
+<dt>-cmin n</dt>
+<dd>File&#8217;s status was last changed n minutes ago.</dd>
+</dl>
+<p><strong>Frequently used actions</strong></p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-p<var>rint</var></span></kbd></td>
+<td>print the full file name on the standard output, followed by a
+newline.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l<var>s</var></span></kbd></td>
+<td>list current file in `ls -dils&#8217; format on standard output.</td></tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>-exec command</dt>
+<dd>Execute command; true if 0 status is returned. All following
+arguments to find are taken to be arguments to the command until an
+argument consisting of `;&#8217; is encountered.</dd>
+<dt>-ok command</dt>
+<dd>Like -exec but ask the user first</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Capstone</a></h1>
+
+
+
+<p class="blurb">Spring 2016</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../append/index.html">Appendices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../append/software.html">Software installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/bash.html">Using the bash shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/git-intro.html">Introduction to Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/git-advanced.html">Collaborative workflow with Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/python.html">Introduction to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/file-transfer.html">File Transfer</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../append/appendix1.html">Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/appendix2.html">File System Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/appendix3.html">Shell Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../append/over_dimensions.html">Array reduction operations</a></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://www.jarrodmillman.com/stat222-spring2016/">Course home</a></li>
+    
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+      &copy;2015, K. Jarrod Millman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+        <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>File Transfer &mdash; Capstone 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Appendices" href="index.html" />
+    <link rel="next" title="Command Line Utilities" href="appendix1.html" />
+    <link rel="prev" title="Introduction to Python" href="python.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="file-transfer">
+<h1>File Transfer<a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="interactive">
+<h2>Interactive<a class="headerlink" href="#interactive" title="Permalink to this headline">¶</a></h2>
+<p>To interactively copy a few files between machines the
+following commands are often sufficient.</p>
+<div class="section" id="ftp-and-sftp">
+<h3><strong>ftp</strong> and <strong>sftp</strong><a class="headerlink" href="#ftp-and-sftp" title="Permalink to this headline">¶</a></h3>
+<p>Useful Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="../commands/ftp.html#ftp"><span>ftp</span></a> &#8211;&nbsp;ARPANET file transfer program</li>
+<li><a class="reference internal" href="../commands/sftp.html#sftp"><span>sftp</span></a> &#8211;&nbsp;Secure file transfer program</li>
+</ul>
+</div>
+<div class="section" id="scp-and-wget">
+<h3><strong>scp</strong> and <strong>wget</strong><a class="headerlink" href="#scp-and-wget" title="Permalink to this headline">¶</a></h3>
+<p>Useful Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="../commands/scp.html#scp"><span>scp</span></a> &#8211;&nbsp;secure copy</li>
+<li><a class="reference internal" href="../commands/wget.html#wget"><span>wget</span></a>&#8211;&nbsp;GNU Wget Manual</li>
+</ul>
+<p>However, if you need to transfer a substantial amount
+of data between machines, the weakness of these commands
+(<cite>sftp</cite>, <cite>scp</cite>, and <cite>wget</cite>)
+become apparent.</p>
+</div>
+</div>
+<div class="section" id="ssh-tar-pipe">
+<h2>SSH Tar pipe<a class="headerlink" href="#ssh-tar-pipe" title="Permalink to this headline">¶</a></h2>
+<p>For one-time bulk transfer of data, the best solution is to
+use a ssh tar pipe.  Basically the idea is to pipe together
+two tar commands with a ssh pipe.  One of the tar commands
+streams the files to be tranferred to stdout and the other
+tar command unpacks the files from stdin.</p>
+<p>Here are the two main ways I use this technique to transfer files.
+You can either transfer files from the machine you are on to a remote
+machine or you can transfer files from a remote machine to the one you
+are on.</p>
+<ol class="arabic">
+<li><p class="first">When I want to transfer data from the machine I am on to a
+remote host.  More specifically, imagine that I am logged in
+as &#8216;user1&#8217; on a machine named &#8216;local&#8217;.  In my home directory,
+I have a big data directory or file called &#8216;something&#8217; that
+I want to copy onto a remote machine named &#8216;remote&#8217; into
+some path &#8216;/somewhere&#8217;. I could do this via the following
+command:</p>
+<div class="highlight-python"><div class="highlight"><pre>[user1@local ~]$ tar cf - something | ssh remote &quot; ( cd /somewhere ; tar xf - ) &quot;
+</pre></div>
+</div>
+<p>This command doesn&#8217;t give you any output, which can be very
+frustrating when transferring a lot of data.  So I recommend adding
+the verbose flag &#8216;-v&#8217; to the second tar command:</p>
+<div class="highlight-python"><div class="highlight"><pre>[user1@local ~]$ tar cf - something | ssh remote &quot; ( cd /somewhere ; tar xvf - ) &quot;
+</pre></div>
+</div>
+<p>Also, if this is going to take a long time you may want to use a
+screen session.</p>
+</li>
+<li><p class="first">When I want to transfer data from a remote host to the machine I am on.</p>
+<div class="highlight-python"><div class="highlight"><pre>ssh remote &quot;( cd /somewhere ; tar cf - something ) &quot; | tar xf -
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="using-rsync-to-mirror-remote-directories">
+<h2>Using rsync to mirror remote directories<a class="headerlink" href="#using-rsync-to-mirror-remote-directories" title="Permalink to this headline">¶</a></h2>
+<p>If you want to mirror some data, then rsync is a better solution than
+a ssh tar pipe.  However, you may want to use a ssh tar pipe to initially
+transfer the the data in bulk and then use rsync to keep the two data sets
+in sync.</p>
+<div class="section" id="what-is-rsync">
+<h3>What is rsync?<a class="headerlink" href="#what-is-rsync" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">rsync</span></code> is a fast, powerful, and configurable file transfer tool.  In
+particular, <code class="docutils literal"><span class="pre">rsync</span></code> is widely used due to its ability to only transfer
+the differences between files at the source and existing files at the
+destination.  It has a large number of options, which allow you to control
+nearly every aspect of its operation.  Given its extreme versitality there
+are numerous online tutorials describing how to use it in a large variety
+of ways.  In particular, please take a look at the following:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.samba.org/ftp/rsync/rsync.html">rsync man page</a></li>
+<li><a class="reference external" href="http://sial.org/howto/rsync/">rsync Tips &amp; Tricks</a></li>
+</ul>
+<p>For this tutorial, we will just be discussing mirroring files between
+two UNIX systems. We will also only discuss using rsync with a remote
+shell.  So, if you want to:</p>
+<ul class="simple">
+<li>mirror between two systems with different file permission models</li>
+<li>are interested in setting up or using the <code class="docutils literal"><span class="pre">rsync</span></code> daemon</li>
+</ul>
+<p>you may need to refer to the <code class="docutils literal"><span class="pre">man</span></code> page or other online documentation.</p>
+</div>
+<div class="section" id="basic-mirroring-between-two-unix-systems-using-ssh">
+<h3>Basic mirroring between two UNIX systems using <code class="docutils literal"><span class="pre">ssh</span></code><a class="headerlink" href="#basic-mirroring-between-two-unix-systems-using-ssh" title="Permalink to this headline">¶</a></h3>
+<p>Pulling a directory from a remote server:</p>
+<div class="highlight-python"><div class="highlight"><pre>rsync -avH -e ssh user@server:test .
+</pre></div>
+</div>
+<p>Here is a brief description of the above options (see the <code class="docutils literal"><span class="pre">rsync</span> <span class="pre">man</span></code>
+page for more details):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-a</span></code></td>
+<td>archive mode; equals -rlptgoD (no -H,-A,-X)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-v</span></code></td>
+<td>increase verbosity</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-H</span></code></td>
+<td>preserve hard links</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-e</span></code></td>
+<td>specify the remote shell to use</td>
+</tr>
+</tbody>
+</table>
+<p>If you want to delete local files, which have been deleted
+on the remote machine, simply add the <code class="docutils literal"><span class="pre">--delete</span></code> option:</p>
+<div class="highlight-python"><div class="highlight"><pre>rsync -avH --delete -e ssh user@server:test .
+</pre></div>
+</div>
+</div>
+<div class="section" id="better-remote-shell-options-with-ssh">
+<h3>Better remote shell options with <code class="docutils literal"><span class="pre">ssh</span></code><a class="headerlink" href="#better-remote-shell-options-with-ssh" title="Permalink to this headline">¶</a></h3>
+<p>If you are going to be using the rsync command regularly
+to transfer larger files, there are a number of options
+to <code class="docutils literal"><span class="pre">ssh</span></code> that you should use:</p>
+<div class="highlight-python"><div class="highlight"><pre>rsync -avH \
+-e &#39;ssh -ax -c blowfish -o ClearAllForwardings=yes&#39; \
+user@server:test .
+</pre></div>
+</div>
+<p>Here is a brief description of the above options (see the <code class="docutils literal"><span class="pre">ssh</span> <span class="pre">man</span></code>
+page for more details):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-a</span></code></td>
+<td>Disables forwarding of the authentication agent connection.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-x</span></code></td>
+<td>Disables X11 forwarding.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-c</span> <span class="pre">cipher_spec</span></code></td>
+<td>Selects the cipher specification for encrypting the session.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-o</span> <span class="pre">option</span></code></td>
+<td>Can be used to give options in the format used in the configuration file.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal"><span class="pre">blowfish</span></code> cipher is used to make the encryption faster.
+The option <code class="docutils literal"><span class="pre">ClearAllForwardings</span></code> is used to prevent possible automatic port forwards.</p>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>On a remote machine, <code class="docutils literal"><span class="pre">127.0.0.1</span></code>, new imaging data is being added
+to a directory named <code class="docutils literal"><span class="pre">/home/jarrod/Maryland/MRI</span></code> by the <code class="docutils literal"><span class="pre">jarrod</span></code>
+account.  Another user, <code class="docutils literal"><span class="pre">ttest</span></code> wants to keep a local directory,
+<code class="docutils literal"><span class="pre">/home/ttest/B-SNIP/Other-sites/Maryland/MRI</span></code> on his machine in sync
+with the remote directory.  <code class="docutils literal"><span class="pre">ttest</span></code> has an old copy of the remote directory
+all ready and doesn&#8217;t want to download everything again, but only the new or
+changed files.</p>
+<p>This is how <code class="docutils literal"><span class="pre">test</span></code> can use <code class="docutils literal"><span class="pre">rsync</span></code> to copy new or changed files to his
+local directory from the remote server, while keeping local copies
+of files that have been deleted from the remote server.</p>
+<p>First <code class="docutils literal"><span class="pre">ttest</span></code> creates a couple of temporary variables to simplify his
+commands and then changes into the directory where his local copy of the
+data is:</p>
+<div class="highlight-python"><div class="highlight"><pre>REMOTEUSER=jarrod
+REMOTEMACHINE=127.0.0.1
+REMOTEDIR=/home/jarrod/Maryland/MRI
+LOCALDIR=/home/ttest/B-SNIP/Other-sites/Maryland/MRI
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">ttest</span></code> can now start the transfer using the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>rsync -avH \
+-e &#39;ssh -ax -c blowfish -o ClearAllForwardings=yes&#39; \
+${REMOTEUSER}@${REMOTEMACHINE}:${REMOTEDIR} ${LOCALDIR}
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">It is always good practice to test commands before executing them.
+Many UNIX commands have a dry-run option, which perform a trial run
+with no changes made.  For example, the <code class="docutils literal"><span class="pre">rsync</span></code> command can be
+executed in a dry-run mode the <code class="docutils literal"><span class="pre">-n</span></code> option.</p>
+</div>
+<p>Here is a short script:</p>
+<div class="highlight-python"><div class="highlight"><pre>#!/bin/bash
+
+REMOTEUSER=jarrod
+REMOTEMACHINE=127.0.0.1
+
+for SITE in Maryland Hartford Detroit
+do
+  REMOTEDIR=/home/jarrod/${SITE}/MRI
+  LOCALDIR=/home/ttest/B-SNIP/Other-sites/${SITE}/MRI
+  echo &quot;Synching ${REMOTEDIR}...&quot;
+  rsync -avH \
+    -e &#39;ssh -ax -c blowfish -o ClearAllForwardings=yes&#39; \
+    ${REMOTEUSER}@${REMOTEMACHINE}:${REMOTEDIR} ${LOCALDIR}
+done
+
+REMOTEDIR=/home/jarrod/Chicago
+LOCALDIR=/home/ttest/B-SNIP/Other-sites/Chicago
+echo &quot;Synching ${REMOTEDIR}...&quot;
+rsync -avH \
+  -e &#39;ssh -ax -c blowfish -o ClearAllForwardings=yes&#39; \
+  ${REMOTEUSER}@${REMOTEMACHINE}:${REMOTEDIR} ${LOCALDIR}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Capstone</a></h1>
+
+
+
+<p class="blurb">Spring 2016</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="software.html">Software installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bash.html">Using the bash shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-intro.html">Introduction to Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-advanced.html">Collaborative workflow with Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Introduction to Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">File Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix1.html">Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix2.html">File System Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix3.html">Shell Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="over_dimensions.html">Array reduction operations</a></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://www.jarrodmillman.com/stat222-spring2016/">Course home</a></li>
+    
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+      &copy;2015, K. Jarrod Millman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+        <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+    </div>
+
+  </body>
+</html>

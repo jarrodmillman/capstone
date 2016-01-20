@@ -1,0 +1,889 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction to Git &mdash; Capstone 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Appendices" href="index.html" />
+    <link rel="next" title="Collaborative workflow with Git" href="git-advanced.html" />
+    <link rel="prev" title="Using the bash shell" href="bash.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction-to-git">
+<h1><a class="toc-backref" href="#id13">Introduction to Git</a><a class="headerlink" href="#introduction-to-git" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduction-to-git" id="id13">Introduction to Git</a><ul>
+<li><a class="reference internal" href="#what-is-version-control" id="id14">What is version control?</a></li>
+<li><a class="reference internal" href="#core-concepts" id="id15">Core concepts</a></li>
+<li><a class="reference internal" href="#local-single-user-linear-workflow" id="id16">Local, single-user, linear workflow</a><ul>
+<li><a class="reference internal" href="#git-init-create-an-empty-repository" id="id17"><code class="docutils literal"><span class="pre">git</span> <span class="pre">init</span></code>: create an empty repository</a></li>
+<li><a class="reference internal" href="#git-add-add-content-to-the-staging-area" id="id18"><code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code>: add content to the staging area</a></li>
+<li><a class="reference internal" href="#git-commit-permanently-record-our-changes-in-the-repository" id="id19"><code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></code>: permanently record our changes in the repository</a></li>
+<li><a class="reference internal" href="#git-log-what-has-been-committed-so-far" id="id20"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code>: what has been committed so far</a></li>
+<li><a class="reference internal" href="#git-diff-what-have-i-changed" id="id21"><code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code>: what have I changed?</a></li>
+<li><a class="reference internal" href="#the-cycle-of-git-work-add-commit" id="id22">The cycle of git: work, add, commit, ...</a></li>
+<li><a class="reference internal" href="#git-log-revisited" id="id23"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code> revisited</a></li>
+<li><a class="reference internal" href="#git-mv-and-rm-moving-and-removing-files" id="id24"><code class="docutils literal"><span class="pre">git</span> <span class="pre">mv</span></code> and <code class="docutils literal"><span class="pre">rm</span></code>: moving and removing files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#local-single-user-branching-workflow" id="id25">Local, single-user, branching workflow</a></li>
+<li><a class="reference internal" href="#using-remotes-as-a-single-user" id="id26">Using remotes as a single user</a></li>
+<li><a class="reference internal" href="#conflict-management" id="id27">Conflict management</a></li>
+<li><a class="reference internal" href="#exercise-single-remote-with-shared-access" id="id28">Exercise: Single remote with shared access</a></li>
+<li><a class="reference internal" href="#learn-more" id="id29">Learn more</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The content of this tutorial was adapted from Fernando Pérez&#8217; <a class="reference external" href="https://github.com/fperez/reprosw/blob/master/Version%20Control.ipynb">Lecture notes
+(in IPython Notebook format) on Reproducible Science And Modern Scientific
+Software</a>.</p>
+<p>Before reading this, you will want to be familiar with the material in the
+&#8220;Basics of UNIX&#8221; tutorial and screencast here:
+<a class="reference external" href="http://statistics.berkeley.edu/computing/training/tutorials">http://statistics.berkeley.edu/computing/training/tutorials</a></p>
+<p>In this tutorial, I will use a <code class="docutils literal"><span class="pre">$</span></code> prompt for bash.  To follow along, you
+will need to have bash and <code class="docutils literal"><span class="pre">git</span></code> installed on your computer.  If you are
+using the BCE VM, you should have everything you need installed.</p>
+<p>If you don&#8217;t have git installed, please see <a class="reference external" href="http://git-scm.com/book/en/v2/Getting-Started-Installing-Git">this</a> for help.</p>
+<p class="last">You will also need a GitHub account to follow some of the examples using git
+remotes.  If you don&#8217;t already have one, create a GitHub account <a class="reference external" href="https://github.com/join">here</a>.</p>
+</div>
+<div class="section" id="what-is-version-control">
+<h2><a class="toc-backref" href="#id14">What is version control?</a><a class="headerlink" href="#what-is-version-control" title="Permalink to this headline">¶</a></h2>
+<p>As a statistician, scientist, or engineer, you will work on projects that
+include code, data, and text.  For trivially small and short-lived projects,
+it may suffice to keep track of the various files mentally.  As the size
+and duration of your project grows, you will eventually need to adopt
+a system to track everything.</p>
+<p>Consider the following example:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ tree proj1
+proj1
+├── code
+│   ├── analysis.py
+│   ├── eda.py
+│   └── preprocess.py
+├── data
+│   └── blob.dat
+├── figs
+│   └── diagram.png
+├── paper
+│   ├── Makefile
+│   ├── report.bib
+│   └── report.tex
+└── slides
+    └── presentation.md
+
+5 directories, 9 files
+</pre></div>
+</div>
+<p>Above I&#8217;ve displayed the directory tree for a project. Now suppose that I have
+an idea about an alternative analysis to the one currently implemented in
+<code class="docutils literal"><span class="pre">proj1/code/analysis.py</span></code>.  I could manually backup the current analysis
+script doing something like <code class="docutils literal"><span class="pre">cp</span> <span class="pre">analysis.py</span> <span class="pre">analysis.py.orig</span></code>.  And then
+start implementing the new analysis in <code class="docutils literal"><span class="pre">analysis.py</span></code>.  While I am still
+trying to debug my new analysis script, my advisor suggests a third alternative
+approach, so now I create a third version <code class="docutils literal"><span class="pre">analysis-advisor.py</span></code>.  The new
+analysis methods each require that I conduct different preprocessing
+steps, so now I create the following new files: <code class="docutils literal"><span class="pre">preprocess-new.py</span></code> and
+<code class="docutils literal"><span class="pre">preprocess-advisor.py</span></code>.  Now I just need to remember that
+<code class="docutils literal"><span class="pre">preprocess-new.py</span></code> goes with <code class="docutils literal"><span class="pre">analysis.py</span></code>, <code class="docutils literal"><span class="pre">preprocess.py</span></code> goes with
+<code class="docutils literal"><span class="pre">analysis.py.orig</span></code>, and <code class="docutils literal"><span class="pre">preprocess-advisor.py</span></code> goes with
+<code class="docutils literal"><span class="pre">analysis-advisor.py</span></code>.</p>
+<p>It is easy to further complicate this example.  For instance, what if you are
+working on this project with several colleagues.  Each member will want their
+own copy of the project and you will need a mechanism to share the files with
+one another.  You might consider sharing the project using something like
+Dropbox.  However, this will require care as it can be difficult to determine
+which changes will be synced when two people edit the same file at the same
+time.</p>
+<p>Instead of manually trying to keep track of the changes you&#8217;ve made to code,
+data, and documents as indicated above, version control software helps you
+automate and manage this process. This has several benefits:</p>
+<ul class="simple">
+<li>allowing you to easily go back to earlier versions;</li>
+<li>allowing you to have multiple version you can switch between;</li>
+<li>allowing you to easily separate tentative new directions into different
+branches of work, which you can later discard or merge back into
+your main line of development;</li>
+<li>allowing you to share work easily without worrying about conflicts; and</li>
+<li>providing built-in backup.</li>
+</ul>
+<p>To see how this works, we will now consider the basic operation of a popular
+and powerful version control system (VCS) called Git.  First, we will need to
+develop some basic vocabulary needed to discuss how Git works.  Then we will
+see how to use Git locally as a single-user using a linear workflow.  We will
+then see how to use branches rather than following a simple linear workflow.
+Finally, we will discuss using remotes instead of just working locally including
+a short discussion of collaborative development with one shared remote.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">VCS come in two main architectures: client-server (e.g., CVS, Subversion)
+and distributed (e.g., Mercurial, <strong>Git</strong>).  In the client-server
+architecture, there is one master repository and everyone working
+on the repository has their own minimal local copy of the master
+repository.  In the distributed model, every repository is a complete
+repository and there are mechanisms for incorporating changes
+from remote repositories into a local repository.</p>
+</div>
+</div>
+<div class="section" id="core-concepts">
+<h2><a class="toc-backref" href="#id15">Core concepts</a><a class="headerlink" href="#core-concepts" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>working tree</strong> (or directory) is the tree of files you are working on in
+the current directory. In the example above, we started with this working
+tree:</p>
+<div class="highlight-python"><div class="highlight"><pre>proj1
+├── code
+│   ├── analysis.py
+│   ├── eda.py
+│   └── preprocess.py
+├── data
+│   └── blob.dat
+├── figs
+│   └── diagram.png
+├── paper
+│   ├── Makefile
+│   ├── report.bib
+│   └── report.tex
+└── slides
+    └── presentation.md
+</pre></div>
+</div>
+<p>A <strong>commit</strong> is a <em>snapshot</em> of an entire directory tree at a given point in
+time, some metadata (e.g., reference to previous commits, authors name), and an
+identifier (this is called a hash and will be discussed below).  Returning to
+the above example, you would make a <strong>commit</strong> corresponding to the original
+state of the directory tree, which I listed.  Committing the directory tree
+as listed above will allow us to return to this exact state later (by <strong>checking
+out</strong> that commit&#8212;as we will see&#8212;the working tree changed to contain
+exactly the files and directories that we originally committed).</p>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/commit_anatomy.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/commit_anatomy.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Here is a schematic representation of a commit.  The commit, which I
+refer to as <code class="docutils literal"><span class="pre">98ca9..</span></code>, has some metadata (i.e., author name and committer
+name) as well as a pointer to the entire directory tree.</span></p>
+<div class="legend">
+Credit: ProGit book, by Scott Chacon, CC License.</div>
+</div>
+<p>A <strong>repository</strong> is essentially a group of <em>linked</em> commits, which form a
+directed acyclic graph (DAG), as well as a set of references to specific
+commits (we refer to these references to commits as <strong>heads</strong>).  As part of the
+metadata of each commit, we include references to 0 or more parent commits.
+The initial commit of each repository has 0 parents.  Each subsequent commit is
+proceeded by 1 or more commits.</p>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/threecommits.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/threecommits.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">This is a schematic representation of three commits in a linear
+workflow.  The first commit <code class="docutils literal"><span class="pre">98ca9..</span></code> has no parents and Snapshot
+A contains all the files and directory structure that was in
+working tree when the project was started.  Additional files
+were added or changed and a new commit <code class="docutils literal"><span class="pre">34ac2..</span></code> was made containing
+all the files and directories corresponding to the new state
+of the working tree.  This new commit <code class="docutils literal"><span class="pre">34ac2..</span></code> has one parent
+<code class="docutils literal"><span class="pre">98ca9..</span></code>, which it points to.  Continuing in this manner,
+a new commit <code class="docutils literal"><span class="pre">f30ab..</span></code> is made on top of the second commit
+<code class="docutils literal"><span class="pre">34ac2..</span></code>.</span></p>
+<div class="legend">
+Credit: ProGit book, by Scott Chacon, CC License.</div>
+</div>
+<p>Again returning to our example, the initial <strong>commit</strong> might correspond to the
+the original state of the directory tree.  Then when you begin implementing
+your new analysis method, you don&#8217;t need to make any copies of the previous
+files (i.e., there is no need to execute <code class="docutils literal"><span class="pre">cp</span> <span class="pre">analysis.py</span> <span class="pre">analysis.py.orig</span></code>).
+Since they are already committed, you can always access the original state of
+the repository by checking out the original commit.  To proceed you would
+simply make the necessary edits to the files in your directory tree and then
+when you are satisfied with your changes you make a new commit.  This new
+commit will correspond to a snapshot of the entire directory tree with all the
+edits you&#8217;ve made to it since the original commit.  To keep track of the
+history of the project, the new commit will include a reference to the original
+commit as its parent.  Now when your advisor suggests the alternative analysis,
+you could checkout the original commit, implement the new method, and commit
+your changes including a reference to the original commit as its sole parent.</p>
+<p>Finally, we need to understand how Git keeps track of commits. To reference a
+commit, Git uses a <strong>hash</strong>.  Hashing provides a way to have a fixed-length
+identifier for a given set of information, such as a file or set of files. The
+identifier is not guaranteed to be unique, but under normal circumstances,
+it will always be unique.</p>
+<p>To make this concrete, consider the following toy &#8220;implementation&#8221; in R:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">library</span><span class="p">(</span><span class="s">&#39;digest&#39;</span><span class="p">)</span>
+
+<span class="c"># first commit</span>
+<span class="n">data1</span> <span class="o">&lt;-</span> <span class="s">&#39;This is the start of my paper.&#39;</span>
+<span class="n">meta1</span> <span class="o">&lt;-</span> <span class="s">&#39;date: 8/20/15&#39;</span>
+<span class="n">hash1</span> <span class="o">&lt;-</span> <span class="n">digest</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">meta1</span><span class="p">),</span> <span class="n">algo</span><span class="o">=</span><span class="s">&quot;sha1&quot;</span><span class="p">)</span>
+
+<span class="c"># second commit, linked to the first</span>
+<span class="n">data2</span> <span class="o">&lt;-</span> <span class="s">&#39;Some more text in my paper...&#39;</span>
+<span class="n">meta2</span> <span class="o">&lt;-</span> <span class="s">&#39;date: 8/20/15&#39;</span>
+<span class="c"># Note we add the parent hash here!</span>
+<span class="n">hash2</span> <span class="o">&lt;-</span> <span class="n">digest</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">data2</span><span class="p">,</span> <span class="n">meta2</span><span class="p">,</span> <span class="n">hash1</span><span class="p">),</span> <span class="n">algo</span><span class="o">=</span><span class="s">&quot;sha1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first hash is a cryptographic signature of the content of the commit
+(<code class="docutils literal"><span class="pre">data1</span></code>) and its metadata (<code class="docutils literal"><span class="pre">meta1</span></code>). Since this is the first commit to the
+repository, there is no parent commit that proceeds it.  However, the second
+hash is a cryptographic signature of the content of the commit (<code class="docutils literal"><span class="pre">data2</span></code>) and
+its metadata (<code class="docutils literal"><span class="pre">meta2</span></code>) and&#8212;importantly&#8212;the first hash (<code class="docutils literal"><span class="pre">hash1</span></code>).</p>
+<p>And here it is in Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sha</span>
+
+<span class="c"># first commit</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="s">&#39;This is the start of my paper.&#39;</span>
+<span class="n">meta1</span> <span class="o">=</span> <span class="s">&#39;date: 8/20/15&#39;</span>
+<span class="n">hash1</span> <span class="o">=</span> <span class="n">sha</span><span class="o">.</span><span class="n">sha</span><span class="p">(</span><span class="n">data1</span> <span class="o">+</span> <span class="n">meta1</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+<span class="c"># second commit, linked to the first</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="s">&#39;Some more text in my paper...&#39;</span>
+<span class="n">meta2</span> <span class="o">=</span> <span class="s">&#39;date: 8/20/15&#39;</span>
+<span class="c"># Note we add the parent hash here!</span>
+<span class="n">hash2</span> <span class="o">=</span> <span class="n">sha</span><span class="o">.</span><span class="n">sha</span><span class="p">(</span><span class="n">data2</span> <span class="o">+</span> <span class="n">meta2</span> <span class="o">+</span> <span class="n">hash1</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now that we have developed some basic vocabulary, let&#8217;s start using Git.
+To begin, we will use Git in the simplest way possible&#8212;as a single-user
+working linearly with no remotes.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you haven&#8217;t done so already, you will want to configure Git before
+proceeding.  You will want to do something like the following from
+your Bash shell:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git config --global user.name &quot;Jarrod Millman&quot;
+$ git config --global user.email &quot;millman@berkeley.edu&quot;
+$ git config --global core.editor /usr/bin/gedit
+</pre></div>
+</div>
+<p class="last">The first two lines tell Git who you are (obviously you should use
+your own name and email address rather than mine).  The final command
+tells Git which text editor you wish to use.  You should use whatever
+text editor you prefer.  For instance, I use <code class="docutils literal"><span class="pre">/usr/bin/vim</span></code>. The
+most popular text editors on Linux are <code class="docutils literal"><span class="pre">vim</span></code> and <code class="docutils literal"><span class="pre">emacs</span></code>. If
+you aren&#8217;t familiar with them at this point, you will probably
+want to use a simple text editor like <code class="docutils literal"><span class="pre">gedit</span></code>, which should already
+be installed on your BCE VM.  You can learn
+more about <code class="docutils literal"><span class="pre">gedit</span></code> here: <a class="reference external" href="https://help.ubuntu.com/community/gedit">https://help.ubuntu.com/community/gedit</a></p>
+</div>
+</div>
+<div class="section" id="local-single-user-linear-workflow">
+<h2><a class="toc-backref" href="#id16">Local, single-user, linear workflow</a><a class="headerlink" href="#local-single-user-linear-workflow" title="Permalink to this headline">¶</a></h2>
+<p>From a Bash shell, type <code class="docutils literal"><span class="pre">git</span></code> (or <code class="docutils literal"><span class="pre">git</span> <span class="pre">help</span></code>) to see a list of the &#8216;core&#8217;
+commands, which will look something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git
+usage: git &lt;command&gt; [&lt;args&gt;]
+
+The most commonly used git commands are:
+   add        Add file contents to the index
+   config     Get and set options
+   clone      Clone a repository
+   commit     Record changes to the repository
+   init       Create an empty Git repository
+   log        Show commit logs
+   push       Update remote
+   status     Show the working tree status
+</pre></div>
+</div>
+<p>You will see more commands than this, but these are the ones we cover in the
+remainder of this tutorial.</p>
+<p>There are two ways to get a repository.  First you can <code class="docutils literal"><span class="pre">clone</span></code> an existing
+repository.  Second you can create a new one.</p>
+<p>In this section, you will see how to create a new empty repository, add
+content, and commit your work to repository.  You will also see how to look at
+a log of what you&#8217;ve done, see what you&#8217;ve changed, as well as delete and
+rename files.</p>
+<div class="section" id="git-init-create-an-empty-repository">
+<h3><a class="toc-backref" href="#id17"><code class="docutils literal"><span class="pre">git</span> <span class="pre">init</span></code>: create an empty repository</a><a class="headerlink" href="#git-init-create-an-empty-repository" title="Permalink to this headline">¶</a></h3>
+<p>First create an empty repository using the <code class="docutils literal"><span class="pre">init</span></code> command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd ~/src
+$ git init demo
+</pre></div>
+</div>
+<p>Note that I am working in my <code class="docutils literal"><span class="pre">~/src</span></code> directory.  It is common to use a
+specific directory for all your local repositories.  I tend to use <code class="docutils literal"><span class="pre">src</span></code>, but
+you might use <code class="docutils literal"><span class="pre">code</span></code>, <code class="docutils literal"><span class="pre">vc</span></code>, <code class="docutils literal"><span class="pre">work</span></code>, or something similar.</p>
+<p>Let&#8217;s look at what git did:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd demo
+$ ls -la
+$ ls -l .git
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">git</span> <span class="pre">init</span> <span class="pre">demo</span></code> command should have created a new directory called
+<code class="docutils literal"><span class="pre">demo</span></code> in your <code class="docutils literal"><span class="pre">~/src</span></code> directory.  Inside <code class="docutils literal"><span class="pre">~/src/demo</span></code> you will see
+another directory <code class="docutils literal"><span class="pre">.git</span></code>.  The <code class="docutils literal"><span class="pre">.git</span></code> directory is where git stores the
+repository. Every time you stage some work or commit it, a snapshot of
+your working tree is stored in the <code class="docutils literal"><span class="pre">.git</span></code> directory.  You should avoid
+modifying this directory manually.  Since all the repository information is
+stored in the <code class="docutils literal"><span class="pre">.git</span></code> directory, you can turn your working tree back into
+a normal directory tree by deleting the <code class="docutils literal"><span class="pre">.git</span></code> directory.</p>
+</div>
+<div class="section" id="git-add-add-content-to-the-staging-area">
+<h3><a class="toc-backref" href="#id18"><code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code>: add content to the staging area</a><a class="headerlink" href="#git-add-add-content-to-the-staging-area" title="Permalink to this headline">¶</a></h3>
+<p>Now let&#8217;s edit our first file in the test directory with a text editor.  I&#8217;m
+doing it programmatically here for automation purposes, but you&#8217;d normally be
+editing by hand:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ echo &quot;My first bit of text&quot; &gt; file1.txt
+</pre></div>
+</div>
+<p>Now we can tell git about this new file using the <code class="docutils literal"><span class="pre">add</span></code> command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git add file1.txt
+</pre></div>
+</div>
+<p>We can now ask git about what happened with <code class="docutils literal"><span class="pre">status</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git status
+</pre></div>
+</div>
+<p>You should now see that <code class="docutils literal"><span class="pre">file1.txt</span></code> has been added to the staging
+area and is ready to be committed.</p>
+</div>
+<div class="section" id="git-commit-permanently-record-our-changes-in-the-repository">
+<h3><a class="toc-backref" href="#id19"><code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></code>: permanently record our changes in the repository</a><a class="headerlink" href="#git-commit-permanently-record-our-changes-in-the-repository" title="Permalink to this headline">¶</a></h3>
+<p>Now we are ready to commit our changes:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git commit -m &quot;This is our first commit&quot;
+</pre></div>
+</div>
+<p>In the commit above, we used the <code class="docutils literal"><span class="pre">-m</span></code> flag to specify a message at the
+command line. If we don&#8217;t do that, git will open the editor we specified
+in our configuration above and require that we enter a message. By
+default, git refuses to record changes that don&#8217;t have a message to go
+along with them (though you can obviously &#8216;cheat&#8217; by using an empty or
+meaningless string: git only tries to facilitate best practices, it&#8217;s
+not your nanny).</p>
+<p>While many people use the <code class="docutils literal"><span class="pre">-m</span></code> flag routinely, I would recommend configuring
+your editor and then using it to add your commit message.  This has the
+advantage that while you are writing your commit message, you can see the list
+of files that you are committing.  While this may seem inconsequential, I&#8217;ve
+found that this practice is helpful and doesn&#8217;t slow me down.</p>
+</div>
+<div class="section" id="git-log-what-has-been-committed-so-far">
+<h3><a class="toc-backref" href="#id20"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code>: what has been committed so far</a><a class="headerlink" href="#git-log-what-has-been-committed-so-far" title="Permalink to this headline">¶</a></h3>
+<p>To see a log of the commits:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git log
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-diff-what-have-i-changed">
+<h3><a class="toc-backref" href="#id21"><code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code>: what have I changed?</a><a class="headerlink" href="#git-diff-what-have-i-changed" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s do a little bit more work. Again, in practice you&#8217;ll be editing
+the files by hand, here we do it via shell commands for the sake of
+automation (and therefore the reproducibility of this tutorial!)</p>
+<div class="highlight-python"><div class="highlight"><pre>$ echo &quot;And now some more text...&quot; &gt;&gt; file1.txt
+</pre></div>
+</div>
+<p>And now we can ask git what is different:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git diff
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-cycle-of-git-work-add-commit">
+<h3><a class="toc-backref" href="#id22">The cycle of git: work, add, commit, ...</a><a class="headerlink" href="#the-cycle-of-git-work-add-commit" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$ echo &quot;Great progress ...&quot; &gt;&gt; file1.txt
+$ git add file1.txt
+$ git commit -m &quot;Great progress on this matter.&quot;
+</pre></div>
+</div>
+<p>While the basic pattern is <em>work, add, commit, and repeat</em>,  I tend to
+repeatedly add my work to the staging area before I finally commit it.  This
+allows me to effectively keep saving my work, but only committing it once I
+have finished and tested a chunk of work.  The importance of keeping track of
+your changes is not because you want to track the possibly circuitous route you
+happened to take while implementing a new feature in your code or revising your
+text.  Rather, the goal is to track the logical and conceptual steps that led
+to your new feature or revision. As you learn more about git, you will learn
+how to rebase your changes on a new history, to rewrite your history, as well
+as how to break your commits into many commits.  These features allow you to
+carefully construct the history of your changes into a comprehensible account
+that leads the reader of your history to an understanding of what you have
+done. This makes it easier for you to understand what you&#8217;ve done when you try
+to figure it out months later.  It also makes it easier for your collaborators
+to understand what you&#8217;ve done.</p>
+<p>Understanding the difference between the working tree, the staging area (or
+index), and the repository can be confusing at first.  The <em>working tree</em> or
+<em>working directory</em> is your local directory on the filesystem. The staging area
+(or <em>index</em>) reflects your <code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code>, <code class="docutils literal"><span class="pre">git</span> <span class="pre">rm</span></code>, etc. changes that have been
+staged but not committed. The repository reflects your commits.</p>
+<p>Consider the schematic representation below.  You work in your working
+tree (or directory).  Periodically, as you complete little chunks of work,
+you add your work to the staging area.  (Generally, speaking a
+staging area is a place where you prepare to do something.  For instance,
+if you wish to go on a hike in the East Bay Regional Park system with
+some of your friends, you could meet in a staging area&#8212;a parking lot
+beside an entrance to one of the paths.  The purpose of the staging area
+in this instance is to provide a place where you and your friends can
+coordinate before beginning your walk.)  Once you&#8217;ve got a logical chunk
+of work completed and staged, you can then commit it.  Each commit has
+a unique hash.  You can go back to the exact snapshot of your working
+tree at the time you committed it by checking it out using the <code class="docutils literal"><span class="pre">git</span>
+<span class="pre">checkout</span></code> command, which we will discuss below.</p>
+<div class="figure align-center" id="id7">
+<img alt="Working tree, staging area, and repository. Credit: ProGit book, by Scott Chacon, CC License." src="../_images/git-index.png" />
+<p class="caption"><span class="caption-text">Working tree, staging area, and repository. Credit: ProGit book, by
+Scott Chacon, CC License.</span></p>
+</div>
+</div>
+<div class="section" id="git-log-revisited">
+<h3><a class="toc-backref" href="#id23"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code> revisited</a><a class="headerlink" href="#git-log-revisited" title="Permalink to this headline">¶</a></h3>
+<p>First, let&#8217;s see what the log shows us now:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git log
+</pre></div>
+</div>
+<p>Sometimes it&#8217;s handy to see a very summarized version of the log:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git log --oneline --topo-order --graph
+</pre></div>
+</div>
+<p>Git supports <em>aliases:</em> new names given to command combinations. Let&#8217;s
+make this handy shortlog an alias, so we only have to type <code class="docutils literal"><span class="pre">git</span> <span class="pre">slog</span></code>
+and see this compact log:</p>
+<div class="highlight-python"><div class="highlight"><pre># We create our alias (this saves it in git&#39;s permanent configuration file):
+$ git config --global alias.slog &quot;log --oneline --topo-order --graph&quot;
+# And now we can use it git slog
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-mv-and-rm-moving-and-removing-files">
+<h3><a class="toc-backref" href="#id24"><code class="docutils literal"><span class="pre">git</span> <span class="pre">mv</span></code> and <code class="docutils literal"><span class="pre">rm</span></code>: moving and removing files</a><a class="headerlink" href="#git-mv-and-rm-moving-and-removing-files" title="Permalink to this headline">¶</a></h3>
+<p>While <code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code> is used to add files to the list git tracks, we must
+also tell it if we want their names to change or for it to stop tracking
+them. In familiar Unix fashion, the <code class="docutils literal"><span class="pre">mv</span></code> and <code class="docutils literal"><span class="pre">rm</span></code> git commands do
+precisely this:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git mv file1.txt file-newname.txt
+$ git status
+</pre></div>
+</div>
+<p>Note that these changes must be committed too, to become permanent! In
+git&#8217;s world, until something hasn&#8217;t been committed, it isn&#8217;t permanently
+recorded anywhere:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git commit -m &quot;I like this new name better&quot;
+$ git slog
+</pre></div>
+</div>
+<p>And <code class="docutils literal"><span class="pre">git</span> <span class="pre">rm</span></code> works in a similar fashion.</p>
+</div>
+</div>
+<div class="section" id="local-single-user-branching-workflow">
+<h2><a class="toc-backref" href="#id25">Local, single-user, branching workflow</a><a class="headerlink" href="#local-single-user-branching-workflow" title="Permalink to this headline">¶</a></h2>
+<p>To understand what a Git <strong>branch</strong> is, we first need to revisit the idea of a
+<strong>head</strong>.  As discussed above, Git labels every commit with cryptographic
+signature called a hash.  These hashes can be considered to uniquely identify
+every commit and are used to verify that the contents of the commit and history
+of the commit are correct.  While there are many advantages to using these
+hashes to label the commits, it is unlikely that you will remember these
+hashes.  This is where heads come into play.  A head is an easy to remember
+label (e.g., <code class="docutils literal"><span class="pre">HEAD</span></code>, <code class="docutils literal"><span class="pre">master</span></code>, <code class="docutils literal"><span class="pre">feature1</span></code>) that references a commit.</p>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="../_images/masterbranch.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/masterbranch.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">By default every repository has a head called <code class="docutils literal"><span class="pre">master</span></code>. In this
+figure <code class="docutils literal"><span class="pre">master</span></code> refers to the commit whose has begins
+<code class="docutils literal"><span class="pre">f30ab</span></code>.  This allows you to refer to the commit by the easy
+to remember name <code class="docutils literal"><span class="pre">master</span></code> rather than <code class="docutils literal"><span class="pre">f30ab</span></code>.</span></p>
+<div class="legend">
+Credit: ProGit book, by Scott Chacon, CC License.</div>
+</div>
+<p>A repository can contain any number of heads.  At any point in time,
+your current working tree will correspond to a specific commit.
+By convention, we refer to this commit with the name <code class="docutils literal"><span class="pre">HEAD</span></code> (note
+the use of all capital letters to distinguish this from the generic
+notion of head).</p>
+<p>In Git, the notions of branch and head are essentially identical. Each
+branch is associated with exactly one head and each head corresponds
+to one branch.  However, we use the term head to refer exclusively
+to a label on exactly one commit; while the term branch may also
+sometimes be used to refer not only to the commit labeled by the
+head but that commit and all the commits that proceed it in the
+repository.</p>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/HEAD_testing.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/HEAD_testing.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">In this example there are two heads or branches, <em>master</em> and <em>testing</em>,
+and <em>testing</em> is the currently active branch since it&#8217;s what <em>HEAD</em> points
+to.</span></p>
+<div class="legend">
+Credit: ProGit book, by Scott Chacon, CC License.</div>
+</div>
+<p>Once new commits are made on a branch, HEAD and the branch label move
+with the new commits:</p>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/branchcommit.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/branchcommit.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-text">In this example (notice that HEAD is not shown), the branch
+master and iss53 share a common history up to commit C2.
+However, the branch iss53 differs from master as it
+has the additional commit C3.</span></p>
+<div class="legend">
+Credit: ProGit book, by Scott Chacon, CC License.</div>
+</div>
+<p>This allows the history of both branches to diverge. For instance, your master
+branch may be were you integrate new features and bug fixes into the main
+trunk of development.  If you have a bug report (perhaps labeled issue 53)
+that you are trying to fix, you might create a branch (labeled iss53). While
+you are preparing a fix for issue 53, the main trunk gains another bug fix
+or feature.</p>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/mergescenario.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/mergescenario.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">Here both master and iss53 have a shared history up to
+the commit C2.  However they both have commits that the
+other lacks after their shared ancestor.</span></p>
+<div class="legend">
+Credit: ProGit book, by Scott Chacon, CC License.</div>
+</div>
+<p>Once you&#8217;ve completed fixing issue 53 on branch iss53, you want to
+integrate your work back into the main trunk represented by the master
+branch.  The process of integrating your work is called merging
+and often happens automatically.  Once the iss53 branch has been merged
+back into the master branch, you can continue with a unified line of
+development:</p>
+<div class="figure align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/mergeaftermath.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/mergeaftermath.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">The result of merging the iss53 branch into the master
+branch.  At this point, you could safely delete the
+iss53 branch, which would result in removing the
+label iss53 pointing to commit C5.
+Credit: ProGit book, by Scott Chacon, CC License.</span></p>
+</div>
+<p>Let&#8217;s now illustrate all of this with a concrete example. Let&#8217;s get our
+bearings first:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git status
+$ ls
+</pre></div>
+</div>
+<p>We are now going to try two different routes of development: on the
+<code class="docutils literal"><span class="pre">master</span></code> branch we will add one file and on the <code class="docutils literal"><span class="pre">experiment</span></code> branch,
+which we will create, we will add a different one. We will then merge
+the experimental branch into <code class="docutils literal"><span class="pre">master</span></code>.</p>
+<p>Create and work on an experimental branch:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git branch experiment
+$ git checkout experiment
+$ echo &quot;Some crazy idea&quot; &gt; experiment.txt
+$ git add experiment.txt
+$ git commit -m &quot;Trying something new&quot;
+$ git slog
+</pre></div>
+</div>
+<p>Work on the master branch:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git checkout master
+$ git slog
+$ echo &quot;Work goes on in master...&quot; &gt;&gt; file-newname.txt
+$ git add file-newname.txt
+$ git commit -m &quot;The mainline keeps moving&quot;
+$ git slog
+</pre></div>
+</div>
+<p>Now merge experimental branch:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ls
+$ git merge experiment
+$ git slog
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>We&#8217;ve seen that Git has multiple ways for referring to a commit.</p>
+<ol class="last arabic simple">
+<li>Using the full hash, which you can find using <code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code></li>
+<li>Using the first few characters of the hash (as long as there is no
+ambiguity)</li>
+<li>Using a head label (e.g., <code class="docutils literal"><span class="pre">HEAD</span></code> or <code class="docutils literal"><span class="pre">master</span></code>)</li>
+<li>Relative to a specified commit (e.g., <code class="docutils literal"><span class="pre">HEAD^</span></code> is the parent of the
+current head commit)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="using-remotes-as-a-single-user">
+<h2><a class="toc-backref" href="#id26">Using remotes as a single user</a><a class="headerlink" href="#using-remotes-as-a-single-user" title="Permalink to this headline">¶</a></h2>
+<p>We are now going to introduce the concept of a <strong>remote</strong> repository: a
+pointer to another copy of the repository that lives on a different
+location. This can be simply a different path on the filesystem or a
+server on the internet.</p>
+<p>For this discussion, we&#8217;ll be using remotes hosted on the
+<a class="reference external" href="http://github.com">GitHub.com</a> service, but you can equally use
+other services like <a class="reference external" href="http://bitbucket.org">BitBucket</a> or
+<a class="reference external" href="http://gitorious.org">Gitorious</a> as well as host your own.</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git remote -v
+</pre></div>
+</div>
+<p>Since the above cell didn&#8217;t produce any output after the
+<code class="docutils literal"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code> call, it means we have no remote repositories
+configured. We will now proceed to do so.</p>
+<p>Once logged into GitHub, go to
+the <a class="reference external" href="https://github.com/new">new repository page</a> and make a
+repository called <code class="docutils literal"><span class="pre">test</span></code>. Do <strong>not</strong> check the box that says
+<code class="docutils literal"><span class="pre">Initialize</span> <span class="pre">this</span> <span class="pre">repository</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">README</span></code>, since we already have an
+existing repository here. That option is useful when you&#8217;re starting
+first at GitHub and don&#8217;t have a repository made already on a local computer.</p>
+<p>We can now follow the instructions from the next page:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git remote add origin git@github.com:jarrodmillman/test.git
+$ git push -u origin master
+</pre></div>
+</div>
+<p>Let&#8217;s see the remote situation again:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git remote -v
+</pre></div>
+</div>
+<p>We can now <a class="reference external" href="https://github.com/jarrodmillman/test">see this repository publicly on
+GitHub</a>.</p>
+<p>Let&#8217;s see how this can be useful for backup and syncing work between two
+different computers. I&#8217;ll simulate a 2nd computer by working in a
+different directory...</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd ~/src/
+</pre></div>
+</div>
+<p>Here I clone my &#8216;test&#8217; repository but with a different name, test2,
+to simulate a 2nd computer:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone git@github.com:jarrodmillman/test.git test2
+$ cd test2
+$ pwd
+$ git remote -v
+</pre></div>
+</div>
+<p>Let&#8217;s now make some changes in one &#8216;computer&#8217; and synchronize them on
+the second.</p>
+<p>First I switch directories to simulate working on computer #2:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd ~/src/test2
+$ echo &quot;More new content on my experiment&quot; &gt;&gt; experiment.txt
+$ git add experiment.txt
+$ git commit -m &quot;More work, on machine #2&quot;
+</pre></div>
+</div>
+<p>Now we put this new work up on the GitHub server so it&#8217;s available from
+the internet:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git push
+</pre></div>
+</div>
+<p>Now let&#8217;s fetch that work from machine #1.  Again, I first change directories
+to simulate working from my other machine:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd ~/src/demo
+$ git pull
+</pre></div>
+</div>
+</div>
+<div class="section" id="conflict-management">
+<h2><a class="toc-backref" href="#id27">Conflict management</a><a class="headerlink" href="#conflict-management" title="Permalink to this headline">¶</a></h2>
+<p>While git is very good at merging, if two different branches modify the
+same file in the same location, it simply can&#8217;t decide which change
+should prevail. At that point, human intervention is necessary to make
+the decision. Git will help you by marking the location in the file that
+has a problem, but it&#8217;s up to you to resolve the conflict. Let&#8217;s see how
+that works by intentionally creating a conflict.</p>
+<p>We start by creating a branch and making a change to our experiment
+file:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git branch trouble
+$ git checkout trouble
+$ echo &quot;This is going to be a problem...&quot; &gt;&gt; experiment.txt
+$ git add experiment.txt
+$ git commit -m &quot;Changes in the trouble branch&quot;
+</pre></div>
+</div>
+<p>And now we go back to the master branch, where we change the <em>same</em>
+file:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git checkout master
+$ echo &quot;More work on the master branch...&quot; &gt;&gt; experiment.txt
+$ git add experiment.txt
+$ git commit -m &quot;Mainline work&quot;``
+</pre></div>
+</div>
+<p>So now let&#8217;s see what happens if we try to merge the <code class="docutils literal"><span class="pre">trouble</span></code> branch
+into <code class="docutils literal"><span class="pre">master</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git merge trouble
+</pre></div>
+</div>
+<p>Let&#8217;s see what git has put into our file:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cat experiment.txt
+Some crazy idea
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+More work on the master branch...
+=======
+This is going to be a problem...
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; trouble
+</pre></div>
+</div>
+<p>At this point, we go into the file with a text editor, decide which
+changes to keep, and make a new commit that records our decision. To
+automate my edits, I use the <code class="docutils literal"><span class="pre">sed</span></code> command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ sed -i &#39;/^&lt;/d&#39; experiment.txt
+$ sed -i &#39;/^&gt;/d&#39; experiment.txt
+$ sed -i &#39;/^=/d&#39; experiment.txt
+</pre></div>
+</div>
+<p>I&#8217;ve now made the edits, in this case I decided that both pieces of text
+were useful, so I just accepted both additions:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cat experiment.txt
+Some crazy idea
+More work on the master branch...
+This is going to be a problem..
+</pre></div>
+</div>
+<p>Let&#8217;s then make our new commit:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git add experiment.txt
+$ git commit -m &quot;Completed merge of trouble, fixing conflicts along the way&quot;
+$ git slog
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While it&#8217;s a good idea to understand the basics of fixing merge
+conflicts by hand, in some cases you may find the use of an automated
+tool useful. Git supports multiple <a class="reference external" href="https://www.kernel.org/pub/software/scm/git/docs/git-mergetool.html">merge
+tools</a>:
+a merge tool is a piece of software that conforms to a basic interface
+and knows how to merge two files into a new one. Since these are
+typically graphical tools, there are various to choose from for the
+different operating systems, and as long as they obey a basic command
+structure, git can work with any of them.</p>
+</div>
+</div>
+<div class="section" id="exercise-single-remote-with-shared-access">
+<h2><a class="toc-backref" href="#id28">Exercise: Single remote with shared access</a><a class="headerlink" href="#exercise-single-remote-with-shared-access" title="Permalink to this headline">¶</a></h2>
+<p>For this exercise, you are going to set up a shared collaboration with one
+partner (the person sitting next to you). This will show the basic workflow of
+collaborating on a project with a small team where everyone has write
+privileges to the same repository.</p>
+<p>We will have two people, let’s call them Alice and Bob, sharing a
+repository. Alice will be the owner of the repository and she will give Bob
+write privileges.</p>
+<p>We begin with a simple synchronization example, much like we just did
+above, but now between two people instead of one person. Otherwise it’s
+the same:</p>
+<ul class="simple">
+<li>Bob clones Alice&#8217;s repository.</li>
+<li>Bob makes changes to a file and commits them locally.</li>
+<li>Bob pushes his changes to GitHub.</li>
+<li>Alice pulls Bob&#8217;s changes into her own repository.</li>
+</ul>
+<p>Next, we will have both parties make non-conflicting changes each, and
+commit them locally. Then both try to push their changes:</p>
+<ul class="simple">
+<li>Alice adds a new file, <code class="docutils literal"><span class="pre">alice.txt</span></code> to the repository and commits.</li>
+<li>Bob adds <code class="docutils literal"><span class="pre">bob.txt</span></code> and commits.</li>
+<li>Alice pushes to GitHub.</li>
+<li>Bob tries to push to GitHub.</li>
+</ul>
+<p>What happened?  Read the error message and hint provided by git to see
+if you can figure it out.</p>
+<p>Since Alice and Bob are working on the same branch of the repository, the
+problem is that Bob&#8217;s branch doesn&#8217;t have Alice&#8217;s most recent commit, which the
+branch on GitHub has since Alice pushed it already.  In order to push a branch
+to a remote, you have to already have the entire history on the remote in your
+local repository.  The solution is for Bob to first pull the changes (pull in
+git is really fetch+merge), and then push again.  When Bob pulls from his
+GitHub remote, he will merge Alice&#8217;s history into his repository.  Now when he
+attempts to push, his repository contains all the history that the remote
+repository on GitHub has.</p>
+</div>
+<div class="section" id="learn-more">
+<h2><a class="toc-backref" href="#id29">Learn more</a><a class="headerlink" href="#learn-more" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a href="#id1"><span class="problematic" id="id2">`</span></a>Git for Scientists: A</li>
+</ul>
+<p>___XXX_REPL_270___
+-  <a href="#id3"><span class="problematic" id="id4">`</span></a>Gitwash: workflow for scientific Python</p>
+<blockquote>
+<div>projects &lt;<a class="reference external" href="http://matthew-brett.github.io/pydagogue/gitwash_build.html">http://matthew-brett.github.io/pydagogue/gitwash_build.html</a>&gt;`__</div></blockquote>
+<ul class="simple">
+<li><a class="reference external" href="http://pcottle.github.io/learnGitBranching/">Git branching demo</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Capstone</a></h1>
+
+
+
+<p class="blurb">Spring 2016</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="software.html">Software installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bash.html">Using the bash shell</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Introduction to Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-advanced.html">Collaborative workflow with Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Introduction to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-transfer.html">File Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix1.html">Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix2.html">File System Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix3.html">Shell Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="over_dimensions.html">Array reduction operations</a></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://www.jarrodmillman.com/stat222-spring2016/">Course home</a></li>
+    
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+      &copy;2015, K. Jarrod Millman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+        <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+    </div>
+
+  </body>
+</html>

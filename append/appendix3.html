@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Shell Customization &mdash; Capstone 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Appendices" href="index.html" />
+    <link rel="next" title="Array reduction operations" href="over_dimensions.html" />
+    <link rel="prev" title="File System Layout" href="appendix2.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="shell-customization">
+<h1>Shell Customization<a class="headerlink" href="#shell-customization" title="Permalink to this headline">¶</a></h1>
+<p>There will come a time when some modification of the shell
+environment will be desired. Fortunately, in bash this is very
+easily done.</p>
+<p><strong>Table C-1. Bash Configuration File</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">File</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">/etc/profile</span></code></td>
+<td>System login environment</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">/etc/bashrc</span></code></td>
+<td>System environment</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">~/.</span> <span class="pre">bash\_profile</span></code></td>
+<td>User login environment</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">~/.</span> <span class="pre">bashrc</span></code></td>
+<td>User environment</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">~/.</span> <span class="pre">bash\_logout</span></code></td>
+<td>User logout script</td>
+</tr>
+</tbody>
+</table>
+<p>If no <code class="docutils literal"><span class="pre">.bash_profile</span></code>, then <code class="docutils literal"><span class="pre">.bash_login</span></code>, then <code class="docutils literal"><span class="pre">.profile</span></code>.</p>
+<p><strong>Table C-2. Prompt String Customization</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\d</span></code></td>
+<td>The date in &#8220;Weekday Month Day&#8221; format</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\H</span></code></td>
+<td>The hostname</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\h</span></code></td>
+<td>The hostname up to the firlst &#8221;.&#8221;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\n</span></code></td>
+<td>A carriage return and line feed</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\T</span></code></td>
+<td>The current time in 12-hour HH:MM:SS format</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\t</span></code></td>
+<td>The current time in HH:MM:SS format</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\&#64;</span></code></td>
+<td>The current time in 12-hour am/pm format</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\u</span></code></td>
+<td>The username of the current user</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\w</span></code></td>
+<td>The current working directory</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\W</span></code></td>
+<td>The basename of the current working directory</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\#</span></code></td>
+<td>The command number of the current command</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\!</span></code></td>
+<td>The history number of the current command</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">\$</span></code></td>
+<td>If the effective UID is 0 print a #, otherwise print a $</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\\</span></code></td>
+<td>Print a backslash</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Capstone</a></h1>
+
+
+
+<p class="blurb">Spring 2016</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="software.html">Software installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bash.html">Using the bash shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-intro.html">Introduction to Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-advanced.html">Collaborative workflow with Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Introduction to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file-transfer.html">File Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix1.html">Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix2.html">File System Layout</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Shell Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="over_dimensions.html">Array reduction operations</a></li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://www.jarrodmillman.com/stat222-spring2016/">Course home</a></li>
+    
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+      &copy;2015, K. Jarrod Millman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+        <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+    </div>
+
+  </body>
+</html>
