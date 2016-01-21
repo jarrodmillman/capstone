@@ -196,7 +196,6 @@ github:
 	touch $(BUILDDIR)/html/.nojekyll
 	cp -a data $(BUILDDIR)/html/.
 	cp -a code $(BUILDDIR)/html/.
-	cp -a notes $(BUILDDIR)/html/.
 	ghp-import $(BUILDDIR)/html/
 	git push -u origin gh-pages
 	@echo
