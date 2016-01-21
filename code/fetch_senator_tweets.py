@@ -7,7 +7,14 @@ import twitter
 # a personal account on Twitter (if you don't already have
 # one).  Once you've created an account, create a new
 # application here:
-#     
+#    https://dev.twitter.com/apps
+#
+# You can manage your applications here:
+#    https://apps.twitter.com/
+#
+# Select your application and then under the section labeled
+# "Key and Access Tokens", you will find the information needed
+# below.  Keep this information private.
 CONSUMER_KEY       = ""
 CONSUMER_SECRET    = ""
 OAUTH_TOKEN        = ""
