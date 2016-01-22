@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Advanced track bootcamp &mdash; Capstone 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="advanced-track-bootcamp">
+<h1>Advanced track bootcamp<a class="headerlink" href="#advanced-track-bootcamp" title="Permalink to this headline">¶</a></h1>
+<p>Bootcamp to cover more advanced topics in scientific Python.</p>
+<div class="section" id="program">
+<h2>Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h2>
+<p>We are going to start up using a typical development workflow in Python, using
+the example of making a package for ordinary least squares fitting.</p>
+<p>To practice good documentation, each group will be replicating the work of the
+other.</p>
+<ol class="arabic simple">
+<li>Your working environment; editor, git, IPython; pip;<ul>
+<li>exercise; install pip; create <code class="docutils literal"><span class="pre">ols</span></code> repo; note github advice;</li>
+</ul>
+</li>
+</ol>
+<p>1. Introduction to Restructured Text;
+1. The fundament is your README;</p>
+<blockquote>
+<div><ul class="simple">
+<li>exercise; create <code class="docutils literal"><span class="pre">README.rst</span></code>; add, commit.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple">
+<li>Introduction to virtualenvs and virtualenvwrapper;<ul>
+<li>exercise; create <code class="docutils literal"><span class="pre">ols</span></code> virtualenv</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic simple">
+<li>Pip installs, requirements files;<ul>
+<li>exercises: install numpy; specify in requirements file, add
+<code class="docutils literal"><span class="pre">requirements.txt</span></code> file, commit.</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic simple">
+<li>The Python path; Python packages;<ul>
+<li>exercises: create package structure for <code class="docutils literal"><span class="pre">ols</span></code> package.  Show you can
+<code class="docutils literal"><span class="pre">import</span> <span class="pre">ols</span></code>.  Add some explanatory text in init file.  Import <code class="docutils literal"><span class="pre">ols</span></code>
+again to show docstring.  Change into another directory and try import.
+Fix.</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">The <code class="docutils literal"><span class="pre">.gitignore</span></code> file;</p>
+<blockquote>
+<div><ul class="simple">
+<li>exercises: add <code class="docutils literal"><span class="pre">.gitignore</span></code> file.  Commit.</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic simple">
+<li>The <code class="docutils literal"><span class="pre">setup.py</span></code> file; installing in pip develop mode:<ul>
+<li>exercises: create <code class="docutils literal"><span class="pre">setup.py</span></code> for <code class="docutils literal"><span class="pre">ols</span></code>, pip install in develop mode.
+Show that you can now import from anywhere.</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic simple">
+<li>Reminder about ordinary least squares fitting for model <span class="math">\(Y = X B + E\)</span>.<ul>
+<li>exercise: in IPython, recreate psychopathy <span class="math">\(Y\)</span>, clamminess <span class="math">\(\vec{x}\)</span>.
+Create <span class="math">\(X\)</span>.  Fit model and find coefficients <span class="math">\(B\)</span>.</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Test first development; pytest;</p>
+<blockquote>
+<div><ul class="simple">
+<li>exercises: install pytest with pip.  Add to requirements.  Make a test
+for a new function <code class="docutils literal"><span class="pre">ols.model.fit</span></code> testing that that you can
+reconstruct parameters from
+<a class="reference external" href="http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html">http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html</a>. Run the
+test and make sure it fails.  Write the function <code class="docutils literal"><span class="pre">fit`</span></code> in
+<code class="docutils literal"><span class="pre">ols/model.py</span></code>.</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Capstone</a></h1>
+
+
+
+<p class="blurb">Spring 2016</p>
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../append/index.html">Appendices</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="http://www.jarrodmillman.com/stat222-spring2016/">Course home</a></li>
+    
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+      &copy;2015, K. Jarrod Millman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+        <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+    </div>
+
+  </body>
+</html>
