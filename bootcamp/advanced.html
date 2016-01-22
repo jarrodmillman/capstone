@@ -45,12 +45,12 @@
 <h2>Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h2>
 <p>We are going to start up using a typical development workflow in Python, using
 the example of making a package for ordinary least squares fitting.</p>
-<p>To practice good documentation, each group will be replicating the work of the
-other.</p>
+<p>To make things clear to our future selves, and other collaborators, we will
+document what we are doing as we go.</p>
 <ol class="arabic">
 <li><p class="first">Your working environment; editor, git, IPython; pip;</p>
 <ul class="simple">
-<li>exercise; install pip; create <code class="docutils literal"><span class="pre">ols</span></code> repo; note github advice;</li>
+<li>install pip; create <code class="docutils literal"><span class="pre">ols</span></code> repo; note github advice;</li>
 </ul>
 </li>
 <li><p class="first">Introduction to Restructured Text;</p>
@@ -58,78 +58,98 @@ other.</p>
 <li><p class="first">The fundament is your README;</p>
 <blockquote>
 <div><ul class="simple">
-<li>exercise; create <code class="docutils literal"><span class="pre">README.rst</span></code>; add, commit.</li>
+<li>create <code class="docutils literal"><span class="pre">README.rst</span></code>; add, commit.</li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first">Introduction to virtualenvs and virtualenvwrapper;</p>
 <ul class="simple">
-<li>exercise; create <code class="docutils literal"><span class="pre">ols</span></code> virtualenv</li>
+<li>create <code class="docutils literal"><span class="pre">ols</span></code> virtualenv</li>
 </ul>
 </li>
-<li><p class="first">Pip installs, requirements files;</p>
+<li><p class="first">Pip installs, requirements files:</p>
 <ul class="simple">
-<li>exercises: install numpy; specify in requirements file, add
-<code class="docutils literal"><span class="pre">requirements.txt</span></code> file, commit.</li>
+<li>install numpy; specify in requirements file, add <code class="docutils literal"><span class="pre">requirements.txt</span></code>
+file, commit.</li>
 </ul>
 </li>
 <li><p class="first">The Python path; Python packages;</p>
 <ul class="simple">
-<li>exercises: create package structure for <code class="docutils literal"><span class="pre">ols</span></code> package.  Show you can
-<code class="docutils literal"><span class="pre">import</span> <span class="pre">ols</span></code>.  Add some explanatory text in init file.  Import <code class="docutils literal"><span class="pre">ols</span></code>
-again to show docstring.  Change into another directory and try import.
-Fix.</li>
+<li>create package structure for <code class="docutils literal"><span class="pre">ols</span></code> package.  Show you can <code class="docutils literal"><span class="pre">import</span>
+<span class="pre">ols</span></code>.  Add some explanatory text in init file.  Import <code class="docutils literal"><span class="pre">ols</span></code> again to
+show docstring.  Change into another directory and try import.  Fix.</li>
 </ul>
 </li>
 <li><p class="first">The <code class="docutils literal"><span class="pre">.gitignore</span></code> file;</p>
 <blockquote>
 <div><ul class="simple">
-<li>exercises: add <code class="docutils literal"><span class="pre">.gitignore</span></code> file.  Commit.</li>
+<li>add <code class="docutils literal"><span class="pre">.gitignore</span></code> file.  Commit.</li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first">The <code class="docutils literal"><span class="pre">setup.py</span></code> file; installing in pip develop mode:</p>
 <ul class="simple">
-<li>exercises: create <code class="docutils literal"><span class="pre">setup.py</span></code> for <code class="docutils literal"><span class="pre">ols</span></code>, pip install in develop mode.
-Show that you can now import from anywhere.</li>
+<li>create <code class="docutils literal"><span class="pre">setup.py</span></code> for <code class="docutils literal"><span class="pre">ols</span></code>, pip install in develop mode.  Show that
+you can now import from anywhere.</li>
 </ul>
 </li>
 <li><p class="first">Reminder about ordinary least squares fitting for model <span class="math">\(Y = X B + E\)</span>.</p>
 <ul class="simple">
-<li>exercise: in IPython, recreate psychopathy <span class="math">\(Y\)</span>, clamminess <span class="math">\(\vec{x}\)</span>.
-Create <span class="math">\(X\)</span>.  Fit model and find coefficients <span class="math">\(B\)</span>.</li>
+<li>in IPython, recreate psychopathy <span class="math">\(Y\)</span>, clamminess <span class="math">\(\vec{x}\)</span>.  Create <span class="math">\(X\)</span>.
+Fit model and find coefficients <span class="math">\(B\)</span>.</li>
 </ul>
 </li>
-<li><p class="first">Test first development; pytest; comparing arrays;</p>
+<li><p class="first">Test first development; pytest; comparing arrays; typical imports such as
+<code class="docutils literal"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>:</p>
 <blockquote>
 <div><ul class="simple">
-<li>exercises: install pytest with pip.  Add to requirements.  Make a test
-for a new function <code class="docutils literal"><span class="pre">ols.model.fit</span></code> testing that that you can
-reconstruct parameters from
-<a class="reference external" href="http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html">http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html</a>. Run the
-test and make sure it fails.  Write the function <code class="docutils literal"><span class="pre">fit`</span></code> in
+<li>install pytest with pip.  Add to requirements.  Make a test for a new
+function <code class="docutils literal"><span class="pre">ols.model.fit</span></code> testing that that you can reconstruct
+parameters from
+<a class="reference external" href="http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html">http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html</a>. Run the test
+and make sure it fails.  Write the function <code class="docutils literal"><span class="pre">fit`</span></code> in
 <code class="docutils literal"><span class="pre">ols/model.py</span></code>.</li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first">Floating point, almost equal, numpy testing;</p>
 <ul class="simple">
-<li>exercises: test that results are close to expected; use <code class="docutils literal"><span class="pre">np.testing</span></code> to
-do that test.  Document your testing procedure in the README.</li>
+<li>test that results are close to expected; use <code class="docutils literal"><span class="pre">np.testing</span></code> to do that
+test.  Document your testing procedure in the README.</li>
 </ul>
 </li>
 <li><p class="first">Collaboration and replication.</p>
 <ul class="simple">
-<li>exercises: each group takes the repository of another group.  Make a new
-virtualenv, and follow the instructions in the README exactly, to run the
-tests on the other group&#8217;s repository.</li>
+<li>each group takes the repository of another group.  Make a new virtualenv,
+and follow the instructions in the README exactly, to run the tests on
+the other group&#8217;s repository.</li>
 </ul>
 </li>
-<li><p class="first">Testing edge cases; reminder on reshape and introduction to newaxis:</p>
+<li><p class="first">Testing edge cases; reminder on reshape and introduction to <code class="docutils literal"><span class="pre">newaxis</span></code>:</p>
+<ul class="simple">
+<li>what happens if you pass a list into the <code class="docutils literal"><span class="pre">fit</span></code> function?  Or a 1D
+array?  Make test cases.  Run the tests.  Fix.  What happens if the
+design is rank deficient?  Test.  Fix if necessary.</li>
+</ul>
+</li>
+<li><p class="first">Dealing with errors.  Try / except / finally.</p>
+<ul class="simple">
+<li>use try / except to test / confirm that error arises from passing design
+and data of different number of rows (see <code class="docutils literal"><span class="pre">pytest.raises</span></code> for a better
+way).</li>
+</ul>
+</li>
+<li><p class="first">Rethinking the design as objects.   The <code class="docutils literal"><span class="pre">Model</span></code> and <code class="docutils literal"><span class="pre">Results</span></code> objects.
+Thinking about the design.</p>
+<ul class="simple">
+<li>write tests for the Model and Results objects.  Run tests and fail.
+Write Model and results objects.</li>
+</ul>
+</li>
+<li><p class="first">Decorators and properties.</p>
 <blockquote>
 <div><ul class="simple">
-<li>what happens if you pass a list into the <code class="docutils literal"><span class="pre">fit</span></code> function?  Or a 1D
-array?  Make test cases.  Run the tests.  Fix.</li>
+<li>write tests for residuals as a property.  Fix tests.</li>
 </ul>
 </div></blockquote>
 </li>
