@@ -53,7 +53,7 @@ other.
    * exercise: in IPython, recreate psychopathy $Y$, clamminess $\vec{x}$.
      Create $X$.  Fit model and find coefficients $B$.
 
-1. Test first development; pytest;
+1. Test first development; pytest; comparing arrays;
 
     * exercises: install pytest with pip.  Add to requirements.  Make a test
       for a new function ``ols.model.fit`` testing that that you can
@@ -61,5 +61,21 @@ other.
       http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html. Run the
       test and make sure it fails.  Write the function ``fit``` in
       ``ols/model.py``.
+
+1. Floating point, almost equal, numpy testing;
+
+   * exercises: test that results are close to expected; use ``np.testing`` to
+     do that test.  Document your testing procedure in the README.
+
+1. Collaboration and replication.
+
+   * exercises: each group takes the repository of another group.  Make a new
+     virtualenv, and follow the instructions in the README exactly, to run the
+     tests on the other group's repository.
+
+1. Testing edge cases; reminder on reshape and introduction to newaxis:
+
+    * what happens if you pass a list into the ``fit`` function?  Or a 1D
+      array?  Make test cases.  Run the tests.  Fix.
 
 

@@ -106,7 +106,7 @@ Create <span class="math">\(X\)</span>.  Fit model and find coefficients <span c
 </li>
 </ol>
 <ol class="arabic">
-<li><p class="first">Test first development; pytest;</p>
+<li><p class="first">Test first development; pytest; comparing arrays;</p>
 <blockquote>
 <div><ul class="simple">
 <li>exercises: install pytest with pip.  Add to requirements.  Make a test
@@ -115,6 +115,31 @@ reconstruct parameters from
 <a class="reference external" href="http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html">http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html</a>. Run the
 test and make sure it fails.  Write the function <code class="docutils literal"><span class="pre">fit`</span></code> in
 <code class="docutils literal"><span class="pre">ols/model.py</span></code>.</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic simple">
+<li>Floating point, almost equal, numpy testing;<ul>
+<li>exercises: test that results are close to expected; use <code class="docutils literal"><span class="pre">np.testing</span></code> to
+do that test.  Document your testing procedure in the README.</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic simple">
+<li>Collaboration and replication.<ul>
+<li>exercises: each group takes the repository of another group.  Make a new
+virtualenv, and follow the instructions in the README exactly, to run the
+tests on the other group&#8217;s repository.</li>
+</ul>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Testing edge cases; reminder on reshape and introduction to newaxis:</p>
+<blockquote>
+<div><ul class="simple">
+<li>what happens if you pass a list into the <code class="docutils literal"><span class="pre">fit</span></code> function?  Or a 1D
+array?  Make test cases.  Run the tests.  Fix.</li>
 </ul>
 </div></blockquote>
 </li>
