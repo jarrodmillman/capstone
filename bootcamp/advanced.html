@@ -53,12 +53,14 @@ document what we are doing as we go.</p>
 <li>install pip; create <code class="docutils literal"><span class="pre">ols</span></code> repo; note github advice;</li>
 </ul>
 </li>
-<li><p class="first">Introduction to Restructured Text;</p>
+<li><p class="first">Introduction to <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">Restructured Text</a>.
+ReST in <a class="reference external" href="http://www.sphinx-doc.org/">Sphinx</a>;</p>
 </li>
 <li><p class="first">The fundament is your README;</p>
 <blockquote>
 <div><ul class="simple">
-<li>create <code class="docutils literal"><span class="pre">README.rst</span></code>; add, commit.</li>
+<li>create <code class="docutils literal"><span class="pre">README.rst</span></code>; install <code class="docutils literal"><span class="pre">docutils</span></code>; check rendering with
+<code class="docutils literal"><span class="pre">rst2html.py</span></code>; add; commit.  Check rendering on github.</li>
 </ul>
 </div></blockquote>
 </li>
@@ -87,7 +89,8 @@ show docstring.  Change into another directory and try import.  Fix.</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">The <code class="docutils literal"><span class="pre">setup.py</span></code> file; installing in pip develop mode:</p>
+<li><p class="first">The <a class="reference external" href="https://docs.python.org/2/distutils/setupscript.html">setup.py</a>
+file; installing in pip develop mode:</p>
 <ul class="simple">
 <li>create <code class="docutils literal"><span class="pre">setup.py</span></code> for <code class="docutils literal"><span class="pre">ols</span></code>, pip install in develop mode.  Show that
 you can now import from anywhere.</li>
@@ -99,15 +102,14 @@ you can now import from anywhere.</li>
 Fit model and find coefficients <span class="math">\(B\)</span>.</li>
 </ul>
 </li>
-<li><p class="first">Test first development; pytest; comparing arrays; typical imports such as
-<code class="docutils literal"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>:</p>
+<li><p class="first">Test first development; <a class="reference external" href="http://pytest.org">pytest</a>; comparing arrays;
+typical imports such as <code class="docutils literal"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>:</p>
 <blockquote>
 <div><ul class="simple">
 <li>install pytest with pip.  Add to requirements.  Make a test for a new
 function <code class="docutils literal"><span class="pre">ols.model.fit</span></code> testing that that you can reconstruct
-parameters from
-<a class="reference external" href="http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html">http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html</a>. Run the test
-and make sure it fails.  Write the function <code class="docutils literal"><span class="pre">fit`</span></code> in
+parameters from the <a class="reference external" href="http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html">GLM intro</a>. Run the
+test and make sure it fails.  Write the function <code class="docutils literal"><span class="pre">fit</span></code> in
 <code class="docutils literal"><span class="pre">ols/model.py</span></code>.</li>
 </ul>
 </div></blockquote>

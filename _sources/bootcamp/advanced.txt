@@ -18,10 +18,14 @@ document what we are doing as we go.
 
    * install pip; create ``ols`` repo; note github advice;
 
-#. Introduction to Restructured Text;
+#. Introduction to `Restructured Text
+   <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`_.
+   ReST in `Sphinx <http://www.sphinx-doc.org/>`_;
+
 #. The fundament is your README;
 
-    * create ``README.rst``; add, commit.
+    * create ``README.rst``; install ``docutils``; check rendering with
+      ``rst2html.py``; add; commit.  Check rendering on github.
 
 #. Introduction to virtualenvs and virtualenvwrapper;
 
@@ -42,7 +46,8 @@ document what we are doing as we go.
 
     * add ``.gitignore`` file.  Commit.
 
-#. The ``setup.py`` file; installing in pip develop mode:
+#. The `setup.py <https://docs.python.org/2/distutils/setupscript.html>`_
+   file; installing in pip develop mode:
 
    * create ``setup.py`` for ``ols``, pip install in develop mode.  Show that
      you can now import from anywhere.
@@ -52,14 +57,14 @@ document what we are doing as we go.
    * in IPython, recreate psychopathy $Y$, clamminess $\vec{x}$.  Create $X$.
      Fit model and find coefficients $B$.
 
-#. Test first development; pytest; comparing arrays; typical imports such as
-   ``import numpy as np``:
+#. Test first development; `pytest <http://pytest.org>`_; comparing arrays;
+   typical imports such as ``import numpy as np``:
 
     * install pytest with pip.  Add to requirements.  Make a test for a new
       function ``ols.model.fit`` testing that that you can reconstruct
-      parameters from
-      http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html. Run the test
-      and make sure it fails.  Write the function ``fit``` in
+      parameters from the `GLM intro
+      <http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html>`_. Run the
+      test and make sure it fails.  Write the function ``fit`` in
       ``ols/model.py``.
 
 #. Floating point, almost equal, numpy testing;
