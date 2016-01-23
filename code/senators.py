@@ -1,5 +1,6 @@
 from __future__ import division, print_function
 
+import csv
 import json
 from operator import itemgetter
 import re
@@ -55,6 +56,7 @@ favorite[-1]
 
 # let's start looking at the text in a tweet
 tweet = timelines[0][0]["text"]
+tweet
 
 # how might we split it up?
 tweet.split()
@@ -63,9 +65,9 @@ re.split('\W', tweet)
 
 # get all the tweets and see what words are used
 tweets = [" ".join([tweet["text"] for tweet in tweets])
-                          for tweets in timelines]
+          for tweets in timelines]
 words = [w for text in tweets
-           for w in re.split('\W', text) if w]
+         for w in re.split('\W', text) if w]
 vocab = sorted(set(words))
 
 # find frequently occuring words, filter out the short ones
@@ -91,7 +93,28 @@ with open("common-english-words.txt") as f:
     stopwords = csv.reader(f).next()
 
 
+# def clean(tweet):
+#    cleaned_words = [word.lower() for word in tweet.split()
+#                     if 'http' not in word
+#                     and word.isalpha()
+#                     and word != 'RT']
+#    return ' '.join(cleaned_words)
+#
+#
+# def clean(tweet):
+#    tweet = tweet.encode('ascii', 'ignore')
+#    cleaned_words = [word.lower() for word in tweet.split()
+#                     if 'http' not in word
+#                     and not word.startswith('@')
+#                     and not word.startswith('.@')
+#                     and not word.startswith('#')
+#                     and word != 'RT']
+#    exclude = set(string.punctuation)
+#    return ' '.join(c for c in cleaned_words if c not in exclude)
+
+
 def clean(tweet):
+    tweet = tweet.encode('ascii', 'ignore')
     cleaned_words = [word.lower() for word in tweet.split()
                      if 'http' not in word
                      and not word.startswith('@')
@@ -101,23 +124,24 @@ def clean(tweet):
     return ' '.join(cleaned_words)
 
 
-def clean(tweet):
-    cleaned_words = [word.lower() for word in tweet.split()
-                     if 'http' not in word
-                     and word.isalpha()
-                     and word != 'RT']
-    return ' '.join(cleaned_words)
-
-
 def all_punct(tweet):
-    return all([c in string.punctuation for c in tweet])
+    # all([c in string.punctuation for c in tweet])
+    return set(tweet).issubset(set(string.punctuation))
+
+
+def remove_punct(word):
+    exclude = set(string.punctuation)
+    return ''.join(c for c in word if c not in exclude)
 
 
 def tokenize(tweet):
-    words = [w for w in clean(tweet).split() 
+    words = [remove_punct(w) for w in clean(tweet).split()
              if not all_punct(w) and w not in stopwords]
     return ' '.join(words)
 
 
 tweets_list = [[tokenize(tweet) for tweet in tweets] for tweets in tweets_list]
 tokens_list = [' '.join(tweets) for tweets in tweets_list]
+
+words = ' '.join(tokens_list).split()
+vocab = sorted(set(words))
