@@ -3,6 +3,7 @@ from __future__ import division, print_function
 import json
 from operator import itemgetter
 import re
+import string
 
 import numpy as np
 
@@ -18,11 +19,47 @@ names = [d["screen_name"] for d in senators["users"]]
 type(timelines)
 len(timelines)
 len(timelines[0])
+len(timelines[1])
+timelines[0]
+timelines[0][0]
+timelines[0][0].keys()
 
-# could check who has the most followers
+timelines[0][0]["truncated"]
+timelines[0][0]["text"]
+timelines[0][0]["favorite_count"]
+timelines[0][0]["user"].keys()
+timelines[0][0]["user"]["favourites_count"]
+timelines[0][0]["user"]["followers_count"]
+timelines[0][0]["user"]["friends_count"]
+timelines[0][0]["user"]["description"]
+
+# who has the most followers
+
+# 1. take the 'followers_count' for the first tweet for each senator
+[x["user"]["followers_count"] for x in timelines[0]]
 followers = [t[0]["user"]["followers_count"] for t in timelines]
-zipped = zip(names, followers)
-zipped.sort(key=itemgetter(1))
+
+# 2. connect the names with their follower counts and sort on the counts
+followers = zip(names, followers)
+followers.sort(key=itemgetter(1))
+followers[0]
+followers[-1]
+
+# who is the most favorited
+
+favorite = [t[0]["user"]["favourites_count"] for t in timelines]
+favorite = zip(names, favorite)
+favorite.sort(key=itemgetter(1))
+favorite[0]
+favorite[-1]
+
+# let's start looking at the text in a tweet
+tweet = timelines[0][0]["text"]
+
+# how might we split it up?
+tweet.split()
+re.split('\W', tweet)
+
 
 # get all the tweets and see what words are used
 tweets = [" ".join([tweet["text"] for tweet in tweets])
@@ -30,6 +67,10 @@ tweets = [" ".join([tweet["text"] for tweet in tweets])
 words = [w for text in tweets
            for w in re.split('\W', text) if w]
 vocab = sorted(set(words))
+
+# find frequently occuring words, filter out the short ones
+frequent_words = [w for w in vocab if len(w) > 4 and words.count(w) > 30]
+
 
 # construct term-document matrix
 M = np.zeros([len(tweets), len(vocab)])
@@ -43,39 +84,40 @@ for n, tweet in enumerate(tweets):
 
 # Step 3: Preliminary text analysis using nltk
 
-tweet_list = [[tweet["text"] for tweet in tl] for tl in timelines]
-text_list = [' '.join(tl) for tl in tweet_list]  # tweets back to back
+tweets_list = [[tweet["text"] for tweet in tl] for tl in timelines]
 
-import string
-stopwords = nltk.corpus.stopwords.words('english')
+# http://www.textfixer.com/resources/common-english-words.txt
+with open("common-english-words.txt") as f:
+    stopwords = csv.reader(f).next()
 
 
-def tweet_clean(t):
-    cleaned_words = [word for word in t.split()
+def clean(tweet):
+    cleaned_words = [word.lower() for word in tweet.split()
                      if 'http' not in word
                      and not word.startswith('@')
                      and not word.startswith('.@')
                      and not word.startswith('#')
                      and word != 'RT']
-    return(' '.join(cleaned_words))
+    return ' '.join(cleaned_words)
 
 
-def all_punct(x):
-    return(all([char in string.punctuation for char in x]))
+def clean(tweet):
+    cleaned_words = [word.lower() for word in tweet.split()
+                     if 'http' not in word
+                     and word.isalpha()
+                     and word != 'RT']
+    return ' '.join(cleaned_words)
 
 
-def my_tokenize(text):
-    init_words = word_tokenize(text)
-    return([w.lower() for w in init_words if not all_punct(w) and w.lower() not in stopwords])
-
-tweet_list_cleaned = [
-    [my_tokenize(tweet_clean(tweet)) for tweet in tweets] for tweets in tweet_list]
-tokens_list_cleaned = [sum(tweets, []) for tweets in tweet_list_cleaned]
+def all_punct(tweet):
+    return all([c in string.punctuation for c in tweet])
 
 
-words = set(tokens_repub + tokens_dem)
+def tokenize(tweet):
+    words = [w for w in clean(tweet).split() 
+             if not all_punct(w) and w not in stopwords]
+    return ' '.join(words)
 
-# find frequently occuring words, filter out the short ones (use state
-# abbreviations)
-highfreq_words = [word for word in list(words)
-                  if fd_repub[word]+fd_dem[word] > 20 and len(word) > 2]
+
+tweets_list = [[tokenize(tweet) for tweet in tweets] for tweets in tweets_list]
+tokens_list = [' '.join(tweets) for tweets in tweets_list]
