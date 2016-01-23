@@ -30,6 +30,12 @@ Introduction
     * `np.lookfor`;
     * your search engine (sigh).
 
+If you haven't read this already, read
+http://practical-neuroimaging.github.io/git_parable.html
+
+Information on installing via pip on Debian / Ubuntu at :
+https://matthew-brett.github.io/pydagogue/installing_on_debian.html
+
 *********
 Exercises
 *********

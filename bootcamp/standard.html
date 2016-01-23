@@ -31,7 +31,7 @@
     <link rel="prev" title="Bootcamps" href="index.html" />
    
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
 
   </head>
   <body role="document">  
@@ -68,10 +68,10 @@ inner list contains each senator&#8217;s tweets, call it <code class="docutils l
 of the tweet.  Here is some example code to get you started:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="n">tweet</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">cleaned_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tweet</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span>
-<span class="gp">... </span>                     <span class="s1">&#39;http&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span>
+<span class="gp">... </span>                     <span class="s">&#39;http&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span>
 <span class="gp">... </span>                     <span class="n">word</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">and</span>
-<span class="gp">... </span>                     <span class="n">word</span> <span class="o">!=</span> <span class="s1">&#39;RT&#39;</span><span class="p">]</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_words</span><span class="p">)</span>
+<span class="gp">... </span>                     <span class="n">word</span> <span class="o">!=</span> <span class="s">&#39;RT&#39;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_words</span><span class="p">)</span>
 <span class="gp">...</span>
 </pre></div>
 </div>
@@ -94,8 +94,6 @@ a bool indicating whether all the characters are punctuation marks.</p>
 
 
 <p class="blurb">Spring 2016</p>
-
-
 
 
 
