@@ -31,7 +31,7 @@
     <link rel="prev" title="Bootcamps" href="index.html" />
    
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
   <body role="document">  
@@ -68,10 +68,10 @@ inner list contains each senator&#8217;s tweets, call it <code class="docutils l
 of the tweet.  Here is some example code to get you started:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="n">tweet</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">cleaned_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tweet</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span>
-<span class="gp">... </span>                     <span class="s">&#39;http&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span>
+<span class="gp">... </span>                     <span class="s1">&#39;http&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span>
 <span class="gp">... </span>                     <span class="n">word</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">and</span>
-<span class="gp">... </span>                     <span class="n">word</span> <span class="o">!=</span> <span class="s">&#39;RT&#39;</span><span class="p">]</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_words</span><span class="p">)</span>
+<span class="gp">... </span>                     <span class="n">word</span> <span class="o">!=</span> <span class="s1">&#39;RT&#39;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_words</span><span class="p">)</span>
 <span class="gp">...</span>
 </pre></div>
 </div>
@@ -79,7 +79,30 @@ of the tweet.  Here is some example code to get you started:</p>
 <li><p class="first">Write a function, called <code class="docutils literal"><span class="pre">all_punct</span></code>, which takes a word and returns
 a bool indicating whether all the characters are punctuation marks.</p>
 </li>
-<li></li>
+<li><p class="first">Write a function, called <code class="docutils literal"><span class="pre">remove_punct</span></code>, which takes a word and
+returns the word with all punctuations characters removed.</p>
+</li>
+<li><p class="first">Create a list, called <code class="docutils literal"><span class="pre">stopwords</span></code>, which contains common english
+words.  You may want to use this list:</p>
+<blockquote>
+<div><p><a class="reference external" href="http://www.textfixer.com/resources/common-english-words.txt">http://www.textfixer.com/resources/common-english-words.txt</a></p>
+</div></blockquote>
+</li>
+<li><p class="first">Write a function, called <code class="docutils literal"><span class="pre">tokenize</span></code>, which takes a tweet cleans
+it as well as removes all punctuation and stopwords.</p>
+</li>
+<li><p class="first">Create a list of lists, <code class="docutils literal"><span class="pre">tweets_list</span></code>, using your <code class="docutils literal"><span class="pre">tokenize</span></code>
+function.</p>
+</li>
+<li><p class="first">Create a list, <code class="docutils literal"><span class="pre">tokens_list</span></code>, where each senator&#8217;s tweets are
+made into a single string.</p>
+</li>
+<li><p class="first">Create a list of words with duplicates.</p>
+</li>
+<li><p class="first">Create a sorted list of vocabulary words (no duplicates).</p>
+</li>
+<li><p class="first">Create a list with the most frequently used words.</p>
+</li>
 </ol>
 </div>
 
@@ -94,6 +117,8 @@ a bool indicating whether all the characters are punctuation marks.</p>
 
 
 <p class="blurb">Spring 2016</p>
+
+
 
 
 

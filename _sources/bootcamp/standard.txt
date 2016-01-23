@@ -37,4 +37,24 @@ We will conclude by tokenizing the tweets.
 #. Write a function, called ``all_punct``, which takes a word and returns
    a bool indicating whether all the characters are punctuation marks.
 
-#.
+#. Write a function, called ``remove_punct``, which takes a word and
+   returns the word with all punctuations characters removed.
+
+#. Create a list, called ``stopwords``, which contains common english
+   words.  You may want to use this list:
+     http://www.textfixer.com/resources/common-english-words.txt
+
+#. Write a function, called ``tokenize``, which takes a tweet cleans
+   it as well as removes all punctuation and stopwords.
+
+#. Create a list of lists, ``tweets_list``, using your ``tokenize``
+   function.
+
+#. Create a list, ``tokens_list``, where each senator's tweets are
+   made into a single string.
+
+#. Create a list of words with duplicates.
+
+#. Create a sorted list of vocabulary words (no duplicates).
+
+#. Create a list with the most frequently used words.

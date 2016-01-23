@@ -31,7 +31,7 @@
     <link rel="prev" title="Using the bash shell" href="bash.html" />
    
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
   <body role="document">  
@@ -241,18 +241,18 @@ identifier for a given set of information, such as a file or set of files. The
 identifier is not guaranteed to be unique, but under normal circumstances,
 it will always be unique.</p>
 <p>To make this concrete, consider the following toy &#8220;implementation&#8221; in R:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">library</span><span class="p">(</span><span class="s">&#39;digest&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">library</span><span class="p">(</span><span class="s1">&#39;digest&#39;</span><span class="p">)</span>
 
-<span class="c"># first commit</span>
-<span class="n">data1</span> <span class="o">&lt;-</span> <span class="s">&#39;This is the start of my paper.&#39;</span>
-<span class="n">meta1</span> <span class="o">&lt;-</span> <span class="s">&#39;date: 8/20/15&#39;</span>
-<span class="n">hash1</span> <span class="o">&lt;-</span> <span class="n">digest</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">meta1</span><span class="p">),</span> <span class="n">algo</span><span class="o">=</span><span class="s">&quot;sha1&quot;</span><span class="p">)</span>
+<span class="c1"># first commit</span>
+<span class="n">data1</span> <span class="o">&lt;-</span> <span class="s1">&#39;This is the start of my paper.&#39;</span>
+<span class="n">meta1</span> <span class="o">&lt;-</span> <span class="s1">&#39;date: 8/20/15&#39;</span>
+<span class="n">hash1</span> <span class="o">&lt;-</span> <span class="n">digest</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">meta1</span><span class="p">),</span> <span class="n">algo</span><span class="o">=</span><span class="s2">&quot;sha1&quot;</span><span class="p">)</span>
 
-<span class="c"># second commit, linked to the first</span>
-<span class="n">data2</span> <span class="o">&lt;-</span> <span class="s">&#39;Some more text in my paper...&#39;</span>
-<span class="n">meta2</span> <span class="o">&lt;-</span> <span class="s">&#39;date: 8/20/15&#39;</span>
-<span class="c"># Note we add the parent hash here!</span>
-<span class="n">hash2</span> <span class="o">&lt;-</span> <span class="n">digest</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">data2</span><span class="p">,</span> <span class="n">meta2</span><span class="p">,</span> <span class="n">hash1</span><span class="p">),</span> <span class="n">algo</span><span class="o">=</span><span class="s">&quot;sha1&quot;</span><span class="p">)</span>
+<span class="c1"># second commit, linked to the first</span>
+<span class="n">data2</span> <span class="o">&lt;-</span> <span class="s1">&#39;Some more text in my paper...&#39;</span>
+<span class="n">meta2</span> <span class="o">&lt;-</span> <span class="s1">&#39;date: 8/20/15&#39;</span>
+<span class="c1"># Note we add the parent hash here!</span>
+<span class="n">hash2</span> <span class="o">&lt;-</span> <span class="n">digest</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">data2</span><span class="p">,</span> <span class="n">meta2</span><span class="p">,</span> <span class="n">hash1</span><span class="p">),</span> <span class="n">algo</span><span class="o">=</span><span class="s2">&quot;sha1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The first hash is a cryptographic signature of the content of the commit
@@ -263,15 +263,15 @@ its metadata (<code class="docutils literal"><span class="pre">meta2</span></cod
 <p>And here it is in Python:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sha</span>
 
-<span class="c"># first commit</span>
-<span class="n">data1</span> <span class="o">=</span> <span class="s">&#39;This is the start of my paper.&#39;</span>
-<span class="n">meta1</span> <span class="o">=</span> <span class="s">&#39;date: 8/20/15&#39;</span>
+<span class="c1"># first commit</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="s1">&#39;This is the start of my paper.&#39;</span>
+<span class="n">meta1</span> <span class="o">=</span> <span class="s1">&#39;date: 8/20/15&#39;</span>
 <span class="n">hash1</span> <span class="o">=</span> <span class="n">sha</span><span class="o">.</span><span class="n">sha</span><span class="p">(</span><span class="n">data1</span> <span class="o">+</span> <span class="n">meta1</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
-<span class="c"># second commit, linked to the first</span>
-<span class="n">data2</span> <span class="o">=</span> <span class="s">&#39;Some more text in my paper...&#39;</span>
-<span class="n">meta2</span> <span class="o">=</span> <span class="s">&#39;date: 8/20/15&#39;</span>
-<span class="c"># Note we add the parent hash here!</span>
+<span class="c1"># second commit, linked to the first</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="s1">&#39;Some more text in my paper...&#39;</span>
+<span class="n">meta2</span> <span class="o">=</span> <span class="s1">&#39;date: 8/20/15&#39;</span>
+<span class="c1"># Note we add the parent hash here!</span>
 <span class="n">hash2</span> <span class="o">=</span> <span class="n">sha</span><span class="o">.</span><span class="n">sha</span><span class="p">(</span><span class="n">data2</span> <span class="o">+</span> <span class="n">meta2</span> <span class="o">+</span> <span class="n">hash1</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -822,6 +822,8 @@ projects</a></li>
 
 
 <p class="blurb">Spring 2016</p>
+
+
 
 
 
