@@ -821,20 +821,6 @@ quess that you want it to call out to the underlying operating system.
    use ``json.dump?`` to figure out how to pretty-print the text as well
    as sort it alphabetically by key.
 
-HTML
-~~~~
-
-We will use Thomas Kluyver’s web scraping example notebook for this
-section. You can view a rendered version of it
-`here <http://nbviewer.ipython.org/github/dlab-berkeley/python-fundamentals/blob/master/cheat-sheets/Web-Scraping.ipynb>`__.
-To get an interactive version of it, you can do the following from your
-BASH prompt:
-
-::
-
-    $ git clone https://github.com/dlab-berkeley/python-fundamentals.git
-    $ cd python-fundamentals/cheat-sheets/
-    $ ipython notebook Web-Scraping.ipynb
 
 Standard library
 ----------------

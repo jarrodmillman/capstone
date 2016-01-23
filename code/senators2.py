@@ -17,13 +17,6 @@ with open("timelines.json") as f:
 # first get a list of lists
 tweets_list = [[tweet["text"] for tweet in tl] for tl in timelines]
 
-# def clean(tweet):
-#    cleaned_words = [word.lower() for word in tweet.split() if
-#                     'http' not in word and
-#                     word.isalpha() and
-#                     word != 'RT']
-#    return ' '.join(cleaned_words)
-
 
 def clean(tweet):
     tweet = tweet.encode('ascii', 'ignore')
