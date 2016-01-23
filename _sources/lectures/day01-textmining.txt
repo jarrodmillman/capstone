@@ -391,6 +391,8 @@ each other than either is to the document about natural language.
 Fortunately, even with this simple approach the results aren't too far
 off from what you might expect.
 
+.. _senate-exercise:
+
 Exercise: US Senate tweets
 ==========================
 

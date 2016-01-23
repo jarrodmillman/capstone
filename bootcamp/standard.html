@@ -26,9 +26,12 @@
     <script type="text/javascript" src="../_static/copybutton.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="Capstone 0.1 documentation" href="../index.html" />
+    <link rel="up" title="Bootcamps" href="index.html" />
+    <link rel="next" title="Advanced track bootcamp" href="advanced.html" />
+    <link rel="prev" title="Bootcamps" href="index.html" />
    
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
   <body role="document">  
@@ -40,7 +43,44 @@
             
   <div class="section" id="standard-track-bootcamp">
 <h1>Standard track bootcamp<a class="headerlink" href="#standard-track-bootcamp" title="Permalink to this headline">¶</a></h1>
-<p>Bootcamp for relative beginners to Python coding.</p>
+<p>We will start by quickly working through most of the</p>
+<ul class="simple">
+<li><a class="reference internal" href="../append/python.html#python-intro"><span>Introduction to Python</span></a>.</li>
+</ul>
+<p>Then we will revisit the</p>
+<ul class="simple">
+<li><a class="reference internal" href="../lectures/day01-textmining.html#senate-exercise"><span>Exercise: US Senate tweets</span></a>.</li>
+</ul>
+<p>First we will examine the download script:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ wget http://jarrodmillman.com/capstone/code/fetch_senator_tweets.py
+</pre></div>
+</div>
+<p>Then we will review exercise solutions:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ wget http://jarrodmillman.com/capstone/code/senators.py
+</pre></div>
+</div>
+<p>We will conclude by tokenizing the tweets.</p>
+<ol class="arabic">
+<li><p class="first">Make a list of lists where the outer list represents senators and the
+inner list contains each senator&#8217;s tweets, call it <code class="docutils literal"><span class="pre">tweets_list</span></code></p>
+</li>
+<li><p class="first">Write a function that takes tweet and returns a cleaned up version
+of the tweet.  Here is some example code to get you started:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="n">tweet</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">cleaned_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tweet</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span>
+<span class="gp">... </span>                     <span class="s1">&#39;http&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span> <span class="ow">and</span>
+<span class="gp">... </span>                     <span class="n">word</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span> <span class="ow">and</span>
+<span class="gp">... </span>                     <span class="n">word</span> <span class="o">!=</span> <span class="s1">&#39;RT&#39;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cleaned_words</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Write a function, called <code class="docutils literal"><span class="pre">all_punct</span></code>, which takes a word and returns
+a bool indicating whether all the characters are punctuation marks.</p>
+</li>
+<li></li>
+</ol>
 </div>
 
 
@@ -58,9 +98,16 @@
 
 
 
+
+
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bootcamps</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Standard track bootcamp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced track bootcamp</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../append/index.html">Appendices</a></li>
 </ul>
 

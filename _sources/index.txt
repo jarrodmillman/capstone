@@ -5,5 +5,6 @@ Statistics's MA capstone
    :maxdepth: 2
 
    lectures/index.rst
+   bootcamp/index.rst
    append/index.rst
 

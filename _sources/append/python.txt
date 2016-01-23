@@ -1,3 +1,5 @@
+.. _python-intro:
+
 **********************
 Introduction to Python
 **********************
@@ -35,7 +37,6 @@ Useful written references and tutorials:
 
 Some introductory video lectures:
 
-- http://software-carpentry.org/v4/python/
 - https://www.youtube.com/watch?v=a_Z_6brm9ZQ
 
 While working through this tutorial, you should type the example code snippets
@@ -323,18 +324,13 @@ we can demonstrate with strings.
 -  **Indexing** To see how indexing works in Python let’s use the string
    containing the digits 0 through 9.
 
-   .. code:: python
-
-       In [1]: import string
-
-       In [2]: string.digits
-       Out[2]: '0123456789'
-
-       In [3]: string.digits[1]
-       Out[3]: '1'
-
-       In [4]: string.digits[-1]
-       Out[4]: '9'
+   >>> import string
+   >>> string.digits
+   '0123456789'
+   >>> string.digits[1]
+   '1'
+   >>> string.digits[-1]
+   '9'
 
    Note that indexing starts at 0 (unlike R and Fortran, but like C).
    Also negative integers index starting from the end of the sequence.
@@ -345,23 +341,19 @@ we can demonstrate with strings.
    which you specify using the ``start:stop:step`` notation inside of
    square braces.
 
-   .. code:: python
 
-       In [5]: string.digits[1::2]
-       Out[5]: '13579'
-
-       In [6]: string.digits[9::-1]
-       Out[6]: '9876543210'
+   >>> string.digits[1::2]
+   '13579'
+   >>> string.digits[9::-1]
+   '9876543210'
 
 -  **Subsequence testing**
 
-   .. code:: python
 
-       In [7]: '23' in string.digits
-       Out[7]: True
-
-       In [16]: '25' not in string.digits
-       Out[16]: True
+   >>> '23' in string.digits
+   True
+   >>> '25' not in string.digits
+   True
 
 **String methods**
 
@@ -553,26 +545,20 @@ Dictionaries
 
 Dictionaries are mutable, unordered collections of key-value pairs.
 
-.. code:: python
 
-    In [99]: students = {"Jarrod Millman": [10, 11, 9],
-       ....:             "Thomas Kluyver":  [11, 9, 10],
-       ....:             "Stefan van der Walt": [12, 9, 9]}
+   >>> students = {"Jarrod Millman": [10, 11, 9],
+   ...             "Thomas Kluyver":  [11, 9, 10],
+   ...             "Stefan van der Walt": [12, 9, 9],
+   ...            }
+   >>> students
+   {'Thomas Kluyver': [11, 9, 10], 'Stefan van der Walt': [12, 9, 9], 'Jarrod Millman': [10, 11, 9]}
+   >>> students.keys()
+   ['Thomas Kluyver', 'Stefan van der Walt', 'Jarrod Millman']
+   >>> students["Jarrod Millman"]
+   [10, 11, 9]
+   >>> students["Jarrod Millman"][1]
+   11
 
-    In [100]: students
-    Out[100]: 
-    {'Jarrod Millman': [10, 11, 9],
-     'Stefan van der Walt': [12, 9, 9],
-     'Thomas Kluyver': [11, 9, 10]}
-
-    In [102]: students.keys()
-    Out[102]: ['Thomas Kluyver', 'Stefan van der Walt', 'Jarrod Millman']
-
-    In [103]: students["Jarrod Millman"]
-    Out[103]: [10, 11, 9]
-
-    In [104]: students["Jarrod Millman"][1]
-    Out[104]: 11
 
 Sets
 ~~~~
@@ -835,20 +821,6 @@ quess that you want it to call out to the underlying operating system.
    use ``json.dump?`` to figure out how to pretty-print the text as well
    as sort it alphabetically by key.
 
-HTML
-~~~~
-
-We will use Thomas Kluyver’s web scraping example notebook for this
-section. You can view a rendered version of it
-`here <http://nbviewer.ipython.org/github/dlab-berkeley/python-fundamentals/blob/master/cheat-sheets/Web-Scraping.ipynb>`__.
-To get an interactive version of it, you can do the following from your
-BASH prompt:
-
-::
-
-    $ git clone https://github.com/dlab-berkeley/python-fundamentals.git
-    $ cd python-fundamentals/cheat-sheets/
-    $ ipython notebook Web-Scraping.ipynb
 
 Standard library
 ----------------

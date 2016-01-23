@@ -31,7 +31,7 @@
     <link rel="prev" title="Collaborative workflow with Git" href="git-advanced.html" />
    
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
   <body role="document">  
@@ -42,7 +42,7 @@
           <div class="body" role="main">
             
   <div class="section" id="introduction-to-python">
-<h1><a class="toc-backref" href="#id6">Introduction to Python</a><a class="headerlink" href="#introduction-to-python" title="Permalink to this headline">¶</a></h1>
+<span id="python-intro"></span><h1><a class="toc-backref" href="#id6">Introduction to Python</a><a class="headerlink" href="#introduction-to-python" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
@@ -79,12 +79,11 @@
 <li><a class="reference internal" href="#data-formats" id="id28">Data formats</a><ul>
 <li><a class="reference internal" href="#csv" id="id29">CSV</a></li>
 <li><a class="reference internal" href="#json" id="id30">JSON</a></li>
-<li><a class="reference internal" href="#html" id="id31">HTML</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#standard-library" id="id32">Standard library</a><ul>
-<li><a class="reference internal" href="#os" id="id33">os</a></li>
-<li><a class="reference internal" href="#re" id="id34">re</a></li>
+<li><a class="reference internal" href="#standard-library" id="id31">Standard library</a><ul>
+<li><a class="reference internal" href="#os" id="id32">os</a></li>
+<li><a class="reference internal" href="#re" id="id33">re</a></li>
 </ul>
 </li>
 </ul>
@@ -118,7 +117,6 @@ page</a>.</p>
 </ul>
 <p>Some introductory video lectures:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://software-carpentry.org/v4/python/">http://software-carpentry.org/v4/python/</a></li>
 <li><a class="reference external" href="https://www.youtube.com/watch?v=a_Z_6brm9ZQ">https://www.youtube.com/watch?v=a_Z_6brm9ZQ</a></li>
 </ul>
 <p>While working through this tutorial, you should type the example code snippets
@@ -373,16 +371,13 @@ we can demonstrate with strings.</p>
 <ul>
 <li><p class="first"><strong>Indexing</strong> To see how indexing works in Python let’s use the string
 containing the digits 0 through 9.</p>
-<div class="code python highlight-python"><div class="highlight"><pre>In [1]: import string
-
-In [2]: string.digits
-Out[2]: &#39;0123456789&#39;
-
-In [3]: string.digits[1]
-Out[3]: &#39;1&#39;
-
-In [4]: string.digits[-1]
-Out[4]: &#39;9&#39;
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span><span class="o">.</span><span class="n">digits</span>
+<span class="go">&#39;0123456789&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">&#39;1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">&#39;9&#39;</span>
 </pre></div>
 </div>
 <p>Note that indexing starts at 0 (unlike R and Fortran, but like C).
@@ -393,20 +388,18 @@ You can find the length of a sequence using the <code class="docutils literal"><
 sequence) by specifying start and stop indices as well as a step,
 which you specify using the <code class="docutils literal"><span class="pre">start:stop:step</span></code> notation inside of
 square braces.</p>
-<div class="code python highlight-python"><div class="highlight"><pre>In [5]: string.digits[1::2]
-Out[5]: &#39;13579&#39;
-
-In [6]: string.digits[9::-1]
-Out[6]: &#39;9876543210&#39;
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">&#39;13579&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">[</span><span class="mi">9</span><span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">&#39;9876543210&#39;</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first"><strong>Subsequence testing</strong></p>
-<div class="code python highlight-python"><div class="highlight"><pre>In [7]: &#39;23&#39; in string.digits
-Out[7]: True
-
-In [16]: &#39;25&#39; not in string.digits
-Out[16]: True
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;23&#39;</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;25&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 </li>
@@ -583,24 +576,18 @@ and sort it. What happened?</li>
 <div class="section" id="dictionaries">
 <h3><a class="toc-backref" href="#id17">Dictionaries</a><a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
 <p>Dictionaries are mutable, unordered collections of key-value pairs.</p>
-<div class="code python highlight-python"><div class="highlight"><pre>In [99]: students = {&quot;Jarrod Millman&quot;: [10, 11, 9],
-   ....:             &quot;Thomas Kluyver&quot;:  [11, 9, 10],
-   ....:             &quot;Stefan van der Walt&quot;: [12, 9, 9]}
-
-In [100]: students
-Out[100]:
-{&#39;Jarrod Millman&#39;: [10, 11, 9],
- &#39;Stefan van der Walt&#39;: [12, 9, 9],
- &#39;Thomas Kluyver&#39;: [11, 9, 10]}
-
-In [102]: students.keys()
-Out[102]: [&#39;Thomas Kluyver&#39;, &#39;Stefan van der Walt&#39;, &#39;Jarrod Millman&#39;]
-
-In [103]: students[&quot;Jarrod Millman&quot;]
-Out[103]: [10, 11, 9]
-
-In [104]: students[&quot;Jarrod Millman&quot;][1]
-Out[104]: 11
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">students</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Jarrod Millman&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="s2">&quot;Thomas Kluyver&quot;</span><span class="p">:</span>  <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="s2">&quot;Stefan van der Walt&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+<span class="gp">... </span>           <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">students</span>
+<span class="go">{&#39;Thomas Kluyver&#39;: [11, 9, 10], &#39;Stefan van der Walt&#39;: [12, 9, 9], &#39;Jarrod Millman&#39;: [10, 11, 9]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">students</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">[&#39;Thomas Kluyver&#39;, &#39;Stefan van der Walt&#39;, &#39;Jarrod Millman&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">students</span><span class="p">[</span><span class="s2">&quot;Jarrod Millman&quot;</span><span class="p">]</span>
+<span class="go">[10, 11, 9]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">students</span><span class="p">[</span><span class="s2">&quot;Jarrod Millman&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">11</span>
 </pre></div>
 </div>
 </div>
@@ -853,22 +840,9 @@ use <code class="docutils literal"><span class="pre">json.dump?</span></code> to
 as sort it alphabetically by key.</li>
 </ul>
 </div>
-<div class="section" id="html">
-<h3><a class="toc-backref" href="#id31">HTML</a><a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
-<p>We will use Thomas Kluyver’s web scraping example notebook for this
-section. You can view a rendered version of it
-<a class="reference external" href="http://nbviewer.ipython.org/github/dlab-berkeley/python-fundamentals/blob/master/cheat-sheets/Web-Scraping.ipynb">here</a>.
-To get an interactive version of it, you can do the following from your
-BASH prompt:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ git clone https://github.com/dlab-berkeley/python-fundamentals.git
-$ cd python-fundamentals/cheat-sheets/
-$ ipython notebook Web-Scraping.ipynb
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="standard-library">
-<h2><a class="toc-backref" href="#id32">Standard library</a><a class="headerlink" href="#standard-library" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id31">Standard library</a><a class="headerlink" href="#standard-library" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://docs.python.org/2/tutorial/stdlib.html">https://docs.python.org/2/tutorial/stdlib.html</a></li>
 </ul>
@@ -877,7 +851,7 @@ We’ve already seen several (e.g., math, csv, json). If you need some
 functionality the standard library is one of the first places to look.</p>
 <p>Here are a couple packages that you may find useful.</p>
 <div class="section" id="os">
-<h3><a class="toc-backref" href="#id33">os</a><a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id32">os</a><a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="https://docs.python.org/2/tutorial/stdlib.html#operating-system-interface">https://docs.python.org/2/tutorial/stdlib.html#operating-system-interface</a></li>
 </ul>
@@ -896,7 +870,7 @@ Out[149]: u&#39;/home/jarrod&#39;
 </ul>
 </div>
 <div class="section" id="re">
-<h3><a class="toc-backref" href="#id34">re</a><a class="headerlink" href="#re" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id33">re</a><a class="headerlink" href="#re" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="https://docs.python.org/2/howto/regex.html">https://docs.python.org/2/howto/regex.html</a></li>
 </ul>
@@ -952,9 +926,12 @@ IPython prompt and in tandem write your script</td></tr>
 
 
 
+
+
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Lectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bootcamp/index.html">Bootcamps</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendices</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="software.html">Software installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bash.html">Using the bash shell</a></li>
