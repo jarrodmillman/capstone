@@ -44,8 +44,7 @@ Exercises
    * forking the repo; cloning the repo; adding the remotes; make feature
      branch ``edit-readme``; edit the README, make a pull request.
 
-#. Introduction to `Restructured Text
-   <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`_.
+#. Introduction to `Restructured Text <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`_.
    ReST in `Sphinx <http://www.sphinx-doc.org/>`_;
 
    * make feature branch ``rst-readme``; edit ``README.rst``; install
