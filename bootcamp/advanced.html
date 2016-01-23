@@ -47,113 +47,163 @@
 the example of making a package for ordinary least squares fitting.</p>
 <p>To make things clear to our future selves, and other collaborators, we will
 document what we are doing as we go.</p>
-<ol class="arabic">
-<li><p class="first">Your working environment; editor, git, IPython; pip;</p>
-<ul class="simple">
-<li>install pip; create <code class="docutils literal"><span class="pre">ols</span></code> repo; note github advice;</li>
-</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">General pattern of work: explore; write tests; write code; have code
+reviewed and merged; repeat.</p>
 </li>
-<li><p class="first">Introduction to <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">Restructured Text</a>.
-ReST in <a class="reference external" href="http://www.sphinx-doc.org/">Sphinx</a>;</p>
+<li><p class="first">Dividing into groups;</p>
 </li>
-<li><p class="first">The fundament is your README;</p>
+<li><p class="first">Revision on git, github, pull requests.</p>
+</li>
+<li><p class="first">Editors;</p>
+</li>
+<li><p class="first">Getting help:</p>
 <blockquote>
 <div><ul class="simple">
-<li>create <code class="docutils literal"><span class="pre">README.rst</span></code>; install <code class="docutils literal"><span class="pre">docutils</span></code>; check rendering with
-<code class="docutils literal"><span class="pre">rst2html.py</span></code>; add; commit.  Check rendering on github.</li>
+<li>Python docs at <a class="reference external" href="https://docs.python.org">https://docs.python.org</a>;</li>
+<li>IPython tab completion, <cite>something?</cite>, <cite>something??</cite>;</li>
+<li><cite>np.lookfor</cite>;</li>
+<li>your search engine (sigh).</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Introduction to virtualenvs and virtualenvwrapper;</p>
-<ul class="simple">
-<li>create <code class="docutils literal"><span class="pre">ols</span></code> virtualenv</li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Installing Python 3, pip;<ul>
+<li>install Python 3 / pip as necessary.</li>
 </ul>
 </li>
-<li><p class="first">Pip installs, requirements files:</p>
-<ul class="simple">
-<li>install numpy; specify in requirements file, add <code class="docutils literal"><span class="pre">requirements.txt</span></code>
-file, commit.</li>
+<li>Working with forks and remotes; making feature branches; making pull
+requests;<ul>
+<li>forking the repo; cloning the repo; adding the remotes; make feature
+branch <code class="docutils literal"><span class="pre">edit-readme</span></code>; edit the README, make a pull request.</li>
 </ul>
 </li>
-<li><p class="first">The Python path; Python packages;</p>
-<ul class="simple">
+<li>Introduction to <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">Restructured Text</a>.
+ReST in <a class="reference external" href="http://www.sphinx-doc.org/">Sphinx</a>;<ul>
+<li>make feature branch <code class="docutils literal"><span class="pre">rst-readme</span></code>; edit <code class="docutils literal"><span class="pre">README.rst</span></code>; install
+<code class="docutils literal"><span class="pre">docutils</span></code>; check rendering with <code class="docutils literal"><span class="pre">rst2html.py</span></code>; add; commit.  Check
+rendering on github.  Do pull request (PR).</li>
+</ul>
+</li>
+<li>Starting from <code class="docutils literal"><span class="pre">origin/master</span></code>;<ul>
+<li>get merged changes from github; make new feature branch
+<code class="docutils literal"><span class="pre">add-requirements</span></code> starting at the merged state.</li>
+</ul>
+</li>
+<li>Introduction to virtualenvs and virtualenvwrapper;<ul>
+<li>install virtualenvwrapper; create <code class="docutils literal"><span class="pre">ols</span></code> virtualenv.</li>
+</ul>
+</li>
+<li>Pip installs, requirements files:<ul>
+<li>install numpy; feature branch (FB) <code class="docutils literal"><span class="pre">add-requirements</span></code>; specify in
+requirements file, add <code class="docutils literal"><span class="pre">requirements.txt</span></code> file, commit, do PR.</li>
+</ul>
+</li>
+<li>The Python path; Python packages;<ul>
 <li>create package structure for <code class="docutils literal"><span class="pre">ols</span></code> package.  Show you can <code class="docutils literal"><span class="pre">import</span>
 <span class="pre">ols</span></code>.  Add some explanatory text in init file.  Import <code class="docutils literal"><span class="pre">ols</span></code> again to
-show docstring.  Change into another directory and try import.  Fix.</li>
+show docstring.  Change into another directory and try import.  Fix.
+Make FB <code class="docutils literal"><span class="pre">package-structure</span></code>; add and commit; do PR.</li>
 </ul>
 </li>
-<li><p class="first">The <code class="docutils literal"><span class="pre">.gitignore</span></code> file;</p>
-<blockquote>
-<div><ul class="simple">
-<li>add <code class="docutils literal"><span class="pre">.gitignore</span></code> file.  Commit.</li>
+<li>The <code class="docutils literal"><span class="pre">.gitignore</span></code> file;<ul>
+<li>add <code class="docutils literal"><span class="pre">.gitignore</span></code> file to FB <code class="docutils literal"><span class="pre">add-gitignore</span></code>;  Commit, PR.</li>
 </ul>
-</div></blockquote>
 </li>
-<li><p class="first">The <a class="reference external" href="https://docs.python.org/2/distutils/setupscript.html">setup.py</a>
-file; installing in pip develop mode:</p>
-<ul class="simple">
+<li>The <a class="reference external" href="https://docs.python.org/3/distutils/setupscript.html">setup.py</a>
+file; installing in pip develop mode:<ul>
 <li>create <code class="docutils literal"><span class="pre">setup.py</span></code> for <code class="docutils literal"><span class="pre">ols</span></code>, pip install in develop mode.  Show that
-you can now import from anywhere.</li>
+you can now import from anywhere.  Make FB <code class="docutils literal"><span class="pre">add-setup</span></code>. Commit; do PR.</li>
 </ul>
 </li>
-<li><p class="first">Reminder about ordinary least squares fitting for model <span class="math">\(Y = X B + E\)</span>.</p>
-<ul class="simple">
+<li>The explore phase. Reminder about ordinary least squares fitting for model
+<span class="math">\(Y = X B + E\)</span>. See <a class="reference external" href="http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html">GLM intro</a>;<ul>
 <li>in IPython, recreate psychopathy <span class="math">\(Y\)</span>, clamminess <span class="math">\(\vec{x}\)</span>.  Create <span class="math">\(X\)</span>.
 Fit model and find coefficients <span class="math">\(B\)</span>.</li>
 </ul>
 </li>
-<li><p class="first">Test first development; <a class="reference external" href="http://pytest.org">pytest</a>; comparing arrays;
-typical imports such as <code class="docutils literal"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>:</p>
-<blockquote>
-<div><ul class="simple">
-<li>install pytest with pip.  Add to requirements.  Make a test for a new
-function <code class="docutils literal"><span class="pre">ols.model.fit</span></code> testing that that you can reconstruct
-parameters from the <a class="reference external" href="http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html">GLM intro</a>. Run the
-test and make sure it fails.  Write the function <code class="docutils literal"><span class="pre">fit</span></code> in
-<code class="docutils literal"><span class="pre">ols/model.py</span></code>.</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Floating point, almost equal, numpy testing;</p>
-<ul class="simple">
-<li>test that results are close to expected; use <code class="docutils literal"><span class="pre">np.testing</span></code> to do that
-test.  Document your testing procedure in the README.</li>
+<li>Test first development; <a class="reference external" href="http://pytest.org">pytest</a>; comparing arrays;
+typical imports such as <code class="docutils literal"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>:<ul>
+<li>FB <code class="docutils literal"><span class="pre">add-test-fit</span></code>. Install pytest with pip.  Add to requirements.  Make
+a test for a new function <code class="docutils literal"><span class="pre">ols.model.fit</span></code> testing that that you can
+reconstruct parameters from the <a class="reference external" href="http://www.jarrodmillman.com/rcsds/lectures/glm_intro.html">GLM intro</a>.  Run the test and make sure
+it fails.  Write the function <code class="docutils literal"><span class="pre">fit</span></code> in <code class="docutils literal"><span class="pre">ols/model.py</span></code>.  Commit, do
+PR.</li>
 </ul>
 </li>
-<li><p class="first">Collaboration and replication.</p>
-<ul class="simple">
-<li>each group takes the repository of another group.  Make a new virtualenv,
-and follow the instructions in the README exactly, to run the tests on
-the other group&#8217;s repository.</li>
+<li>Floating point, almost equal<ul>
+<li>FB <code class="docutils literal"><span class="pre">close-tests</span></code>. Test that results are close to expected.  Do PR.</li>
 </ul>
 </li>
-<li><p class="first">Testing edge cases; reminder on reshape and introduction to <code class="docutils literal"><span class="pre">newaxis</span></code>:</p>
-<ul class="simple">
+<li>Numpy and almost equal;<ul>
+<li>FB <code class="docutils literal"><span class="pre">np-testing</span></code>; use <code class="docutils literal"><span class="pre">np.testing</span></code> to do the almost equal test.  Document your
+testing procedure in the README.</li>
+</ul>
+</li>
+<li>Importing from the top level:<ul>
+<li>FB: <code class="docutils literal"><span class="pre">top-level-imports</span></code>.  How do you import <code class="docutils literal"><span class="pre">fit</span></code> directly from
+<code class="docutils literal"><span class="pre">ols</span></code>?  As in <code class="docutils literal"><span class="pre">from</span> <span class="pre">ols</span> <span class="pre">import</span> <span class="pre">fit</span></code>?  Do PR.</li>
+</ul>
+</li>
+<li>Remember the README:<ul>
+<li>FB <code class="docutils literal"><span class="pre">document-testing</span></code>. Document the testing procedure so someone else
+can reproduce it.</li>
+</ul>
+</li>
+<li>Check collaboration / replication.<ul>
+<li>Start in a new directory; make a new virtualenv, and follow the
+instructions in the README exactly, to run the tests.  Fix any problems;
+do a PR.</li>
+</ul>
+</li>
+<li>Testing edge cases; reminder on reshape and introduction to <code class="docutils literal"><span class="pre">newaxis</span></code>:<ul>
 <li>what happens if you pass a list into the <code class="docutils literal"><span class="pre">fit</span></code> function?  Or a 1D
-array?  Make test cases.  Run the tests.  Fix.  What happens if the
-design is rank deficient?  Test.  Fix if necessary.</li>
+array?  FB <code class="docutils literal"><span class="pre">extend-tests</span></code>; Make test cases.  Run the tests.  Fix.  What
+happens if the design is rank deficient?  Test.  Fix if necessary.  Do
+PR.</li>
 </ul>
 </li>
-<li><p class="first">Dealing with errors.  Try / except / finally.</p>
-<ul class="simple">
+<li>Dealing with errors.  Try / except / finally.<ul>
 <li>use try / except to test / confirm that error arises from passing design
-and data of different number of rows (see <code class="docutils literal"><span class="pre">pytest.raises</span></code> for a better
-way).</li>
+and data of different number of rows.</li>
 </ul>
 </li>
-<li><p class="first">Rethinking the design as objects.   The <code class="docutils literal"><span class="pre">Model</span></code> and <code class="docutils literal"><span class="pre">Results</span></code> objects.
-Thinking about the design.</p>
-<ul class="simple">
+<li>More advanced pytests:<ul>
+<li>see if you can find a neater way to test for errors being raised using
+pytest.</li>
+</ul>
+</li>
+<li>Rethinking the design as objects.   The <code class="docutils literal"><span class="pre">Model</span></code> and <code class="docutils literal"><span class="pre">Results</span></code> objects.
+Thinking about the design.<ul>
 <li>write tests for the Model and Results objects.  Run tests and fail.
 Write Model and results objects.</li>
 </ul>
 </li>
-<li><p class="first">Decorators and properties.</p>
-<blockquote>
-<div><ul class="simple">
+<li>Loading text files with numpy.  Working out which directory your test is
+running in.<ul>
+<li>I will add a random X and Y to the repository, and save the expected
+coefficients out as another text file.  Make a feature branch; in the
+tests, load the X and Y, fit the model, test the coefficients against the
+result I got.  Do a PR.</li>
+</ul>
+</li>
+<li>Testing against other packages:<ul>
+<li>Load text files from R.  Find model coefficients using <code class="docutils literal"><span class="pre">lm</span></code>.  Save from
+R session.  Make test from saved R results. Clue: R command for writing a
+simple text file of numeric values is <code class="docutils literal"><span class="pre">write.table(var,</span> <span class="pre">row.names=FALSE,</span>
+<span class="pre">col.names=FALSE,</span> <span class="pre">file='filename.txt')</span></code>.</li>
+</ul>
+</li>
+<li>Decorators and properties.<ul>
 <li>write tests for residuals as a property.  Fix tests.</li>
 </ul>
-</div></blockquote>
 </li>
 </ol>
 </div>
