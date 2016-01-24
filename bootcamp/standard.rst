@@ -14,9 +14,14 @@ First we will examine the download script::
 
   $ wget http://jarrodmillman.com/capstone/code/fetch_senator_tweets.py
 
+or ::
+
+  $ curl -OL http://jarrodmillman.com/capstone/code/fetch_senator_tweets.py
+
 Then we will review exercise solutions::
 
   $ wget http://jarrodmillman.com/capstone/code/senators.py
+  $ curl -OL http://jarrodmillman.com/capstone/code/senators.py
 
 We will conclude by tokenizing the tweets.
 
@@ -58,3 +63,9 @@ We will conclude by tokenizing the tweets.
 #. Create a sorted list of vocabulary words (no duplicates).
 
 #. Create a list with the most frequently used words.
+
+
+Perhaps you tried something like::
+
+  $ wget http://jarrodmillman.com/capstone/code/senators2.py
+  $ curl -OL http://jarrodmillman.com/capstone/code/senators2.py
