@@ -42,29 +42,29 @@
           <div class="body" role="main">
             
   <div class="section" id="introduction-to-git">
-<h1><a class="toc-backref" href="#id9">Introduction to Git</a><a class="headerlink" href="#introduction-to-git" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id13">Introduction to Git</a><a class="headerlink" href="#introduction-to-git" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#introduction-to-git" id="id9">Introduction to Git</a><ul>
-<li><a class="reference internal" href="#what-is-version-control" id="id10">What is version control?</a></li>
-<li><a class="reference internal" href="#core-concepts" id="id11">Core concepts</a></li>
-<li><a class="reference internal" href="#local-single-user-linear-workflow" id="id12">Local, single-user, linear workflow</a><ul>
-<li><a class="reference internal" href="#git-init-create-an-empty-repository" id="id13"><code class="docutils literal"><span class="pre">git</span> <span class="pre">init</span></code>: create an empty repository</a></li>
-<li><a class="reference internal" href="#git-add-add-content-to-the-staging-area" id="id14"><code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code>: add content to the staging area</a></li>
-<li><a class="reference internal" href="#git-commit-permanently-record-our-changes-in-the-repository" id="id15"><code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></code>: permanently record our changes in the repository</a></li>
-<li><a class="reference internal" href="#git-log-what-has-been-committed-so-far" id="id16"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code>: what has been committed so far</a></li>
-<li><a class="reference internal" href="#git-diff-what-have-i-changed" id="id17"><code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code>: what have I changed?</a></li>
-<li><a class="reference internal" href="#the-cycle-of-git-work-add-commit" id="id18">The cycle of git: work, add, commit, ...</a></li>
-<li><a class="reference internal" href="#git-log-revisited" id="id19"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code> revisited</a></li>
-<li><a class="reference internal" href="#git-mv-and-rm-moving-and-removing-files" id="id20"><code class="docutils literal"><span class="pre">git</span> <span class="pre">mv</span></code> and <code class="docutils literal"><span class="pre">rm</span></code>: moving and removing files</a></li>
+<li><a class="reference internal" href="#introduction-to-git" id="id13">Introduction to Git</a><ul>
+<li><a class="reference internal" href="#what-is-version-control" id="id14">What is version control?</a></li>
+<li><a class="reference internal" href="#core-concepts" id="id15">Core concepts</a></li>
+<li><a class="reference internal" href="#local-single-user-linear-workflow" id="id16">Local, single-user, linear workflow</a><ul>
+<li><a class="reference internal" href="#git-init-create-an-empty-repository" id="id17"><code class="docutils literal"><span class="pre">git</span> <span class="pre">init</span></code>: create an empty repository</a></li>
+<li><a class="reference internal" href="#git-add-add-content-to-the-staging-area" id="id18"><code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code>: add content to the staging area</a></li>
+<li><a class="reference internal" href="#git-commit-permanently-record-our-changes-in-the-repository" id="id19"><code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></code>: permanently record our changes in the repository</a></li>
+<li><a class="reference internal" href="#git-log-what-has-been-committed-so-far" id="id20"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code>: what has been committed so far</a></li>
+<li><a class="reference internal" href="#git-diff-what-have-i-changed" id="id21"><code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code>: what have I changed?</a></li>
+<li><a class="reference internal" href="#the-cycle-of-git-work-add-commit" id="id22">The cycle of git: work, add, commit, ...</a></li>
+<li><a class="reference internal" href="#git-log-revisited" id="id23"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code> revisited</a></li>
+<li><a class="reference internal" href="#git-mv-and-rm-moving-and-removing-files" id="id24"><code class="docutils literal"><span class="pre">git</span> <span class="pre">mv</span></code> and <code class="docutils literal"><span class="pre">rm</span></code>: moving and removing files</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#local-single-user-branching-workflow" id="id21">Local, single-user, branching workflow</a></li>
-<li><a class="reference internal" href="#using-remotes-as-a-single-user" id="id22">Using remotes as a single user</a></li>
-<li><a class="reference internal" href="#conflict-management" id="id23">Conflict management</a></li>
-<li><a class="reference internal" href="#exercise-single-remote-with-shared-access" id="id24">Exercise: Single remote with shared access</a></li>
-<li><a class="reference internal" href="#learn-more" id="id25">Learn more</a></li>
+<li><a class="reference internal" href="#local-single-user-branching-workflow" id="id25">Local, single-user, branching workflow</a></li>
+<li><a class="reference internal" href="#using-remotes-as-a-single-user" id="id26">Using remotes as a single user</a></li>
+<li><a class="reference internal" href="#conflict-management" id="id27">Conflict management</a></li>
+<li><a class="reference internal" href="#exercise-single-remote-with-shared-access" id="id28">Exercise: Single remote with shared access</a></li>
+<li><a class="reference internal" href="#learn-more" id="id29">Learn more</a></li>
 </ul>
 </li>
 </ul>
@@ -85,7 +85,7 @@ using the BCE VM, you should have everything you need installed.</p>
 remotes.  If you don&#8217;t already have one, create a GitHub account <a class="reference external" href="https://github.com/join">here</a>.</p>
 </div>
 <div class="section" id="what-is-version-control">
-<h2><a class="toc-backref" href="#id10">What is version control?</a><a class="headerlink" href="#what-is-version-control" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">What is version control?</a><a class="headerlink" href="#what-is-version-control" title="Permalink to this headline">¶</a></h2>
 <p>As a statistician, scientist, or engineer, you will work on projects that
 include code, data, and text.  For trivially small and short-lived projects,
 it may suffice to keep track of the various files mentally.  As the size
@@ -163,7 +163,7 @@ from remote repositories into a local repository.</p>
 </div>
 </div>
 <div class="section" id="core-concepts">
-<h2><a class="toc-backref" href="#id11">Core concepts</a><a class="headerlink" href="#core-concepts" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">Core concepts</a><a class="headerlink" href="#core-concepts" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>working tree</strong> (or directory) is the tree of files you are working on in
 the current directory. In the example above, we started with this working
 tree:</p>
@@ -192,7 +192,7 @@ state of the directory tree, which I listed.  Committing the directory tree
 as listed above will allow us to return to this exact state later (by <strong>checking
 out</strong> that commit&#8212;as we will see&#8212;the working tree changed to contain
 exactly the files and directories that we originally committed).</p>
-<div class="figure align-center" id="id1">
+<div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/commit_anatomy.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/commit_anatomy.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-text">Here is a schematic representation of a commit.  The commit, which I
 refer to as <code class="docutils literal"><span class="pre">98ca9..</span></code>, has some metadata (i.e., author name and committer
@@ -206,7 +206,7 @@ commits (we refer to these references to commits as <strong>heads</strong>).  As
 metadata of each commit, we include references to 0 or more parent commits.
 The initial commit of each repository has 0 parents.  Each subsequent commit is
 proceeded by 1 or more commits.</p>
-<div class="figure align-center" id="id2">
+<div class="figure align-center" id="id6">
 <a class="reference internal image-reference" href="../_images/threecommits.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/threecommits.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-text">This is a schematic representation of three commits in a linear
 workflow.  The first commit <code class="docutils literal"><span class="pre">98ca9..</span></code> has no parents and Snapshot
@@ -300,7 +300,7 @@ more about <code class="docutils literal"><span class="pre">gedit</span></code> 
 </div>
 </div>
 <div class="section" id="local-single-user-linear-workflow">
-<h2><a class="toc-backref" href="#id12">Local, single-user, linear workflow</a><a class="headerlink" href="#local-single-user-linear-workflow" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">Local, single-user, linear workflow</a><a class="headerlink" href="#local-single-user-linear-workflow" title="Permalink to this headline">¶</a></h2>
 <p>From a Bash shell, type <code class="docutils literal"><span class="pre">git</span></code> (or <code class="docutils literal"><span class="pre">git</span> <span class="pre">help</span></code>) to see a list of the &#8216;core&#8217;
 commands, which will look something like this:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ git
@@ -326,7 +326,7 @@ content, and commit your work to repository.  You will also see how to look at
 a log of what you&#8217;ve done, see what you&#8217;ve changed, as well as delete and
 rename files.</p>
 <div class="section" id="git-init-create-an-empty-repository">
-<h3><a class="toc-backref" href="#id13"><code class="docutils literal"><span class="pre">git</span> <span class="pre">init</span></code>: create an empty repository</a><a class="headerlink" href="#git-init-create-an-empty-repository" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17"><code class="docutils literal"><span class="pre">git</span> <span class="pre">init</span></code>: create an empty repository</a><a class="headerlink" href="#git-init-create-an-empty-repository" title="Permalink to this headline">¶</a></h3>
 <p>First create an empty repository using the <code class="docutils literal"><span class="pre">init</span></code> command:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ cd ~/src
 $ git init demo
@@ -351,7 +351,7 @@ stored in the <code class="docutils literal"><span class="pre">.git</span></code
 a normal directory tree by deleting the <code class="docutils literal"><span class="pre">.git</span></code> directory.</p>
 </div>
 <div class="section" id="git-add-add-content-to-the-staging-area">
-<h3><a class="toc-backref" href="#id14"><code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code>: add content to the staging area</a><a class="headerlink" href="#git-add-add-content-to-the-staging-area" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id18"><code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code>: add content to the staging area</a><a class="headerlink" href="#git-add-add-content-to-the-staging-area" title="Permalink to this headline">¶</a></h3>
 <p>Now let&#8217;s edit our first file in the test directory with a text editor.  I&#8217;m
 doing it programmatically here for automation purposes, but you&#8217;d normally be
 editing by hand:</p>
@@ -370,7 +370,7 @@ editing by hand:</p>
 area and is ready to be committed.</p>
 </div>
 <div class="section" id="git-commit-permanently-record-our-changes-in-the-repository">
-<h3><a class="toc-backref" href="#id15"><code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></code>: permanently record our changes in the repository</a><a class="headerlink" href="#git-commit-permanently-record-our-changes-in-the-repository" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id19"><code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></code>: permanently record our changes in the repository</a><a class="headerlink" href="#git-commit-permanently-record-our-changes-in-the-repository" title="Permalink to this headline">¶</a></h3>
 <p>Now we are ready to commit our changes:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ git commit -m &quot;This is our first commit&quot;
 </pre></div>
@@ -389,14 +389,14 @@ of files that you are committing.  While this may seem inconsequential, I&#8217;
 found that this practice is helpful and doesn&#8217;t slow me down.</p>
 </div>
 <div class="section" id="git-log-what-has-been-committed-so-far">
-<h3><a class="toc-backref" href="#id16"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code>: what has been committed so far</a><a class="headerlink" href="#git-log-what-has-been-committed-so-far" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id20"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code>: what has been committed so far</a><a class="headerlink" href="#git-log-what-has-been-committed-so-far" title="Permalink to this headline">¶</a></h3>
 <p>To see a log of the commits:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ git log
 </pre></div>
 </div>
 </div>
 <div class="section" id="git-diff-what-have-i-changed">
-<h3><a class="toc-backref" href="#id17"><code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code>: what have I changed?</a><a class="headerlink" href="#git-diff-what-have-i-changed" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id21"><code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code>: what have I changed?</a><a class="headerlink" href="#git-diff-what-have-i-changed" title="Permalink to this headline">¶</a></h3>
 <p>Let&#8217;s do a little bit more work. Again, in practice you&#8217;ll be editing
 the files by hand, here we do it via shell commands for the sake of
 automation (and therefore the reproducibility of this tutorial!)</p>
@@ -409,7 +409,7 @@ automation (and therefore the reproducibility of this tutorial!)</p>
 </div>
 </div>
 <div class="section" id="the-cycle-of-git-work-add-commit">
-<h3><a class="toc-backref" href="#id18">The cycle of git: work, add, commit, ...</a><a class="headerlink" href="#the-cycle-of-git-work-add-commit" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id22">The cycle of git: work, add, commit, ...</a><a class="headerlink" href="#the-cycle-of-git-work-add-commit" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre>$ echo &quot;Great progress ...&quot; &gt;&gt; file1.txt
 $ git add file1.txt
 $ git commit -m &quot;Great progress on this matter.&quot;
@@ -448,14 +448,14 @@ of work completed and staged, you can then commit it.  Each commit has
 a unique hash.  You can go back to the exact snapshot of your working
 tree at the time you committed it by checking it out using the <code class="docutils literal"><span class="pre">git</span>
 <span class="pre">checkout</span></code> command, which we will discuss below.</p>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id7">
 <img alt="Working tree, staging area, and repository. Credit: ProGit book, by Scott Chacon, CC License." src="../_images/git-index.png" />
 <p class="caption"><span class="caption-text">Working tree, staging area, and repository. Credit: ProGit book, by
 Scott Chacon, CC License.</span></p>
 </div>
 </div>
 <div class="section" id="git-log-revisited">
-<h3><a class="toc-backref" href="#id19"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code> revisited</a><a class="headerlink" href="#git-log-revisited" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id23"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code> revisited</a><a class="headerlink" href="#git-log-revisited" title="Permalink to this headline">¶</a></h3>
 <p>First, let&#8217;s see what the log shows us now:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ git log
 </pre></div>
@@ -474,7 +474,7 @@ $ git config --global alias.slog &quot;log --oneline --topo-order --graph&quot;
 </div>
 </div>
 <div class="section" id="git-mv-and-rm-moving-and-removing-files">
-<h3><a class="toc-backref" href="#id20"><code class="docutils literal"><span class="pre">git</span> <span class="pre">mv</span></code> and <code class="docutils literal"><span class="pre">rm</span></code>: moving and removing files</a><a class="headerlink" href="#git-mv-and-rm-moving-and-removing-files" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id24"><code class="docutils literal"><span class="pre">git</span> <span class="pre">mv</span></code> and <code class="docutils literal"><span class="pre">rm</span></code>: moving and removing files</a><a class="headerlink" href="#git-mv-and-rm-moving-and-removing-files" title="Permalink to this headline">¶</a></h3>
 <p>While <code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code> is used to add files to the list git tracks, we must
 also tell it if we want their names to change or for it to stop tracking
 them. In familiar Unix fashion, the <code class="docutils literal"><span class="pre">mv</span></code> and <code class="docutils literal"><span class="pre">rm</span></code> git commands do
@@ -494,7 +494,7 @@ $ git slog
 </div>
 </div>
 <div class="section" id="local-single-user-branching-workflow">
-<h2><a class="toc-backref" href="#id21">Local, single-user, branching workflow</a><a class="headerlink" href="#local-single-user-branching-workflow" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">Local, single-user, branching workflow</a><a class="headerlink" href="#local-single-user-branching-workflow" title="Permalink to this headline">¶</a></h2>
 <p>To understand what a Git <strong>branch</strong> is, we first need to revisit the idea of a
 <strong>head</strong>.  As discussed above, Git labels every commit with cryptographic
 signature called a hash.  These hashes can be considered to uniquely identify
@@ -503,7 +503,7 @@ of the commit are correct.  While there are many advantages to using these
 hashes to label the commits, it is unlikely that you will remember these
 hashes.  This is where heads come into play.  A head is an easy to remember
 label (e.g., <code class="docutils literal"><span class="pre">HEAD</span></code>, <code class="docutils literal"><span class="pre">master</span></code>, <code class="docutils literal"><span class="pre">feature1</span></code>) that references a commit.</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id8">
 <a class="reference internal image-reference" href="../_images/masterbranch.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/masterbranch.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-text">By default every repository has a head called <code class="docutils literal"><span class="pre">master</span></code>. In this
 figure <code class="docutils literal"><span class="pre">master</span></code> refers to the commit whose has begins
@@ -524,7 +524,7 @@ to a label on exactly one commit; while the term branch may also
 sometimes be used to refer not only to the commit labeled by the
 head but that commit and all the commits that proceed it in the
 repository.</p>
-<div class="figure align-center" id="id5">
+<div class="figure align-center" id="id9">
 <a class="reference internal image-reference" href="../_images/HEAD_testing.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/HEAD_testing.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-text">In this example there are two heads or branches, <em>master</em> and <em>testing</em>,
 and <em>testing</em> is the currently active branch since it&#8217;s what <em>HEAD</em> points
@@ -534,7 +534,7 @@ Credit: ProGit book, by Scott Chacon, CC License.</div>
 </div>
 <p>Once new commits are made on a branch, HEAD and the branch label move
 with the new commits:</p>
-<div class="figure align-center" id="id6">
+<div class="figure align-center" id="id10">
 <a class="reference internal image-reference" href="../_images/branchcommit.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/branchcommit.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-text">In this example (notice that HEAD is not shown), the branch
 master and iss53 share a common history up to commit C2.
@@ -549,7 +549,7 @@ trunk of development.  If you have a bug report (perhaps labeled issue 53)
 that you are trying to fix, you might create a branch (labeled iss53). While
 you are preparing a fix for issue 53, the main trunk gains another bug fix
 or feature.</p>
-<div class="figure align-center" id="id7">
+<div class="figure align-center" id="id11">
 <a class="reference internal image-reference" href="../_images/mergescenario.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/mergescenario.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-text">Here both master and iss53 have a shared history up to
 the commit C2.  However they both have commits that the
@@ -563,7 +563,7 @@ branch.  The process of integrating your work is called merging
 and often happens automatically.  Once the iss53 branch has been merged
 back into the master branch, you can continue with a unified line of
 development:</p>
-<div class="figure align-center" id="id8">
+<div class="figure align-center" id="id12">
 <a class="reference internal image-reference" href="../_images/mergeaftermath.png"><img alt="Credit: ProGit book, by Scott Chacon, CC License." src="../_images/mergeaftermath.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-text">The result of merging the iss53 branch into the master
 branch.  At this point, you could safely delete the
@@ -619,7 +619,7 @@ current head commit)</li>
 </div>
 </div>
 <div class="section" id="using-remotes-as-a-single-user">
-<h2><a class="toc-backref" href="#id22">Using remotes as a single user</a><a class="headerlink" href="#using-remotes-as-a-single-user" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id26">Using remotes as a single user</a><a class="headerlink" href="#using-remotes-as-a-single-user" title="Permalink to this headline">¶</a></h2>
 <p>We are now going to introduce the concept of a <strong>remote</strong> repository: a
 pointer to another copy of the repository that lives on a different
 location. This can be simply a different path on the filesystem or a
@@ -687,7 +687,7 @@ $ git pull
 </div>
 </div>
 <div class="section" id="conflict-management">
-<h2><a class="toc-backref" href="#id23">Conflict management</a><a class="headerlink" href="#conflict-management" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id27">Conflict management</a><a class="headerlink" href="#conflict-management" title="Permalink to this headline">¶</a></h2>
 <p>While git is very good at merging, if two different branches modify the
 same file in the same location, it simply can&#8217;t decide which change
 should prevail. At that point, human intervention is necessary to make
@@ -762,7 +762,7 @@ structure, git can work with any of them.</p>
 </div>
 </div>
 <div class="section" id="exercise-single-remote-with-shared-access">
-<h2><a class="toc-backref" href="#id24">Exercise: Single remote with shared access</a><a class="headerlink" href="#exercise-single-remote-with-shared-access" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id28">Exercise: Single remote with shared access</a><a class="headerlink" href="#exercise-single-remote-with-shared-access" title="Permalink to this headline">¶</a></h2>
 <p>For this exercise, you are going to set up a shared collaboration with one
 partner (the person sitting next to you). This will show the basic workflow of
 collaborating on a project with a small team where everyone has write
@@ -800,12 +800,15 @@ attempts to push, his repository contains all the history that the remote
 repository on GitHub has.</p>
 </div>
 <div class="section" id="learn-more">
-<h2><a class="toc-backref" href="#id25">Learn more</a><a class="headerlink" href="#learn-more" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id29">Learn more</a><a class="headerlink" href="#learn-more" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://nyuccl.org/pages/GitTutorial/">Git for Scientists: A
-Tutorial</a></li>
-<li><a class="reference external" href="http://matthew-brett.github.io/pydagogue/gitwash_build.html">Gitwash: workflow for scientific Python
-projects</a></li>
+<li><a href="#id1"><span class="problematic" id="id2">`</span></a>Git for Scientists: A</li>
+</ul>
+<p>___XXX_REPL_270___
+-  <a href="#id3"><span class="problematic" id="id4">`</span></a>Gitwash: workflow for scientific Python</p>
+<blockquote>
+<div>projects &lt;<a class="reference external" href="http://matthew-brett.github.io/pydagogue/gitwash_build.html">http://matthew-brett.github.io/pydagogue/gitwash_build.html</a>&gt;`__</div></blockquote>
+<ul class="simple">
 <li><a class="reference external" href="http://pcottle.github.io/learnGitBranching/">Git branching demo</a></li>
 </ul>
 </div>
