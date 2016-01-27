@@ -38,39 +38,152 @@ def all_punct1(tweet):
 
 
 def all_punct2(tweet):
+    r"""Check if tweet is just punctuation marks.
+
+    Parameters
+    ----------
+    tweet : str
+
+    Returns
+    -------
+    bool
+        True if all characters in tweet are punctuation.
+
+    Examples
+    --------
+    >>> all_punct2("cat")
+    False
+    >>> all_punct2("cat.")
+    False
+    >>> all_punct2(".")
+    True
+    >>> all_punct2("12")
+    False
+    >>> all_punct2(r'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')
+    True
+    >>> all_punct2("")
+    True
+    """
     return set(tweet).issubset(set(string.punctuation))
 
 
 def all_punct3(tweet):
+    r"""Check if tweet is just punctuation marks.
+
+    Parameters
+    ----------
+    tweet : str
+
+    Returns
+    -------
+    bool
+        True if all characters in tweet are punctuation.
+
+    Examples
+    --------
+    >>> all_punct3("cat")
+    False
+    >>> all_punct3("cat.")
+    False
+    >>> all_punct3(".")
+    True
+    >>> all_punct3("12")
+    False
+    >>> all_punct3(r'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')
+    True
+    >>> all_punct3("")
+    True
+    """
     return set(tweet).issubset(string.punctuation)
 
 
-def all_punct22(tweet, vocab=set(string.punctuation)):
+def all_punct4(tweet, vocab=set(string.punctuation)):
+    r"""Check if tweet is just punctuation marks.
+
+    Parameters
+    ----------
+    tweet : str
+
+    Returns
+    -------
+    bool
+        True if all characters in tweet are punctuation.
+
+    Examples
+    --------
+    >>> all_punct4("cat")
+    False
+    >>> all_punct4("cat.")
+    False
+    >>> all_punct4(".")
+    True
+    >>> all_punct4("12")
+    False
+    >>> all_punct4(r'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')
+    True
+    >>> all_punct4("")
+    True
+    """
     return set(tweet).issubset(vocab)
 
 
-def all_punct4(tweet):
-    """
+def all_punct5(tweet):
+    r"""Check if tweet is just punctuation marks.
 
+    Parameters
+    ----------
+    tweet : str
 
-    all_punct4("")
-    all_punct4("cat")
-    all_punct4("c!")
-    all_punct4("#$")
-    all_punct4("#$************************!!")
-    all_punct5(r'[^!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~]')
-    all_punct5(r'^!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~')
+    Returns
+    -------
+    bool
+        True if all characters in tweet are punctuation.
+
+    Examples
+    --------
+    >>> all_punct5("cat")
+    False
+    >>> all_punct5("cat.")
+    False
+    >>> all_punct5(".")
+    True
+    >>> all_punct5("12")
+    False
+    >>> all_punct5(r'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')
+    True
+    >>> all_punct5("")
+    True
     """
     search = re.compile(r'[^!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~]').search
     return not bool(search(tweet))
 
 
-def all_punct5(tweet, search=RE_PUNCTUATION.search):
-    """
-    all_punct4("")
-    all_punct4("cat")
-    all_punct4("c!")
-    all_punct4("#$")
+def all_punct6(tweet, search=RE_PUNCTUATION.search):
+    r"""Check if tweet is just punctuation marks.
+
+    Parameters
+    ----------
+    tweet : str
+
+    Returns
+    -------
+    bool
+        True if all characters in tweet are punctuation.
+
+    Examples
+    --------
+    >>> all_punct6("cat")
+    False
+    >>> all_punct6("cat.")
+    False
+    >>> all_punct6(".")
+    True
+    >>> all_punct6("12")
+    False
+    >>> all_punct6(r'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')
+    True
+    >>> all_punct6("")
+    True
     """
     return not bool(search(tweet))
 
