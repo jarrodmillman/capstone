@@ -1,6 +1,9 @@
-**********************************
-Day 3: Natural language processing
-**********************************
+************************
+Day 3: Text Mining (NLP)
+************************
+
+.. contents::
+         :depth: 3
 
 The material for this lecture is adapted from a few sources:
 
@@ -18,6 +21,14 @@ Some applications:
 - computer translation (see http://translationparty.com/ for an illustration of current limitations)
 - sentiment analysis
 - search (which document is most relevant for a query)
+
+0. More on working with Twitter
+===============================
+
+I will let you read the notes below on your own.  In class, we will work through these examples::
+
+    http://jarrodmillman.com/capstone/code/fetch_senator_tweets2.py
+    http://jarrodmillman.com/capstone/code/senators3.py
 
 1. Importing example data
 =========================
