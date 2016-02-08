@@ -36,6 +36,8 @@ Here are the slide decks:
 - http://jarrodmillman.com/capstone/slides/tweeting_the_oscars.pdf
 - http://jarrodmillman.com/capstone/slides/twitter_nba.pdf
 - http://jarrodmillman.com/capstone/slides/twitter_presentation_grammy.pdf
+- http://jarrodmillman.com/capstone/slides/golden_globe_presentation.pdf
+- http://jarrodmillman.com/capstone/slides/tweeting_uber.pdf
 
 Before class on Wednesday morning, your team will need to meet and finalize
 your feedback.  I expect a few pages of (hand-written) notes from each
