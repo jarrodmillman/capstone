@@ -8,6 +8,7 @@ Lectures
    day02-functions.rst
    day03-nlp.rst
    day05-ggplot.rst
+   day06-slides.rst
 
 Topics
 
