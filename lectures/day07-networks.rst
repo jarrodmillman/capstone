@@ -45,7 +45,7 @@ also say that two such nodes are *adjacent*.  Edges can be directed or
 undirected.  In an undirected graphs, an edge between nodes $u$ and $v$ may be
 written as $uv$ or $vu$ (in such cases, we will not make any distinction
 between the symbols $uv$ and $vu$).  We will only consider graphs without loops
-(i.e., for all $v \in V$, we have $vv \notin V$).
+(i.e., for all $v \in V$, we have $vv \notin E$).
 
 
 The number of nodes $n = |V|$ is the *order* of $G$.  The *size* of $G$ is
@@ -69,8 +69,9 @@ A *path* is a non-empty graph $P = (V, E)$ where
    V &= (v_0, v_1, \dots, v_k) \text{      and} \\
    E &= (v_0v_1, v_1v_2, \dots, v_{k-1}v_k) \\
 
-such that $i \neq j$ implies $v_i \neq v_j$.  A graph is *connected* if
-there is a path between any two nodes.
+such that $i \neq j$ implies $v_i \neq v_j$.  The length of a path is the
+number of edges in it.  A graph is *connected* if there is a path between any
+two nodes.
 
 For an undirected graph $G$, we have the following definitions:
 
