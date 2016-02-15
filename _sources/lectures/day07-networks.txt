@@ -45,7 +45,7 @@ also say that two such nodes are *adjacent*.  Edges can be directed or
 undirected.  In an undirected graphs, an edge between nodes $u$ and $v$ may be
 written as $uv$ or $vu$ (in such cases, we will not make any distinction
 between the symbols $uv$ and $vu$).  We will only consider graphs without loops
-(i.e., for all $v \in V$, we have $vv \notin V$).
+(i.e., for all $v \in V$, we have $vv \notin E$).
 
 
 The number of nodes $n = |V|$ is the *order* of $G$.  The *size* of $G$ is
