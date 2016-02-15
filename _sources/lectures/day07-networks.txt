@@ -69,8 +69,9 @@ A *path* is a non-empty graph $P = (V, E)$ where
    V &= (v_0, v_1, \dots, v_k) \text{      and} \\
    E &= (v_0v_1, v_1v_2, \dots, v_{k-1}v_k) \\
 
-such that $i \neq j$ implies $v_i \neq v_j$.  A graph is *connected* if
-there is a path between any two nodes.
+such that $i \neq j$ implies $v_i \neq v_j$.  The length of a path is the
+number of edges in it.  A graph is *connected* if there is a path between any
+two nodes.
 
 For an undirected graph $G$, we have the following definitions:
 
