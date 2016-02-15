@@ -54,9 +54,9 @@ nx.number_weakly_connected_components(G)
 # some require look at the undirected graph
 U = G.to_undirected()
 U.size() / G.size()
+nx.eccentricity(U)
 nx.radius(U)
 nx.diameter(U)
-nx.eccentricity(U)
 nx.center(U)
 nx.periphery(U)
 nx.density(U)
@@ -67,7 +67,7 @@ G.degree()
 
 last_names[10]
 cruz = 10
-last_names[40]
+st_names[40]
 rubio = 40
 last_names[74]
 sanders = 74
@@ -264,7 +264,7 @@ eig_cen = nx.eigenvector_centrality(U)
 top_bet_cen = get_top_keys(bet_cen, 10)
 top_clo_cen = get_top_keys(clo_cen, 10)
 top_eig_cen = get_top_keys(eig_cen, 10)
-set(top_bet_cen).intersection(top_clo_cen, top_eig_cent)
+set(top_bet_cen).intersection(top_clo_cen, top_eig_cen)
 [last_names[i] for i in top_bet_cen]
 
 
