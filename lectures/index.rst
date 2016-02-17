@@ -10,6 +10,7 @@ Lectures
    day05-ggplot.rst
    day06-slides.rst
    day07-networks.rst
+   day08-posterprep.rst
 
 Topics
 
